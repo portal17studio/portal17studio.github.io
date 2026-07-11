@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practice Sandbox — Portal17 Studio</title>
+<meta name="description" content="A free practice page full of real forms, tables, tabs, and buttons — point Portal17 Studio at it and try building your first automation.">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/sandbox.css">
+</head>
+<body>
+<div class="bg-glow"></div>
+
+<header class="site-nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/icon.png" alt="Portal17 Studio logo">
+      <span>Portal17 Studio</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="index.html#playground">Playground</a></li>
+      <li><a href="sandbox.html" class="active">Sandbox</a></li>
+      <li><a href="index.html#videos">Videos</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="index.html" class="btn btn-ghost">← Back to site</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="index.html#features">Features</a>
+    <a href="index.html#playground">Playground</a>
+    <a href="sandbox.html">Sandbox</a>
+    <a href="index.html#videos">Videos</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="index.html">← Back to site</a>
+  </nav>
+</header>
+
+<section class="sandbox-hero">
+  <div class="container">
+    <span class="eyebrow">Practice sandbox</span>
+    <h1>A safe place to click around</h1>
+    <p>
+      Everything on this page is real, interactive, and completely harmless — no
+      accounts are created, no messages are sent, nothing is saved anywhere. Point
+      Portal17 Studio's recorder at this page (or build a flow by hand) and use it
+      to get comfortable: log in, fill out a form, add things to a cart, sort a
+      table, click through a wizard. Break it as many times as you like — a full
+      reload puts it right back the way it started.
+    </p>
+    <div class="sandbox-hero-actions">
+      <button id="resetSandbox" class="btn btn-ghost">↺ Reset this page</button>
+      <a href="index.html#playground" class="btn btn-ghost">▶ See the scripted demo instead</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOGIN ============ -->
+<section class="sbx-section" id="login">
+  <div class="container">
+    <div class="sbx-card sbx-narrow">
+      <h2>1. Login form</h2>
+      <p class="sbx-hint">Classic username/password automation target — try filling and submitting it.</p>
+      <form class="sbx-form" data-sbx-form="login">
+        <label for="loginUser">Username</label>
+        <input id="loginUser" type="text" placeholder="ada.lovelace">
+        <label for="loginPass">Password</label>
+        <input id="loginPass" type="password" placeholder="••••••••">
+        <label class="sbx-checkline"><input type="checkbox" id="loginRemember"> Remember me</label>
+        <button type="submit" class="btn btn-primary">Log in</button>
+        <div class="sbx-result" data-sbx-result></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUPPORT FORM ============ -->
+<section class="sbx-section" id="support">
+  <div class="container">
+    <div class="sbx-card">
+      <h2>2. Support request</h2>
+      <p class="sbx-hint">A richer form: text fields, a dropdown, radio buttons, and a textarea.</p>
+      <form class="sbx-form sbx-form-grid" data-sbx-form="support">
+        <div>
+          <label for="supName">Full name</label>
+          <input id="supName" type="text" placeholder="Grace Hopper">
+        </div>
+        <div>
+          <label for="supEmail">Email</label>
+          <input id="supEmail" type="email" placeholder="grace@example.com">
+        </div>
+        <div>
+          <label for="supCategory">Category</label>
+          <select id="supCategory">
+            <option>General question</option>
+            <option>Billing</option>
+            <option>Technical issue</option>
+            <option>Feature request</option>
+          </select>
+        </div>
+        <div>
+          <label>Priority</label>
+          <div class="sbx-radio-row">
+            <label class="sbx-checkline"><input type="radio" name="priority" value="low" checked> Low</label>
+            <label class="sbx-checkline"><input type="radio" name="priority" value="medium"> Medium</label>
+            <label class="sbx-checkline"><input type="radio" name="priority" value="high"> High</label>
+          </div>
+        </div>
+        <div class="sbx-span-2">
+          <label for="supMessage">Message</label>
+          <textarea id="supMessage" rows="4" placeholder="Describe what's going on…"></textarea>
+        </div>
+        <div class="sbx-span-2">
+          <label class="sbx-fileline">
+            📎 <span id="supFileName">No file selected</span>
+            <input type="file" id="supFile" hidden>
+            <button type="button" class="btn btn-ghost btn-sm" id="supFileBtn">Choose file</button>
+          </label>
+        </div>
+        <div class="sbx-span-2">
+          <button type="submit" class="btn btn-primary">Send request</button>
+          <div class="sbx-result" data-sbx-result></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCT GRID / CART ============ -->
+<section class="sbx-section" id="shop">
+  <div class="container">
+    <div class="sbx-card">
+      <div class="sbx-card-head">
+        <h2>3. Mini shop</h2>
+        <div class="sbx-cart-badge">🛒 Cart: <span id="cartCount">0</span> item(s) · $<span id="cartTotal">0.00</span></div>
+      </div>
+      <p class="sbx-hint">Loop over a list of items and click a button on each one — a very common automation pattern.</p>
+      <div class="sbx-products" id="productGrid">
+        <div class="sbx-product" data-name="Wireless Mouse" data-price="19.99">
+          <div class="sbx-product-thumb">🖱️</div>
+          <h3>Wireless Mouse</h3>
+          <p>$19.99</p>
+          <button class="btn btn-ghost btn-sm sbx-add-btn">Add to cart</button>
+        </div>
+        <div class="sbx-product" data-name="Mechanical Keyboard" data-price="59.00">
+          <div class="sbx-product-thumb">⌨️</div>
+          <h3>Mechanical Keyboard</h3>
+          <p>$59.00</p>
+          <button class="btn btn-ghost btn-sm sbx-add-btn">Add to cart</button>
+        </div>
+        <div class="sbx-product" data-name="USB-C Hub" data-price="34.50">
+          <div class="sbx-product-thumb">🔌</div>
+          <h3>USB-C Hub</h3>
+          <p>$34.50</p>
+          <button class="btn btn-ghost btn-sm sbx-add-btn">Add to cart</button>
+        </div>
+        <div class="sbx-product" data-name="Webcam 1080p" data-price="45.00">
+          <div class="sbx-product-thumb">📷</div>
+          <h3>Webcam 1080p</h3>
+          <p>$45.00</p>
+          <button class="btn btn-ghost btn-sm sbx-add-btn">Add to cart</button>
+        </div>
+      </div>
+      <div class="sbx-checkout-row">
+        <button class="btn btn-primary" id="checkoutBtn">Checkout</button>
+        <div class="sbx-result" data-sbx-result></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DATA TABLE ============ -->
+<section class="sbx-section" id="table">
+  <div class="container">
+    <div class="sbx-card">
+      <h2>4. Sortable data table</h2>
+      <p class="sbx-hint">Click a column header to sort, tick rows, then delete the selected ones — good for scraping and bulk-action practice.</p>
+      <div class="sbx-table-wrap">
+        <table class="sbx-table" id="dataTable">
+          <thead>
+            <tr>
+              <th class="sbx-th-check"><input type="checkbox" id="selectAllRows"></th>
+              <th data-sort="text">Employee ▾</th>
+              <th data-sort="text">Department ▾</th>
+              <th data-sort="number">Orders ▾</th>
+            </tr>
+          </thead>
+          <tbody id="dataTableBody">
+            <tr><td><input type="checkbox" class="row-check"></td><td>Ada Lovelace</td><td>Engineering</td><td>128</td></tr>
+            <tr><td><input type="checkbox" class="row-check"></td><td>Grace Hopper</td><td>Engineering</td><td>342</td></tr>
+            <tr><td><input type="checkbox" class="row-check"></td><td>Alan Turing</td><td>Research</td><td>87</td></tr>
+            <tr><td><input type="checkbox" class="row-check"></td><td>Katherine Johnson</td><td>Research</td><td>215</td></tr>
+            <tr><td><input type="checkbox" class="row-check"></td><td>Margaret Hamilton</td><td>Engineering</td><td>410</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sbx-table-actions">
+        <button class="btn btn-ghost btn-sm" id="deleteRowsBtn">Delete selected rows</button>
+        <button class="btn btn-ghost btn-sm" id="restoreRowsBtn">Restore table</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TABS ============ -->
+<section class="sbx-section" id="tabs">
+  <div class="container">
+    <div class="sbx-card">
+      <h2>5. Tabbed panel</h2>
+      <p class="sbx-hint">Practice clicking between sections that show and hide content.</p>
+      <div class="sbx-tabs">
+        <div class="sbx-tab-bar">
+          <button class="sbx-tab-btn active" data-tab="profile">Profile</button>
+          <button class="sbx-tab-btn" data-tab="settings">Settings</button>
+          <button class="sbx-tab-btn" data-tab="billing">Billing</button>
+        </div>
+        <div class="sbx-tab-panel active" data-tab-panel="profile">
+          <p><strong>Name:</strong> Ada Lovelace</p>
+          <p><strong>Role:</strong> Analytical Engine Operator</p>
+        </div>
+        <div class="sbx-tab-panel" data-tab-panel="settings">
+          <label class="sbx-checkline"><input type="checkbox" checked> Email notifications</label>
+          <label class="sbx-checkline"><input type="checkbox"> SMS notifications</label>
+        </div>
+        <div class="sbx-tab-panel" data-tab-panel="billing">
+          <p><strong>Plan:</strong> Pro — $12/month</p>
+          <button class="btn btn-ghost btn-sm">Update payment method</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODAL TRIGGER ============ -->
+<section class="sbx-section" id="modal-demo">
+  <div class="container">
+    <div class="sbx-card sbx-narrow">
+      <h2>6. Modal dialog</h2>
+      <p class="sbx-hint">Some flows need to open a dialog, click something inside it, then close it.</p>
+      <button class="btn btn-primary" id="openModalBtn">Open terms &amp; conditions</button>
+    </div>
+  </div>
+</section>
+
+<div class="sbx-modal" id="sbxModal">
+  <div class="sbx-modal-inner">
+    <h3>Terms &amp; Conditions</h3>
+    <p>This is a fake modal for practice purposes. There is nothing to actually agree to — click Accept to close it.</p>
+    <label class="sbx-checkline"><input type="checkbox" id="termsCheck"> I have read the (fake) terms</label>
+    <div class="sbx-modal-actions">
+      <button class="btn btn-ghost" id="closeModalBtn">Cancel</button>
+      <button class="btn btn-primary" id="acceptModalBtn">Accept</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ WIZARD ============ -->
+<section class="sbx-section" id="wizard">
+  <div class="container">
+    <div class="sbx-card sbx-narrow">
+      <h2>7. Multi-step wizard</h2>
+      <p class="sbx-hint">Great for practicing flows with Next/Back buttons and a few steps in a row.</p>
+      <div class="sbx-wizard-steps">
+        <span class="sbx-wizard-dot active" data-step="1">1</span>
+        <span class="sbx-wizard-line"></span>
+        <span class="sbx-wizard-dot" data-step="2">2</span>
+        <span class="sbx-wizard-line"></span>
+        <span class="sbx-wizard-dot" data-step="3">3</span>
+      </div>
+      <div class="sbx-wizard-panel active" data-wizard-panel="1">
+        <label for="wizProject">Project name</label>
+        <input id="wizProject" type="text" placeholder="My Automation">
+      </div>
+      <div class="sbx-wizard-panel" data-wizard-panel="2">
+        <label for="wizFrequency">How often should it run?</label>
+        <select id="wizFrequency">
+          <option>Once</option>
+          <option>Daily</option>
+          <option>Weekly</option>
+        </select>
+      </div>
+      <div class="sbx-wizard-panel" data-wizard-panel="3">
+        <p>All set! Review and finish:</p>
+        <p class="sbx-wizard-summary" id="wizSummary"></p>
+      </div>
+      <div class="sbx-wizard-actions">
+        <button class="btn btn-ghost" id="wizBack" disabled>Back</button>
+        <button class="btn btn-primary" id="wizNext">Next</button>
+        <div class="sbx-result" data-sbx-result></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/icon.png" alt="Portal17 Studio">
+        <span>Portal17 Studio</span>
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#playground">Playground</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <p class="footer-fine">This sandbox is for practice only — nothing you enter here is stored or sent anywhere.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/sandbox.js"></script>
+</body>
+</html>

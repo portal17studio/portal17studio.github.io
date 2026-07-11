@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal17 Studio — Click Once. Run Forever.</title>
+<meta name="description" content="Portal17 Studio is a visual, node-based browser automation tool for Windows. Build flows by dragging nodes or recording yourself, then run them once, on a schedule, or forever. Available on the Microsoft Store.">
+<meta property="og:title" content="Portal17 Studio — Click Once. Run Forever.">
+<meta property="og:description" content="Visual, node-based browser automation for Windows. No coding required.">
+<meta property="og:image" content="assets/icon.png">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="bg-glow"></div>
+
+<!-- ============ NAV ============ -->
+<header class="site-nav">
+  <div class="container nav-inner" id="navInner">
+    <a href="#top" class="brand">
+      <img src="assets/icon.png" alt="Portal17 Studio logo">
+      <span>Portal17 Studio</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#playground">Playground</a></li>
+      <li><a href="sandbox.html">Sandbox</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-cta">
+      <!-- TODO: replace "#store-link" everywhere with your real Microsoft Store
+           product URL once the listing is live, e.g.
+           https://apps.microsoft.com/detail/9XXXXXXXXXXX
+           or the ms-windows-store://pdp/?productid=... deep link. -->
+      <a href="#store-link" class="btn btn-store">
+        <svg class="win-logo" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="38" height="38" fill="#4fd6e8"/>
+          <rect x="46" y="4" width="38" height="38" fill="#ff8a3d"/>
+          <rect x="4" y="46" width="38" height="38" fill="#ff8a3d"/>
+          <rect x="46" y="46" width="38" height="38" fill="#4fd6e8"/>
+        </svg>
+        <span class="store-label"><small>Get it from</small><strong>Microsoft Store</strong></span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#features">Features</a>
+    <a href="#playground">Playground</a>
+    <a href="sandbox.html">Sandbox</a>
+    <a href="#how">How it works</a>
+    <a href="#videos">Videos</a>
+    <a href="#faq">FAQ</a>
+    <a href="#store-link">Get it from Microsoft Store</a>
+  </nav>
+</header>
+
+<div id="top"></div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-icon-wrap"><img src="assets/icon.png" alt="Portal17 Studio"></div>
+    <h1>Portal17 <span class="accent-text">Studio</span></h1>
+    <p class="hero-tagline">Click Once. Run Forever.</p>
+    <p class="hero-sub">
+      Build browser automations by dragging nodes onto a canvas — or just click through
+      the task once and let Portal17 Studio record it for you. Then run it once, on a
+      schedule, or headless forever. No coding required.
+    </p>
+    <div class="hero-ctas">
+      <a href="#store-link" class="btn btn-primary btn-lg">Get it on the Microsoft Store</a>
+      <a href="#playground" class="btn btn-ghost btn-lg">▶ Try the Playground</a>
+    </div>
+    <div class="hero-meta">
+      <span>🪟 Windows 10 / 11</span>
+      <span>🌐 9 languages</span>
+      <span>🧩 20+ node types</span>
+      <span>🔒 100% local — nothing in the cloud</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section id="features">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Everything you need</span>
+      <h2>Automation that reads like a flowchart</h2>
+      <p>Every feature below shipped because a real, repetitive browser task needed it.</p>
+    </div>
+    <div class="feature-grid">
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/split.png" alt=""></div>
+        <h3>Visual Flow Builder</h3>
+        <p>Drag nodes onto a canvas and wire them together — no coding, just building blocks.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/click.png" alt=""></div>
+        <h3>Smart Recorder</h3>
+        <p>Click through your task once and Portal17 Studio writes the flow for you automatically.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/if.png" alt=""></div>
+        <h3>Branching &amp; Loops</h3>
+        <p>If/Else branches and repeat loops let your flows make decisions and handle lists.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/sql_query.png" alt=""></div>
+        <h3>Database Queries</h3>
+        <p>Pull data straight from MySQL, PostgreSQL, SQL Server, or Oracle with a built-in SQL node.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/set_variable.png" alt=""></div>
+        <h3>Variables &amp; CSV Export</h3>
+        <p>Capture values as you go, reuse them anywhere in the flow, and export everything to CSV.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/group_box.png" alt=""></div>
+        <h3>Groups &amp; Sticky Notes</h3>
+        <p>Organize big flows into collapsible groups and leave yourself sticky notes as you go.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/calendar.png" alt=""></div>
+        <h3>Scheduler</h3>
+        <p>Run a saved flow automatically at a set time — even while Portal17 Studio is closed.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/restart_browser.png" alt=""></div>
+        <h3>Self-Healing Browser</h3>
+        <p>If the browser engine ever hiccups, restart it with one click and keep going.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1a0b02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </div>
+        <h3>9 Languages</h3>
+        <p>A fully translated interface: English, Spanish, French, German, Italian, Portuguese, Russian, Chinese, and Japanese.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section id="how" class="tight">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Three steps</span>
+      <h2>From idea to “it just runs”</h2>
+      <p>The same loop, whether you're filling one form or scraping a thousand rows.</p>
+    </div>
+    <div class="how-steps">
+      <div class="how-step reveal">
+        <div class="how-num">1</div>
+        <h3>Build or Record</h3>
+        <p>Drag nodes onto the canvas, or click through the task once and let the recorder do the typing.</p>
+      </div>
+      <div class="how-wire"></div>
+      <div class="how-step reveal">
+        <div class="how-num">2</div>
+        <h3>Connect &amp; Configure</h3>
+        <p>Wire nodes together, add branches and loops, capture values into variables.</p>
+      </div>
+      <div class="how-wire"></div>
+      <div class="how-step reveal">
+        <div class="how-num">3</div>
+        <h3>Run — Forever</h3>
+        <p>Run it now, on a schedule, or headless from the command line. Click once, run forever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLAYGROUND ============ -->
+<section id="playground" class="playground">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Try it yourself <span class="demo-tag">Live demo</span></span>
+      <h2>The Playground</h2>
+      <p>
+        This is a live simulation running entirely in your browser — a "Hello World" flow
+        that opens a contact form, fills it in, submits it, and extracts the confirmation
+        message. It's exactly the sequence the real app follows on a real page. Hit
+        <strong>Run Flow</strong> and watch it happen.
+      </p>
+    </div>
+
+    <!-- flow canvas: its own full-width row so the node chain always has
+         room to breathe and never needs horizontal scrolling -->
+    <div class="pg-panel reveal">
+      <div class="pg-panel-header">Flow — <strong>Hello World</strong></div>
+
+      <div class="pg-canvas" id="pgCanvas">
+        <div class="pg-node" data-step="1" style="--node-color:#186b18;">
+          <div class="pg-node-chip"><img src="assets/icons/start.png" alt=""><span class="pg-node-label">Start</span></div>
+          <div class="pg-node-tip">Every flow begins here. Nothing runs before this node fires.</div>
+        </div>
+        <div class="pg-wire"></div>
+        <div class="pg-node" data-step="2" style="--node-color:#18569e;">
+          <div class="pg-node-chip"><img src="assets/icons/navigate.png" alt=""><span class="pg-node-label">Navigate</span></div>
+          <div class="pg-node-tip">Opens the target page — here, our demo contact form.</div>
+        </div>
+        <div class="pg-wire"></div>
+        <div class="pg-node" data-step="3" style="--node-color:#8c3527;">
+          <div class="pg-node-chip"><img src="assets/icons/type.png" alt=""><span class="pg-node-label">Type</span></div>
+          <div class="pg-node-tip">Types the name into the Name field, one character at a time.</div>
+        </div>
+        <div class="pg-wire"></div>
+        <div class="pg-node" data-step="4" style="--node-color:#8c3527;">
+          <div class="pg-node-chip"><img src="assets/icons/type.png" alt=""><span class="pg-node-label">Type</span></div>
+          <div class="pg-node-tip">Types the email address into the Email field.</div>
+        </div>
+        <div class="pg-wire"></div>
+        <div class="pg-node" data-step="5" style="--node-color:#8c5f23;">
+          <div class="pg-node-chip"><img src="assets/icons/select.png" alt=""><span class="pg-node-label">Select</span></div>
+          <div class="pg-node-tip">Picks an option from the Topic dropdown.</div>
+        </div>
+        <div class="pg-wire"></div>
+        <div class="pg-node" data-step="6" style="--node-color:#8c3527;">
+          <div class="pg-node-chip"><img src="assets/icons/type.png" alt=""><span class="pg-node-label">Type</span></div>
+          <div class="pg-node-tip">Types the message into the Message field.</div>
+        </div>
+        <div class="pg-wire"></div>
+        <div class="pg-node" data-step="7" style="--node-color:#994717;">
+          <div class="pg-node-chip"><img src="assets/icons/click.png" alt=""><span class="pg-node-label">Click</span></div>
+          <div class="pg-node-tip">Presses the Send message button and waits for the page to respond.</div>
+        </div>
+        <div class="pg-wire"></div>
+        <div class="pg-node" data-step="8" style="--node-color:#713585;">
+          <div class="pg-node-chip"><img src="assets/icons/extract_part.png" alt=""><span class="pg-node-label">Extract</span></div>
+          <div class="pg-node-tip">Reads the confirmation text and saves it as a variable.</div>
+        </div>
+      </div>
+
+      <div class="pg-controls">
+        <button id="pgRun" class="btn btn-primary">▶ Run Flow</button>
+        <button id="pgReset" class="btn btn-ghost">↺ Reset</button>
+      </div>
+
+      <ol class="pg-steps-explainer">
+        <li><strong>Start</strong> — the flow is launched.</li>
+        <li><strong>Navigate</strong> — the demo page below opens.</li>
+        <li><strong>Type / Select</strong> — name, email, topic and message get filled in, field by field.</li>
+        <li><strong>Click</strong> — the Send button is pressed like a real visitor would.</li>
+        <li><strong>Extract</strong> — the confirmation message is captured into a variable.</li>
+      </ol>
+    </div>
+
+    <!-- fake browser + console, side by side below the flow -->
+    <div class="pg-demo-row">
+      <div class="reveal">
+        <div class="fake-browser">
+          <div class="fake-browser-bar">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <div class="fake-url">🔒 example-shop.test/contact</div>
+          </div>
+          <div class="fake-page">
+            <h3>Contact us</h3>
+            <label for="pgName">Name</label>
+            <input id="pgName" type="text" readonly>
+            <label for="pgEmail">Email</label>
+            <input id="pgEmail" type="text" readonly>
+            <label for="pgTopic">Topic</label>
+            <select id="pgTopic" disabled>
+              <option>General question</option>
+              <option>Support</option>
+              <option>Billing</option>
+            </select>
+            <label for="pgMessage">Message</label>
+            <textarea id="pgMessage" readonly></textarea>
+            <button id="pgSubmit" class="fake-submit" disabled>Send message</button>
+            <div id="pgConfirmation" class="pg-confirmation"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="pg-console">
+          <div class="pg-console-header">Execution log</div>
+          <div class="pg-console-body" id="pgConsoleBody">
+            <p class="muted">Click "Run Flow" to start…</p>
+          </div>
+        </div>
+
+        <div class="pg-vars" id="pgVars"></div>
+      </div>
+    </div>
+
+    <div class="pg-sandbox-cta reveal">
+      <p>
+        This playground is a simulation that runs entirely in your browser for illustration.
+        Want to build a real flow yourself?
+      </p>
+      <a href="sandbox.html" class="btn btn-ghost btn-lg">🧪 Open the practice sandbox ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEOS ============ -->
+<section id="videos">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">See it in action</span>
+      <h2>Video demos</h2>
+      <p>Short walkthroughs of Portal17 Studio in real use, recorded on our <a href="sandbox.html">practice sandbox</a> page. Videos are being recorded — check back soon.</p>
+    </div>
+
+    <div class="video-grid">
+
+      <div class="video-card reveal">
+        <div class="video-thumb vthumb-1" data-video="assets/videos/demo-recording.mp4" data-title="Record your first flow">
+          <span class="video-badge">Demo</span>
+          <button class="play-btn" aria-label="Play video">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <span class="video-len">Coming soon</span>
+        </div>
+        <div class="video-card-body">
+          <h3>Record your first flow</h3>
+          <p>Click through a real page once — watch Portal17 Studio turn it into a working flow.</p>
+        </div>
+      </div>
+
+      <div class="video-card reveal">
+        <div class="video-thumb vthumb-2" data-video="assets/videos/demo-branching.mp4" data-title="Branching, loops &amp; SQL">
+          <span class="video-badge">Demo</span>
+          <button class="play-btn" aria-label="Play video">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <span class="video-len">Coming soon</span>
+        </div>
+        <div class="video-card-body">
+          <h3>Branching, loops &amp; SQL</h3>
+          <p>If/Else logic, repeat loops, and pulling live data from a database mid-flow.</p>
+        </div>
+      </div>
+
+      <div class="video-card reveal">
+        <div class="video-thumb vthumb-3" data-video="assets/videos/demo-scheduler.mp4" data-title="Scheduling unattended runs">
+          <span class="video-badge">Demo</span>
+          <button class="play-btn" aria-label="Play video">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <span class="video-len">Coming soon</span>
+        </div>
+        <div class="video-card-body">
+          <h3>Scheduling unattended runs</h3>
+          <p>Set it once in the Scheduler and it keeps running — even with the app closed.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- video modal -->
+<div class="video-modal" id="videoModal">
+  <div class="video-modal-inner">
+    <div class="video-modal-head">
+      <h4 id="videoModalTitle">Demo</h4>
+      <button class="video-modal-close" id="videoModalClose" aria-label="Close">✕</button>
+    </div>
+    <div id="videoModalBody"></div>
+  </div>
+</div>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="tight">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Questions</span>
+      <h2>Frequently asked questions</h2>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item reveal">
+        <button class="faq-q">Do I need to know how to code? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">No. Flows are built by dragging nodes onto a canvas and connecting them, or by recording yourself performing the task once. No scripting required.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">Which browsers does it support? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Microsoft Edge, Google Chrome, or the browser built into the app — pick your channel from Settings.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">Can a flow run without the app open? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Use the built-in Scheduler to register a real Windows Scheduled Task, or trigger any saved flow from the command line in unattended mode — no window needed.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">What languages is the interface available in? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">English, Spanish, French, German, Italian, Portuguese, Russian, Chinese, and Japanese — switch anytime from Settings.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">Can I pull data from a database mid-flow? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes, with the SQL Query node. MySQL, PostgreSQL, SQL Server, and Oracle drivers are bundled — just pick one and connect.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">What happens if the browser fails to start? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Portal17 Studio shows a clear warning instead of crashing, and disables Run/Record until you fix the browser settings and restart the engine — with one click, right from the toolbar.</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ DOWNLOAD ============ -->
+<section id="download" class="tight">
+  <div class="container">
+    <div class="download-panel reveal">
+      <h2>Ready to click once and run forever?</h2>
+      <p>Portal17 Studio is available now on the Microsoft Store for Windows 10 and 11.</p>
+      <div class="download-ctas">
+        <!-- TODO: replace #store-link with the real Microsoft Store URL -->
+        <a href="#store-link" id="store-link" class="btn btn-store btn-lg">
+          <svg class="win-logo" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="4" width="38" height="38" fill="#4fd6e8"/>
+            <rect x="46" y="4" width="38" height="38" fill="#ff8a3d"/>
+            <rect x="4" y="46" width="38" height="38" fill="#ff8a3d"/>
+            <rect x="46" y="46" width="38" height="38" fill="#4fd6e8"/>
+          </svg>
+          <span class="store-label"><small>Get it from</small><strong>Microsoft Store</strong></span>
+        </a>
+        <a href="#playground" class="btn btn-ghost btn-lg">▶ Try the Playground first</a>
+      </div>
+      <p class="download-req">Requires Windows 10 or later · Uses Microsoft Edge, Google Chrome, or the browser built into the app</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/icon.png" alt="Portal17 Studio">
+        <span>Portal17 Studio</span>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#playground">Playground</a></li>
+        <li><a href="sandbox.html">Sandbox</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#store-link">Microsoft Store</a></li>
+      </ul>
+    </div>
+    <p class="footer-fine">
+      © <span id="year"></span> Portal17 Studio. Click Once. Run Forever.<br>
+      Interface available in English, Spanish, French, German, Italian, Portuguese, Russian, Chinese, and Japanese.
+    </p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
