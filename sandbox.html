@@ -101,7 +101,7 @@
   <div class="container">
     <div class="sbx-card">
       <h2>2. Support request</h2>
-      <p class="sbx-hint">A richer form: text fields, a dropdown, radio buttons, and a textarea.</p>
+      <p class="sbx-hint">A richer form: text fields, a dropdown, radio buttons, a slider, and a textarea.</p>
       <form class="sbx-form sbx-form-grid" data-sbx-form="support">
         <div>
           <label for="supName">Full name</label>
@@ -127,6 +127,10 @@
             <label class="sbx-checkline"><input type="radio" name="priority" value="medium"> Medium</label>
             <label class="sbx-checkline"><input type="radio" name="priority" value="high"> High</label>
           </div>
+        </div>
+        <div class="sbx-span-2">
+          <label for="supUrgency">Urgency <strong id="supUrgencyVal">3</strong>/5</label>
+          <input type="range" id="supUrgency" min="1" max="5" value="3" step="1" class="sbx-range">
         </div>
         <div class="sbx-span-2">
           <label for="supMessage">Message</label>

@@ -80,6 +80,15 @@
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-soft);
 }
+
+.sbx-form label strong { color: var(--text); }
+.sbx-range {
+  width: 100%;
+  accent-color: var(--accent);
+  margin-top: 8px;
+  cursor: pointer;
+}
+.sbx-range:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .sbx-form .btn { margin-top: 16px; align-self: flex-start; }
 
 .sbx-form-grid {

@@ -14,6 +14,14 @@ document.querySelectorAll('[data-sbx-form]').forEach(form => {
   });
 });
 
+/* ---------------- support form: urgency slider live label ---------------- */
+(() => {
+  const slider = document.getElementById('supUrgency');
+  const out = document.getElementById('supUrgencyVal');
+  if (!slider || !out) return;
+  slider.addEventListener('input', () => { out.textContent = slider.value; });
+})();
+
 /* ---------------- support form: fake file picker ---------------- */
 (() => {
   const btn = document.getElementById('supFileBtn');
