@@ -1,19 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/sandbox.css">
-  <style>
-    body { background: transparent; padding: 0; margin: 0; }
-  </style>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sandbox.css">
+
+    <style>
+        body{
+            margin:0;
+            padding:24px;
+            background:transparent;
+        }
+    </style>
 </head>
+
 <body>
-  <form id="iframeForm" onsubmit="event.preventDefault(); document.getElementById('iframeResult').innerText = 'Display name updated successfully.';">
-    <label for="iframeInput">Display Name</label>
-    <input type="text" id="iframeInput" placeholder="Ada Lovelace">
-    <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Update name</button>
-    <div id="iframeResult" class="sbx-result" style="margin-top: 10px; color: #4ade80;"></div>
-  </form>
+
+<form class="sbx-form sbx-form-grid"
+      id="iframeForm"
+      onsubmit="event.preventDefault();document.getElementById('iframeResult').textContent='Changes saved successfully.';">
+
+    <div class="sbx-span-2">
+        <h2>Account settings</h2>
+        <p class="sbx-hint">
+            Update your account information below.
+        </p>
+    </div>
+
+    <div>
+        <label for="displayName">Display name</label>
+        <input
+            id="displayName"
+            type="text"
+            placeholder="Ada Lovelace">
+    </div>
+
+    <div>
+        <label for="email">Email</label>
+        <input
+            id="email"
+            type="email"
+            placeholder="ada@example.com">
+    </div>
+
+    <div>
+        <label for="language">Language</label>
+
+        <select id="language">
+            <option>English</option>
+            <option>Spanish</option>
+            <option>French</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="timezone">Time zone</label>
+
+        <select id="timezone">
+            <option>UTC</option>
+            <option>America/New York</option>
+            <option>Europe/Salamanca</option>
+        </select>
+    </div>
+
+    <div class="sbx-span-2">
+        <label class="sbx-checkline">
+            <input type="checkbox" checked>
+            Receive product updates
+        </label>
+    </div>
+
+    <div class="sbx-span-2">
+        <button class="btn btn-primary" type="submit">
+            Save changes
+        </button>
+
+        <div id="iframeResult" class="sbx-result"></div>
+    </div>
+
+</form>
+
 </body>
 </html>
