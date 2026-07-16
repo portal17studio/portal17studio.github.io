@@ -181,3 +181,102 @@ document.querySelectorAll('[data-sbx-form]').forEach(form => {
 
   render();
 })();
+
+/* ---------------- drag and drop: native HTML5 board ---------------- */
+(() => {
+  const board = document.getElementById('dndBoard');
+  if (!board) return;
+  const result = document.getElementById('dndNativeResult');
+  let draggedId = null;
+
+  board.querySelectorAll('.sbx-dnd-card').forEach(card => {
+    card.addEventListener('dragstart', (e) => {
+      draggedId = card.id;
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', card.id);
+      card.classList.add('dragging');
+    });
+    card.addEventListener('dragend', () => card.classList.remove('dragging'));
+  });
+
+  board.querySelectorAll('.sbx-dnd-column').forEach(col => {
+    col.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      col.classList.add('drag-over');
+    });
+    col.addEventListener('dragleave', () => col.classList.remove('drag-over'));
+    col.addEventListener('drop', (e) => {
+      e.preventDefault();
+      col.classList.remove('drag-over');
+      const id = e.dataTransfer.getData('text/plain') || draggedId;
+      const card = document.getElementById(id);
+      if (!card) return;
+      col.appendChild(card);
+      if (result) {
+        result.textContent = col.dataset.zone === 'done'
+          ? `✅ "${card.textContent.trim()}" moved to Done.`
+          : `Moved "${card.textContent.trim()}" back to To do.`;
+      }
+    });
+  });
+})();
+
+/* ---------------- drag and drop: manual mouse-based token ---------------- */
+(() => {
+  const wrap = document.getElementById('dndManualWrap');
+  const token = document.getElementById('dndToken');
+  const target = document.getElementById('dndTarget');
+  const result = document.getElementById('dndManualResult');
+  const resetBtn = document.getElementById('dndResetBtn');
+  if (!wrap || !token || !target) return;
+
+  const home = { left: token.offsetLeft, top: token.offsetTop };
+  let dragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  function place(left, top) {
+    token.style.left = `${left}px`;
+    token.style.top = `${top}px`;
+  }
+
+  token.addEventListener('mousedown', (e) => {
+    dragging = true;
+    token.classList.add('dragging');
+    token.classList.remove('dropped');
+    const wrapRect = wrap.getBoundingClientRect();
+    offsetX = e.clientX - wrapRect.left - token.offsetLeft;
+    offsetY = e.clientY - wrapRect.top - token.offsetTop;
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    if (!dragging) return;
+    const wrapRect = wrap.getBoundingClientRect();
+    place(e.clientX - wrapRect.left - offsetX, e.clientY - wrapRect.top - offsetY);
+  });
+
+  document.addEventListener('mouseup', (e) => {
+    if (!dragging) return;
+    dragging = false;
+    token.classList.remove('dragging');
+    const targetRect = target.getBoundingClientRect();
+    const hit = e.clientX >= targetRect.left && e.clientX <= targetRect.right
+      && e.clientY >= targetRect.top && e.clientY <= targetRect.bottom;
+    if (hit) {
+      place(target.offsetLeft + (target.offsetWidth - token.offsetWidth) / 2,
+            target.offsetTop + (target.offsetHeight - token.offsetHeight) / 2);
+      token.classList.add('dropped');
+      if (result) result.textContent = '✅ Dropped in the target zone.';
+    } else {
+      place(home.left, home.top);
+      if (result) result.textContent = '';
+    }
+  });
+
+  resetBtn?.addEventListener('click', () => {
+    place(home.left, home.top);
+    token.classList.remove('dropped');
+    if (result) result.textContent = 'Drag the green token into the drop zone.';
+  });
+})();
