@@ -344,15 +344,10 @@
     <div class="sbx-card">
       <h2>9. Drag and drop</h2>
       <p class="sbx-hint">
-        Sites implement drag and drop two different ways — try automating both.
-        The board below uses the browser's native HTML5 drag-and-drop API
-        (<code>draggable</code> + <code>dragstart</code>/<code>drop</code>);
-        the token underneath uses a plain mouse-based drag
-        (<code>mousedown</code>/<code>mousemove</code>/<code>mouseup</code>),
-        which is what most custom sortable lists and kanban-style widgets use instead.
+        Drag a card out of "To do" and drop it onto "Done" — a common pattern
+        in kanban boards and task lists.
       </p>
 
-      <h3 class="sbx-dnd-subtitle">Native HTML5 board</h3>
       <div class="sbx-dnd-board" id="dndBoard">
         <div class="sbx-dnd-column" data-zone="todo" id="dndTodo">
           <h4>To do</h4>
@@ -365,14 +360,6 @@
         </div>
       </div>
       <div class="sbx-result" data-sbx-result id="dndNativeResult">Drag a card from "To do" into "Done".</div>
-
-      <h3 class="sbx-dnd-subtitle sbx-dnd-subtitle-spaced">Manual (mouse-based) drag</h3>
-      <div class="sbx-dnd-manual" id="dndManualWrap">
-        <div class="sbx-dnd-token" id="dndToken">🟢 Drag me</div>
-        <div class="sbx-dnd-target" id="dndTarget">Drop zone</div>
-      </div>
-      <div class="sbx-result" data-sbx-result id="dndManualResult">Drag the green token into the drop zone.</div>
-      <button class="btn btn-ghost btn-sm sbx-dnd-reset" id="dndResetBtn" type="button">↺ Reset this widget</button>
     </div>
   </div>
 </section>
