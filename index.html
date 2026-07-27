@@ -72,6 +72,11 @@
     },
     {
       "@type": "Question",
+      "name": "Can it call APIs and use JSON data?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, with the Call API node. Make GET, POST, PUT, PATCH or DELETE requests, send headers and a body, then pull fields straight out of the JSON response into variables by their path. It's the reliable way to get data when a site blocks scraping." }
+    },
+    {
+      "@type": "Question",
       "name": "What happens if the browser fails to start?",
       "acceptedAnswer": { "@type": "Answer", "text": "Portal17 Studio shows a clear warning instead of crashing, and disables Run/Record until you fix the browser settings and restart the engine — with one click, right from the toolbar." }
     },
@@ -188,6 +193,12 @@
       </div>
 
       <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/api.png" alt=""></div>
+        <h3>Call REST APIs</h3>
+        <p>Fetch data from any HTTP API and pull fields straight out of the JSON into variables — the dependable way to get data when a site blocks scraping.</p>
+      </div>
+
+      <div class="feature-card reveal">
         <div class="feature-icon"><img src="assets/icons/set_variable.png" alt=""></div>
         <h3>Variables &amp; CSV Export</h3>
         <p>Capture values as you go, reuse them anywhere in the flow and export everything to CSV.</p>
@@ -209,12 +220,6 @@
         <div class="feature-icon"><img src="assets/icons/calendar.png" alt=""></div>
         <h3>Scheduler</h3>
         <p>Run a saved flow automatically at a set time — even while Portal17 Studio is closed.</p>
-      </div>
-
-      <div class="feature-card reveal">
-        <div class="feature-icon"><img src="assets/icons/restart_browser.png" alt=""></div>
-        <h3>Self-Healing Browser</h3>
-        <p>If the browser engine ever hiccups, restart it with one click and keep going.</p>
       </div>
 
     </div>
@@ -476,6 +481,11 @@
       <div class="faq-item reveal">
         <button class="faq-q">Can I pull data from a database mid-flow? <span class="chev">▾</span></button>
         <div class="faq-a"><div class="faq-a-inner">Yes, with the SQL Query node. PostgreSQL and SQL Server drivers are bundled — pick one and connect. MySQL, Oracle, or any other JDBC database works too: just drop that database's driver file into the app's drivers folder (one click opens it for you) and connect.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">Can it call APIs and use JSON data? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes, with the Call API node. Make GET, POST, PUT, PATCH or DELETE requests, send headers and a body, then pull fields straight out of the JSON response into variables by their path. It's the reliable way to get data when a site blocks scraping.</div></div>
       </div>
 
       <div class="faq-item reveal">
