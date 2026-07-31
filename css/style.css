@@ -843,7 +843,34 @@ section.tight { padding: 72px 0; }
   justify-content: center;
   cursor: pointer;
   color: #fff;
+  overflow: hidden;
 }
+
+/* portada real: primer fotograma del propio video (ver #t= en el src).
+   Si el fichero no existe, se queda el degradado .vthumb-* de debajo. */
+.video-thumb-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  z-index: 0;
+}
+.video-thumb-media + .video-badge,
+.video-thumb .video-badge,
+.video-thumb .video-len,
+.video-thumb .play-btn { z-index: 1; }
+
+/* velo oscuro para que el boton de play se lea sobre el fotograma */
+.video-thumb:has(.video-thumb-media)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6, 7, 12, 0.28), rgba(6, 7, 12, 0.52));
+  z-index: 0;
+}
+
 .video-thumb .play-btn {
   width: 56px;
   height: 56px;
@@ -856,7 +883,7 @@ section.tight { padding: 72px 0; }
   transition: transform 0.2s ease, background 0.2s ease;
 }
 .video-thumb:hover .play-btn { transform: scale(1.08); background: rgba(10, 11, 18, 0.75); }
-.video-thumb .play-btn svg { width: 20px; height: 20px; margin-left: 3px; fill: #fff; }
+.video-thumb .play-btn svg { width: 30px; height: 30px; fill: #fff; }
 
 .video-thumb .video-badge {
   position: absolute;

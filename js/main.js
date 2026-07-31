@@ -95,6 +95,24 @@ document.getElementById('year').textContent = new Date().getFullYear();
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 })();
 
+/* ---------------- video thumbnails ----------------
+   Not every browser honours the #t= media fragment with preload="metadata",
+   so park each preview on a representative frame by hand. If the file is
+   missing the element is dropped and the .vthumb-* gradient shows through. */
+(() => {
+  document.querySelectorAll('.video-thumb-media').forEach(v => {
+    const at = parseFloat(v.dataset.frame || '9');
+
+    v.addEventListener('loadedmetadata', () => {
+      if (v.currentTime < 0.05 && isFinite(v.duration)) {
+        v.currentTime = Math.min(at, Math.max(0, v.duration - 0.1));
+      }
+    }, { once: true });
+
+    v.addEventListener('error', () => v.remove(), { once: true });
+  });
+})();
+
 /* ---------------- playground ---------------- */
 (() => {
   const runBtn = document.getElementById('pgRun');
