@@ -2,25 +2,37 @@
    Reuses the same CSS variables so it stays visually part of the same site. */
 
 .nav-links a.active { color: var(--text); }
+.nav-links a.active::after { width: 100%; }
+
+/* This page stacks a second sticky bar (the exercise index) under the nav,
+   so anchor jumps need more clearance than the site-wide value.
+   --nav-h is measured and kept up to date by sandbox.js; the fallbacks are
+   only used for the first paint and if scripting is off. */
+html { scroll-padding-top: calc(var(--nav-h, 72px) + var(--index-h, 56px) + 24px); }
+
+/* ---------- hero ---------- */
 
 .sandbox-hero {
-  padding: 64px 0 40px;
+  position: relative;
+  padding: 72px 0 36px;
   text-align: center;
 }
-.sandbox-hero .eyebrow {
-  display: inline-block;
-  font-size: 12.5px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 14px;
-}
+.sandbox-hero .eyebrow { margin-bottom: 16px; }
 .sandbox-hero h1 {
-  font-size: clamp(30px, 4.5vw, 44px);
+  font-size: clamp(32px, 5vw, 50px);
   margin: 0 0 16px;
   font-weight: 800;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.03em;
+  line-height: 1.06;
+}
+.sandbox-hero h1 em {
+  font-style: normal;
+  background: linear-gradient(100deg, var(--accent) 10%, #ffd6a0 35%, var(--accent-2) 60%, var(--accent) 85%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 7s linear infinite;
 }
 .sandbox-hero p {
   max-width: 680px;
@@ -36,15 +48,147 @@
   flex-wrap: wrap;
 }
 
+/* ---------- exercise index ----------
+   Sticky strip under the nav: nine chips, one per exercise. It doubles as
+   a progress tracker — sandbox.js ticks a chip once you actually interact
+   with that exercise, so "try everything" has a visible finish line. */
+
+/* Sits flush under the nav. The nav changes height when it condenses on
+   scroll, so its height is measured at runtime into --nav-h rather than
+   hard-coded — a fixed value left either a gap for content to slide
+   through or an overlap that clipped the chips. */
+.sbx-index {
+  position: sticky;
+  top: var(--nav-h, 72px);
+  z-index: 90;
+  margin: 8px 0 12px;
+  padding: 5px 0;
+  /* Nearly opaque: at lower alpha the cards passing behind it were
+     visible through the bar, which read as a smudge rather than a layer. */
+  background: rgba(9, 10, 18, 0.94);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border-bottom: 1px solid var(--border-soft);
+  transition: box-shadow 0.3s var(--ease-soft), border-color 0.3s var(--ease-soft);
+}
+/* Once it detaches from the flow it gets a shadow, so it reads as a layer
+   floating over the page instead of a seam drawn across it. */
+.sbx-index.stuck {
+  box-shadow: 0 14px 28px -22px rgba(0, 0, 0, 0.95);
+  border-bottom-color: var(--border);
+}
+.sbx-index-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  /* overflow-x clips the vertical axis too, so the chips need room inside
+     the scroller for the 2px they rise on hover — without this padding
+     their top edge gets cut off */
+  padding-top: 5px;
+  padding-bottom: 7px;
+}
+.sbx-index-inner::-webkit-scrollbar { display: none; }
+
+.sbx-index-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  padding: 7px 14px 7px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--hairline);
+  background: var(--glass);
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color 0.25s var(--ease-soft), border-color 0.25s var(--ease-soft), transform 0.25s var(--ease);
+}
+.sbx-index-link i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  background: var(--panel-alt);
+  border: 1px solid var(--border);
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-faint);
+  transition: background 0.25s var(--ease-soft), color 0.25s var(--ease-soft), border-color 0.25s var(--ease-soft);
+}
+.sbx-index-link:hover { color: var(--text); border-color: var(--accent); transform: translateY(-2px); }
+.sbx-index-link.current { color: var(--text); border-color: rgba(255, 138, 61, 0.5); }
+.sbx-index-link.current i { border-color: var(--accent); color: var(--accent); }
+/* Once an exercise has been tried its number is swapped for a tick. */
+.sbx-index-link.done i {
+  background: var(--success);
+  border-color: var(--success);
+  color: #06280f;
+  font-size: 12px;
+}
+.sbx-index-link.done i span { display: none; }
+.sbx-index-link.done i::before { content: "✓"; }
+
+.sbx-progress {
+  flex: none;
+  margin-left: auto;
+  padding-left: 14px;
+  font-size: 12.5px;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+.sbx-progress b { color: var(--accent); font-family: var(--font-mono); }
+.sbx-progress.complete {
+  color: var(--success);
+  font-weight: 700;
+  animation: sbx-complete 0.6s var(--ease);
+}
+@keyframes sbx-complete {
+  0% { transform: scale(0.9); opacity: 0; }
+  60% { transform: scale(1.08); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 880px) {
+  .sbx-progress { display: none; }
+  /* the mobile menu already carries this link, so it only crowds the bar */
+  .nav-cta .btn-ghost { display: none; }
+}
+
+/* ---------- cards ---------- */
+
 .sbx-section { padding: 28px 0; }
 
+/* No backdrop-filter here on purpose — see the note on --glass in style.css.
+   Nine blurred cards made scrolling this page stutter. */
 .sbx-card {
-  background: var(--panel);
-  border: 1px solid var(--border-soft);
+  position: relative;
+  background: var(--glass);
+  border: 1px solid var(--hairline);
   border-radius: var(--radius-lg);
   padding: 28px 30px 30px;
   box-shadow: var(--shadow-md);
+  isolation: isolate;
+  transition: border-color 0.35s var(--ease-soft), box-shadow 0.35s var(--ease), transform 0.35s var(--ease);
 }
+.sbx-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(255, 138, 61, 0.13), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.35s var(--ease-soft);
+}
+.sbx-card:hover { border-color: var(--border); box-shadow: var(--shadow-lg); }
+.sbx-card:hover::before { opacity: 1; }
 .sbx-narrow { max-width: 560px; margin: 0 auto; }
 
 .sbx-card-head {
@@ -55,8 +199,37 @@
   gap: 12px;
 }
 
-.sbx-card h2 { margin: 0 0 8px; font-size: 20px; font-weight: 800; }
+.sbx-card h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+/* numbered badge in front of each exercise title */
+.sbx-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  background: var(--grad-brand);
+  color: #1a0b02;
+  font-size: 14px;
+  font-weight: 800;
+  box-shadow: 0 8px 18px -10px rgba(255, 106, 61, 0.9);
+  transition: transform 0.35s var(--ease);
+}
+.sbx-card:hover .sbx-num { transform: rotate(-8deg) scale(1.08); }
+
 .sbx-hint { margin: 0 0 20px; color: var(--text-dim); font-size: 14px; }
+
+/* ---------- forms ---------- */
 
 .sbx-form { display: flex; flex-direction: column; gap: 4px; }
 .sbx-form label { font-size: 12.5px; font-weight: 600; color: var(--text-dim); margin: 10px 0 5px; }
@@ -67,18 +240,21 @@
 .sbx-form textarea {
   width: 100%;
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 12px;
+  border-radius: 10px;
+  padding: 11px 13px;
   font-size: 14px;
   font-family: inherit;
-  background: var(--panel-alt);
+  background: rgba(9, 11, 20, 0.6);
   color: var(--text);
+  transition: border-color 0.25s var(--ease-soft), box-shadow 0.25s var(--ease-soft), background 0.25s var(--ease-soft);
 }
 .sbx-form textarea { resize: vertical; }
+.sbx-form input:hover, .sbx-form select:hover, .sbx-form textarea:hover { border-color: #3a4062; }
 .sbx-form input:focus, .sbx-form select:focus, .sbx-form textarea:focus {
   outline: none;
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-soft);
+  background: rgba(9, 11, 20, 0.85);
 }
 
 .sbx-form label strong { color: var(--text); }
@@ -108,8 +284,10 @@
   color: var(--text-dim);
   margin: 8px 0;
   cursor: pointer;
+  transition: color 0.2s var(--ease-soft);
 }
-.sbx-checkline input { width: 16px; height: 16px; accent-color: var(--accent); }
+.sbx-checkline:hover { color: var(--text); }
+.sbx-checkline input { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; }
 
 .sbx-radio-row { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 4px; }
 
@@ -122,16 +300,26 @@
   color: var(--success);
   min-height: 1.4em;
 }
+/* only animate when there is actually something to show */
+.sbx-result:not(:empty) { animation: sbx-result-in 0.4s var(--ease); }
+@keyframes sbx-result-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
+}
 
-/* shop */
+/* ---------- shop ---------- */
+
 .sbx-cart-badge {
-  background: var(--panel-alt);
+  background: var(--glass);
   border: 1px solid var(--border);
   border-radius: 999px;
   padding: 7px 16px;
   font-size: 13.5px;
   font-weight: 600;
+  transition: border-color 0.25s var(--ease-soft), transform 0.25s var(--ease);
 }
+.sbx-cart-badge.bump { transform: scale(1.06); border-color: var(--success); }
+
 .sbx-products {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -140,28 +328,46 @@
 }
 @media (max-width: 760px) { .sbx-products { grid-template-columns: repeat(2, 1fr); } }
 .sbx-product {
-  background: var(--panel-alt);
+  position: relative;
+  background: rgba(12, 14, 24, 0.72);
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-md);
   padding: 18px;
   text-align: center;
-  transition: transform 0.15s ease, border-color 0.15s ease;
+  overflow: hidden;
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease-soft), box-shadow 0.3s var(--ease);
 }
-.sbx-product:hover { transform: translateY(-3px); border-color: var(--border); }
-.sbx-product-thumb { font-size: 34px; margin-bottom: 10px; }
+.sbx-product::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 90% at 50% 0%, rgba(255, 138, 61, 0.14), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-soft);
+}
+.sbx-product:hover { transform: translateY(-5px); border-color: var(--border); box-shadow: var(--shadow-md); }
+.sbx-product:hover::before { opacity: 1; }
+.sbx-product > * { position: relative; }
+.sbx-product-thumb {
+  font-size: 34px;
+  margin-bottom: 10px;
+  transition: transform 0.35s var(--ease);
+}
+.sbx-product:hover .sbx-product-thumb { transform: translateY(-3px) scale(1.12); }
 .sbx-product h3 { margin: 0 0 4px; font-size: 14.5px; }
 .sbx-product p { margin: 0 0 12px; color: var(--text-dim); font-size: 13.5px; }
-.sbx-product.added { border-color: var(--success); }
+.sbx-product.added { border-color: var(--success); box-shadow: 0 0 0 1px var(--success), 0 14px 30px -18px rgba(74, 222, 128, 0.8); }
 
-.sbx-checkout-row { display: flex; align-items: center; gap: 16px; }
+.sbx-checkout-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
 
-/* table */
+/* ---------- table ---------- */
+
 .sbx-table-wrap { overflow-x: auto; border: 1px solid var(--border-soft); border-radius: var(--radius-md); }
 .sbx-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 .sbx-table th {
   text-align: left;
   padding: 12px 14px;
-  background: var(--panel-alt);
+  background: rgba(20, 23, 38, 0.9);
   color: var(--text-dim);
   font-weight: 700;
   font-size: 12.5px;
@@ -170,16 +376,21 @@
   cursor: pointer;
   user-select: none;
   white-space: nowrap;
+  transition: color 0.2s var(--ease-soft), background 0.2s var(--ease-soft);
 }
+.sbx-table th[data-sort]:hover { color: var(--accent); background: rgba(255, 138, 61, 0.08); }
 .sbx-table th.sbx-th-check { cursor: default; width: 40px; }
 .sbx-table td { padding: 11px 14px; border-top: 1px solid var(--border-soft); }
-.sbx-table tbody tr:hover { background: rgba(255, 255, 255, 0.02); }
-.sbx-table input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--accent); }
-.sbx-table-actions { display: flex; gap: 12px; margin-top: 16px; }
+.sbx-table tbody tr { transition: background 0.2s var(--ease-soft); }
+.sbx-table tbody tr:hover { background: rgba(255, 255, 255, 0.035); }
+.sbx-table input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--accent); cursor: pointer; }
+.sbx-table-actions { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
 
-/* tabs */
+/* ---------- tabs ---------- */
+
 .sbx-tab-bar { display: flex; gap: 4px; border-bottom: 1px solid var(--border-soft); margin-bottom: 20px; }
 .sbx-tab-btn {
+  position: relative;
   background: none;
   border: none;
   color: var(--text-dim);
@@ -190,13 +401,21 @@
   cursor: pointer;
   border-bottom: 2px solid transparent;
   margin-bottom: -1px;
+  transition: color 0.25s var(--ease-soft);
 }
+.sbx-tab-btn:hover { color: var(--text); }
 .sbx-tab-btn.active { color: var(--text); border-bottom-color: var(--accent); }
 .sbx-tab-panel { display: none; }
-.sbx-tab-panel.active { display: block; }
+.sbx-tab-panel.active { display: block; animation: sbx-panel-in 0.35s var(--ease); }
 .sbx-tab-panel p { margin: 0 0 10px; font-size: 14px; color: var(--text-dim); }
 
-/* modal */
+@keyframes sbx-panel-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------- modal ---------- */
+
 .sbx-modal {
   position: fixed;
   inset: 0;
@@ -204,28 +423,34 @@
   display: none;
   align-items: center;
   justify-content: center;
-  background: rgba(4, 5, 9, 0.75);
-  backdrop-filter: blur(4px);
+  background: rgba(4, 5, 9, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   padding: 24px;
 }
-.sbx-modal.open { display: flex; }
+.sbx-modal.open { display: flex; animation: fade-in 0.25s var(--ease-soft); }
 .sbx-modal-inner {
   width: 100%;
   max-width: 440px;
-  background: var(--panel);
+  background: var(--glass-strong);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 26px 28px;
+  box-shadow: var(--shadow-lg);
+  animation: modal-in 0.35s var(--ease);
 }
 .sbx-modal-inner h3 { margin: 0 0 12px; }
 .sbx-modal-inner p { margin: 0 0 14px; color: var(--text-dim); font-size: 14px; }
 .sbx-modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px; }
 
-/* wizard */
+/* ---------- wizard ---------- */
+
 .sbx-wizard-steps { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 24px; }
 .sbx-wizard-dot {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   background: var(--panel-alt);
   border: 1px solid var(--border);
@@ -235,39 +460,63 @@
   font-weight: 700;
   font-size: 13.5px;
   color: var(--text-faint);
+  transition: background 0.3s var(--ease-soft), border-color 0.3s var(--ease-soft),
+              color 0.3s var(--ease-soft), transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
-.sbx-wizard-dot.active { border-color: var(--accent); color: var(--accent); }
+.sbx-wizard-dot.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: scale(1.1);
+  box-shadow: 0 0 0 4px rgba(255, 138, 61, 0.14);
+}
 .sbx-wizard-dot.done { background: var(--success); border-color: var(--success); color: #06280f; }
-.sbx-wizard-line { width: 40px; height: 2px; background: var(--border); }
+.sbx-wizard-line { width: 44px; height: 2px; background: var(--border); }
 .sbx-wizard-panel { display: none; }
-.sbx-wizard-panel.active { display: block; }
+.sbx-wizard-panel.active { display: block; animation: sbx-panel-in 0.35s var(--ease); }
 .sbx-wizard-panel label { display: block; font-size: 12.5px; font-weight: 600; color: var(--text-dim); margin-bottom: 6px; }
 .sbx-wizard-panel input, .sbx-wizard-panel select {
   width: 100%;
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 12px;
+  border-radius: 10px;
+  padding: 11px 13px;
   font-size: 14px;
   font-family: inherit;
-  background: var(--panel-alt);
+  background: rgba(9, 11, 20, 0.6);
   color: var(--text);
+  transition: border-color 0.25s var(--ease-soft), box-shadow 0.25s var(--ease-soft);
+}
+.sbx-wizard-panel input:focus, .sbx-wizard-panel select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 .sbx-wizard-summary { color: var(--cyan); font-family: var(--font-mono); font-size: 13px; }
-.sbx-wizard-actions { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
+.sbx-wizard-actions { display: flex; align-items: center; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
 
-/* drag and drop */
+/* ---------- iframe ---------- */
+
+.sbx-iframe-frame {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+}
+.sbx-iframe-frame iframe { display: block; }
+
+/* ---------- drag and drop ---------- */
+
 .sbx-dnd-board {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
 .sbx-dnd-column {
-  background: var(--panel-alt);
+  background: rgba(12, 14, 24, 0.6);
   border: 1px dashed var(--border);
   border-radius: var(--radius-md);
   padding: 14px;
   min-height: 180px;
-  transition: border-color 0.15s ease, background 0.15s ease;
+  transition: border-color 0.25s var(--ease-soft), background 0.25s var(--ease-soft), transform 0.25s var(--ease);
 }
 .sbx-dnd-column h4 {
   margin: 0 0 10px;
@@ -279,20 +528,203 @@
 }
 .sbx-dnd-column.drag-over {
   border-color: var(--accent);
+  border-style: solid;
   background: var(--accent-soft);
+  transform: scale(1.01);
 }
 .sbx-dnd-card {
   background: var(--panel);
   border: 1px solid var(--border-soft);
-  border-radius: 8px;
-  padding: 10px 12px;
+  border-radius: 10px;
+  padding: 11px 13px;
   margin-bottom: 10px;
   font-size: 13.5px;
   cursor: grab;
   user-select: none;
   box-shadow: var(--shadow-md);
+  transition: transform 0.2s var(--ease), border-color 0.2s var(--ease-soft), opacity 0.2s var(--ease-soft);
 }
+.sbx-dnd-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+.sbx-dnd-card:active { cursor: grabbing; }
 .sbx-dnd-card:last-child { margin-bottom: 0; }
-.sbx-dnd-card.dragging { opacity: 0.4; }
+.sbx-dnd-card.dragging { opacity: 0.4; transform: rotate(-2deg) scale(0.98); }
 @media (max-width: 640px) { .sbx-dnd-board { grid-template-columns: 1fr; } }
 
+/* ---------- advanced exercises ---------- */
+
+/* Two self-contained sub-exercises side by side. Boxing each one is what
+   keeps the card from reading as a couple of buttons floating in a void. */
+.sbx-tasks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 760px) { .sbx-tasks { grid-template-columns: 1fr; } }
+
+.sbx-task {
+  background: rgba(12, 14, 24, 0.55);
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  padding: 18px 18px 20px;
+}
+.sbx-task-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.sbx-task > p {
+  margin: 0 0 14px;
+  font-size: 13.5px;
+  color: var(--text-dim);
+}
+
+.sbx-btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.sbx-muted { color: var(--text-faint); font-size: 13.5px; margin: 0; }
+
+.sbx-card code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: rgba(255, 138, 61, 0.12);
+  border: 1px solid rgba(255, 138, 61, 0.22);
+  border-radius: 5px;
+  padding: 1px 5px;
+  color: #ffc48a;
+}
+
+/* waits — the reserved height stops the card jumping when the list lands,
+   without leaving a hole the size of the one it replaces */
+.sbx-async { margin-top: 14px; min-height: 74px; }
+.sbx-async ul { margin: 0; padding-left: 20px; font-size: 13.5px; color: var(--text-dim); }
+.sbx-async li { margin-bottom: 4px; }
+
+.sbx-spinner {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  color: var(--text-faint);
+}
+.sbx-spinner::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  animation: sbx-spin 0.7s linear infinite;
+}
+@keyframes sbx-spin { to { transform: rotate(360deg); } }
+
+/* pagination */
+.sbx-pager {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+.sbx-page-label { font-size: 13.5px; color: var(--text-dim); }
+.sbx-page-label b { color: var(--text); font-family: var(--font-mono); }
+
+/* hover menu */
+
+/* Its dropdown escapes the card, and every card is its own stacking
+   context, so without this the menu is painted underneath the next card. */
+#hovermenu .sbx-card { z-index: 5; }
+
+.sbx-menubar { display: flex; }
+.sbx-menu { position: relative; }
+.sbx-menu-top {
+  background: var(--panel-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease-soft), color 0.2s var(--ease-soft);
+}
+.sbx-menu:hover .sbx-menu-top { border-color: var(--accent); color: var(--accent); }
+
+.sbx-menu-list {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  min-width: 210px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: var(--glass-strong);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.2s var(--ease-soft), transform 0.2s var(--ease), visibility 0.2s;
+  z-index: 20;
+}
+.sbx-menu:hover > .sbx-menu-list,
+.sbx-menu:focus-within > .sbx-menu-list { opacity: 1; visibility: visible; transform: none; }
+
+.sbx-menu-list button {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  color: var(--text-dim);
+  font-family: inherit;
+  font-size: 13.5px;
+  padding: 9px 12px;
+  cursor: pointer;
+  transition: background 0.15s var(--ease-soft), color 0.15s var(--ease-soft);
+}
+.sbx-menu-list button:hover { background: var(--accent-soft); color: var(--text); }
+
+.sbx-menu-sub { position: relative; }
+.sbx-menu-list-2 { top: -6px; left: calc(100% + 4px); min-width: 160px; }
+.sbx-menu-sub:hover > .sbx-menu-list-2,
+.sbx-menu-sub:focus-within > .sbx-menu-list-2 { opacity: 1; visibility: visible; transform: none; }
+@media (max-width: 560px) {
+  .sbx-menu-list-2 { left: 12px; top: calc(100% + 4px); }
+}
+
+/* unstable element */
+.sbx-shift-banner {
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: rgba(255, 189, 46, 0.1);
+  border: 1px solid rgba(255, 189, 46, 0.3);
+  color: #ffd88a;
+  font-size: 13.5px;
+  animation: sbx-result-in 0.3s var(--ease);
+}
+.sbx-unstable-btn { margin-bottom: 4px; }
+
+/* ---------- footer CTA ---------- */
+
+.sbx-footer-cta {
+  margin: 36px 0 8px;
+  text-align: center;
+}
+.sbx-footer-cta p {
+  max-width: 560px;
+  margin: 0 auto 18px;
+  color: var(--text-dim);
+  font-size: 15px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sandbox-hero h1 em { animation: none; }
+}

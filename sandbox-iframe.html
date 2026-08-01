@@ -2,20 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account settings — Portal17 Studio practice page</title>
+    <meta name="robots" content="noindex">
 
+    <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/sandbox.css">
 
+    <script>
+      /* This page is used two ways: embedded in the sandbox's iframe
+         exercise, and opened on its own by the "new tab / new window"
+         exercise. Embedded it must be transparent so it melts into the card
+         it sits in; on its own that left light text on the browser's white
+         default. Marking the standalone case here lets the stylesheet
+         handle both without duplicating the page. */
+      if (window.top === window.self) {
+        document.documentElement.className = 'standalone';
+      }
+    </script>
+
     <style>
-        body{
-            margin:0;
-            padding:24px;
-            background:transparent;
+        body { margin: 0; padding: 24px; background: transparent; }
+
+        .ifr-head { display: none; }
+
+        .standalone body {
+            padding: 0;
+            background:
+                radial-gradient(70% 50% at 80% 0%, rgba(255, 138, 61, 0.12), transparent 60%),
+                radial-gradient(60% 50% at 10% 10%, rgba(79, 214, 232, 0.08), transparent 60%),
+                var(--bg);
+            min-height: 100vh;
         }
+        .standalone .ifr-shell {
+            max-width: 660px;
+            margin: 0 auto;
+            padding: 28px 22px 48px;
+        }
+        .standalone .ifr-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding-bottom: 18px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border-soft);
+        }
+        .ifr-head img { width: 30px; height: 30px; }
+        .ifr-head-text { display: flex; flex-direction: column; line-height: 1.25; }
+        .ifr-head-text strong { font-size: 15px; }
+        .ifr-head-text span { font-size: 12.5px; color: var(--text-faint); }
+        .ifr-head .btn { margin-left: auto; }
+        .standalone .sbx-form h2 { margin-top: 0; }
     </style>
 </head>
 
 <body>
+
+<div class="ifr-shell">
+
+<header class="ifr-head">
+    <img src="assets/icon.png" alt="">
+    <span class="ifr-head-text">
+        <strong>Portal17 Studio</strong>
+        <span>Practice page — nothing here is saved or sent</span>
+    </span>
+    <a href="sandbox" class="btn btn-ghost btn-sm">← Back to the sandbox</a>
+</header>
 
 <form class="sbx-form sbx-form-grid"
       id="iframeForm"
@@ -80,6 +134,8 @@
     </div>
 
 </form>
+
+</div>
 
 </body>
 </html>

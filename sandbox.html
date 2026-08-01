@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Free Browser Automation Practice Sandbox — Portal17 Studio</title>
-<meta name="description" content="Practice web automation for free: a page full of real forms, tables, tabs, and buttons made for automating. Point Portal17 Studio at it (or any automation tool) and build your first flow risk-free.">
+<meta name="description" content="Practice web automation for free: 14 exercises covering forms, tables, tabs, drag and drop, slow-loading content, pop-up windows, pagination, hover menus and elements whose id changes on every click. Point Portal17 Studio at it (or any automation tool) and build your first flow risk-free.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0a0b12">
 <link rel="canonical" href="https://portal17studio.com/sandbox">
@@ -13,12 +13,12 @@
 <meta property="og:site_name" content="Portal17 Studio">
 <meta property="og:url" content="https://portal17studio.com/sandbox">
 <meta property="og:title" content="Free Browser Automation Practice Sandbox — Portal17 Studio">
-<meta property="og:description" content="A page full of real forms, tables, tabs, and buttons made for practicing web automation.">
+<meta property="og:description" content="14 hands-on exercises for practicing web automation — from login forms to slow content, pop-up windows, pagination and unstable selectors.">
 <meta property="og:image" content="https://portal17studio.com/assets/icon.png">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Free Browser Automation Practice Sandbox — Portal17 Studio">
-<meta name="twitter:description" content="A page full of real forms, tables, tabs, and buttons made for practicing web automation.">
+<meta name="twitter:description" content="14 hands-on exercises for practicing web automation — from login forms to slow content, pop-up windows, pagination and unstable selectors.">
 <meta name="twitter:image" content="https://portal17studio.com/assets/icon.png">
 
 <link rel="icon" href="favicon.ico">
@@ -61,14 +61,15 @@
 <section class="sandbox-hero">
   <div class="container">
     <span class="eyebrow">Practice sandbox</span>
-    <h1>A safe place to click around</h1>
+    <h1>A safe place to <em>click around</em></h1>
     <p>
-      Everything on this page is real, interactive, and completely harmless — no
-      accounts are created, no messages are sent, nothing is saved anywhere. Point
-      Portal17 Studio's recorder at this page (or build a flow by hand) and use it
-      to get comfortable: log in, fill out a form, add things to a cart, sort a
-      table, click through a wizard. Break it as many times as you like — a full
-      reload puts it right back the way it started.
+      Fourteen exercises, from the basics to the ones that actually break flows.
+      Everything here is real, interactive, and completely harmless — no accounts
+      are created, no messages are sent, nothing is saved anywhere. Log in, fill a
+      form, sort a table, then work up to waiting on slow content, switching to a
+      new tab, looping through pages and surviving elements whose id changes every
+      time you touch them. Break it as often as you like — a reload puts it back
+      exactly the way it started.
     </p>
     <div class="sandbox-hero-actions">
       <button id="resetSandbox" class="btn btn-ghost">↺ Reset this page</button>
@@ -77,11 +78,34 @@
   </div>
 </section>
 
+<!-- ============ EXERCISE INDEX ============
+     Sticky jump list that doubles as a progress tracker: sandbox.js ticks
+     each entry once you actually interact with that exercise. -->
+<nav class="sbx-index" id="sbxIndex" aria-label="Exercises">
+  <div class="container sbx-index-inner">
+    <a class="sbx-index-link" href="#login"><i><span>1</span></i>Login</a>
+    <a class="sbx-index-link" href="#support"><i><span>2</span></i>Support form</a>
+    <a class="sbx-index-link" href="#shop"><i><span>3</span></i>Mini shop</a>
+    <a class="sbx-index-link" href="#table"><i><span>4</span></i>Data table</a>
+    <a class="sbx-index-link" href="#tabs"><i><span>5</span></i>Tabs</a>
+    <a class="sbx-index-link" href="#modal-demo"><i><span>6</span></i>Modal</a>
+    <a class="sbx-index-link" href="#wizard"><i><span>7</span></i>Wizard</a>
+    <a class="sbx-index-link" href="#iframe"><i><span>8</span></i>Iframe</a>
+    <a class="sbx-index-link" href="#dragdrop"><i><span>9</span></i>Drag &amp; drop</a>
+    <a class="sbx-index-link" href="#delay"><i><span>10</span></i>Waits</a>
+    <a class="sbx-index-link" href="#newtab"><i><span>11</span></i>New tabs</a>
+    <a class="sbx-index-link" href="#pagination"><i><span>12</span></i>Pagination</a>
+    <a class="sbx-index-link" href="#hovermenu"><i><span>13</span></i>Hover menu</a>
+    <a class="sbx-index-link" href="#unstable"><i><span>14</span></i>Unstable ids</a>
+    <span class="sbx-progress"><b id="sbxDone">0</b> / <span id="sbxTotal">14</span> tried</span>
+  </div>
+</nav>
+
 <!-- ============ LOGIN ============ -->
 <section class="sbx-section" id="login">
   <div class="container">
-    <div class="sbx-card sbx-narrow">
-      <h2>1. Login form</h2>
+    <div class="sbx-card sbx-narrow reveal">
+      <h2><span class="sbx-num">1</span> Login form</h2>
       <p class="sbx-hint">Classic username/password automation target — try filling and submitting it.</p>
       <form class="sbx-form" data-sbx-form="login">
         <label for="loginUser">Username</label>
@@ -99,8 +123,8 @@
 <!-- ============ SUPPORT FORM ============ -->
 <section class="sbx-section" id="support">
   <div class="container">
-    <div class="sbx-card">
-      <h2>2. Support request</h2>
+    <div class="sbx-card reveal">
+      <h2><span class="sbx-num">2</span> Support request</h2>
       <p class="sbx-hint">A richer form: text fields, a dropdown, radio buttons, a slider, and a textarea.</p>
       <form class="sbx-form sbx-form-grid" data-sbx-form="support">
         <div>
@@ -155,9 +179,9 @@
 <!-- ============ PRODUCT GRID / CART ============ -->
 <section class="sbx-section" id="shop">
   <div class="container">
-    <div class="sbx-card">
+    <div class="sbx-card reveal">
       <div class="sbx-card-head">
-        <h2>3. Mini shop</h2>
+        <h2><span class="sbx-num">3</span> Mini shop</h2>
         <div class="sbx-cart-badge">🛒 Cart: <span id="cartCount">0</span> item(s) · $<span id="cartTotal">0.00</span></div>
       </div>
       <p class="sbx-hint">Loop over a list of items and click a button on each one — a very common automation pattern.</p>
@@ -198,8 +222,8 @@
 <!-- ============ DATA TABLE ============ -->
 <section class="sbx-section" id="table">
   <div class="container">
-    <div class="sbx-card">
-      <h2>4. Sortable data table</h2>
+    <div class="sbx-card reveal">
+      <h2><span class="sbx-num">4</span> Sortable data table</h2>
       <p class="sbx-hint">Click a column header to sort, tick rows, then delete the selected ones — good for scraping and bulk-action practice.</p>
       <div class="sbx-table-wrap">
         <table class="sbx-table" id="dataTable">
@@ -231,8 +255,8 @@
 <!-- ============ TABS ============ -->
 <section class="sbx-section" id="tabs">
   <div class="container">
-    <div class="sbx-card">
-      <h2>5. Tabbed panel</h2>
+    <div class="sbx-card reveal">
+      <h2><span class="sbx-num">5</span> Tabbed panel</h2>
       <p class="sbx-hint">Practice clicking between sections that show and hide content.</p>
       <div class="sbx-tabs">
         <div class="sbx-tab-bar">
@@ -260,8 +284,8 @@
 <!-- ============ MODAL TRIGGER ============ -->
 <section class="sbx-section" id="modal-demo">
   <div class="container">
-    <div class="sbx-card sbx-narrow">
-      <h2>6. Modal dialog</h2>
+    <div class="sbx-card sbx-narrow reveal">
+      <h2><span class="sbx-num">6</span> Modal dialog</h2>
       <p class="sbx-hint">Some flows need to open a dialog, click something inside it, then close it.</p>
       <button class="btn btn-primary" id="openModalBtn">Open terms &amp; conditions</button>
     </div>
@@ -283,8 +307,8 @@
 <!-- ============ WIZARD ============ -->
 <section class="sbx-section" id="wizard">
   <div class="container">
-    <div class="sbx-card sbx-narrow">
-      <h2>7. Multi-step wizard</h2>
+    <div class="sbx-card sbx-narrow reveal">
+      <h2><span class="sbx-num">7</span> Multi-step wizard</h2>
       <p class="sbx-hint">Great for practicing flows with Next/Back buttons and a few steps in a row.</p>
       <div class="sbx-wizard-steps">
         <span class="sbx-wizard-dot active" data-step="1">1</span>
@@ -321,28 +345,32 @@
 <!-- ============ IFRAME ============ -->
 <section class="sbx-section" id="iframe">
   <div class="container">
-    <div class="sbx-card">
-      <h2>8. Embedded page (iframe)</h2>
+    <div class="sbx-card reveal">
+      <h2><span class="sbx-num">8</span> Embedded page (iframe)</h2>
       <p class="sbx-hint">
         Switch into the iframe, fill in the form, then return to the main page.
         A common automation scenario.
       </p>
 
-		<iframe
-			src="sandbox-iframe.html"
-			id="practiceIframe"
-			width="100%"
-			height="340"
-			style="border:none;">
-		</iframe>
+      <div class="sbx-iframe-frame">
+        <iframe
+          src="sandbox-iframe.html"
+          id="practiceIframe"
+          title="Practice form inside an iframe"
+          width="100%"
+          height="430"
+          style="border:none;">
+        </iframe>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ============ DRAG AND DROP ============ -->
 <section class="sbx-section" id="dragdrop">
   <div class="container">
-    <div class="sbx-card">
-      <h2>9. Drag and drop</h2>
+    <div class="sbx-card reveal">
+      <h2><span class="sbx-num">9</span> Drag and drop</h2>
       <p class="sbx-hint">
         Drag a card out of "To do" and drop it onto "Done" — a common pattern
         in kanban boards and task lists.
@@ -360,6 +388,152 @@
         </div>
       </div>
       <div class="sbx-result" data-sbx-result id="dndNativeResult">Drag a card from "To do" into "Done".</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DELAYED CONTENT ============ -->
+<section class="sbx-section" id="delay">
+  <div class="container">
+    <div class="sbx-card reveal">
+      <h2><span class="sbx-num">10</span> Waiting for slow content</h2>
+      <p class="sbx-hint">
+        The hardest part of automation is not clicking — it's knowing when to click.
+        These are the two waits you keep running into, and they are not the same
+        problem: one element isn't there yet, the other is there but won't respond.
+      </p>
+      <div class="sbx-tasks">
+
+        <div class="sbx-task">
+          <span class="sbx-task-tag">A · It doesn't exist yet</span>
+          <p>The list below is only created three seconds after you ask for it. Until
+             then there is nothing on the page to select.</p>
+          <button class="btn btn-primary" id="loadDataBtn">Load data</button>
+          <div class="sbx-async" id="loadDataArea">
+            <p class="sbx-muted">Nothing loaded yet.</p>
+          </div>
+        </div>
+
+        <div class="sbx-task">
+          <span class="sbx-task-tag">B · It exists but is disabled</span>
+          <p>This button is on the page from the start, but it ignores clicks for
+             four seconds after you arm it.</p>
+          <div class="sbx-btn-row">
+            <button class="btn btn-ghost" id="armBtn">Arm the button</button>
+            <button class="btn btn-primary" id="slowBtn" disabled>Locked</button>
+          </div>
+          <div class="sbx-result" data-sbx-result id="slowResult"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEW TAB ============ -->
+<section class="sbx-section" id="newtab">
+  <div class="container">
+    <div class="sbx-card reveal">
+      <h2><span class="sbx-num">11</span> New tabs and windows</h2>
+      <p class="sbx-hint">
+        Both of these open a second tab. The flow then has to switch to it, do
+        something there, and come back — that's the Open&nbsp;Tab / Switch&nbsp;Tab /
+        Close&nbsp;Tab trio in Portal17 Studio.
+      </p>
+      <div class="sbx-btn-row">
+        <a class="btn btn-ghost" href="sandbox-iframe.html" target="_blank" rel="noopener" id="newTabLink">Open a link in a new tab ↗</a>
+        <button class="btn btn-ghost" id="newWindowBtn">Open a popup window</button>
+      </div>
+      <div class="sbx-result" data-sbx-result id="newTabResult"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAGINATION ============ -->
+<section class="sbx-section" id="pagination">
+  <div class="container">
+    <div class="sbx-card reveal">
+      <h2><span class="sbx-num">12</span> Paginated results</h2>
+      <p class="sbx-hint">
+        Twelve records spread over three pages. Scraping all of them means looping:
+        read the page, click Next, repeat until Next is disabled.
+      </p>
+      <div class="sbx-table-wrap">
+        <table class="sbx-table" id="pagedTable">
+          <thead>
+            <tr><th>Order</th><th>Customer</th><th>Total</th></tr>
+          </thead>
+          <tbody id="pagedBody"></tbody>
+        </table>
+      </div>
+      <div class="sbx-pager">
+        <button class="btn btn-ghost btn-sm" id="pagePrev" disabled>← Prev</button>
+        <span class="sbx-page-label">Page <b id="pageNum">1</b> of <b id="pageTotal">3</b></span>
+        <button class="btn btn-ghost btn-sm" id="pageNext">Next →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOVER MENU ============ -->
+<section class="sbx-section" id="hovermenu">
+  <div class="container">
+    <div class="sbx-card reveal">
+      <h2><span class="sbx-num">13</span> Menus that need hovering</h2>
+      <p class="sbx-hint">
+        This menu only opens while the pointer is over it, and the second level only
+        opens on top of that. Clicking straight at the coordinates of a buried item
+        won't work — the flow has to hover its way in.
+      </p>
+      <nav class="sbx-menubar" id="sbxMenubar">
+        <div class="sbx-menu">
+          <button class="sbx-menu-top" type="button">Reports ▾</button>
+          <ul class="sbx-menu-list">
+            <li><button type="button" data-pick="Daily summary">Daily summary</button></li>
+            <li><button type="button" data-pick="Weekly summary">Weekly summary</button></li>
+            <li class="sbx-menu-sub">
+              <button type="button">Export ▸</button>
+              <ul class="sbx-menu-list sbx-menu-list-2">
+                <li><button type="button" data-pick="Export as CSV">as CSV</button></li>
+                <li><button type="button" data-pick="Export as PDF">as PDF</button></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="sbx-result" data-sbx-result id="menuResult">Nothing picked yet.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ UNSTABLE ELEMENT ============ -->
+<section class="sbx-section" id="unstable">
+  <div class="container">
+    <div class="sbx-card reveal">
+      <h2><span class="sbx-num">14</span> Unstable selectors</h2>
+      <p class="sbx-hint">
+        This button gets a brand new random <code>id</code> every time you press it,
+        and the switch below shoves it down the page. Both break flows that were
+        recorded against a fragile selector — good practice for picking a stable one.
+      </p>
+      <div class="sbx-shift-banner" id="shiftBanner" hidden>
+        ⚠️ A notice appeared and pushed everything below it down.
+      </div>
+      <button class="btn btn-primary sbx-unstable-btn" id="a7f3c91e">Press me</button>
+      <label class="sbx-checkline"><input type="checkbox" id="shiftToggle"> Push the content down</label>
+      <div class="sbx-result" data-sbx-result id="unstableResult">Current id: <code>a7f3c91e</code></div>
+    </div>
+  </div>
+</section>
+
+<section class="sbx-section">
+  <div class="container">
+    <div class="sbx-footer-cta reveal">
+      <p>
+        That's the whole playground. Point Portal17 Studio's recorder at any
+        exercise above and you have a working flow in a couple of minutes.
+      </p>
+      <a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Get Portal17 Studio</a>
     </div>
   </div>
 </section>
