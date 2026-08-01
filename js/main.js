@@ -262,15 +262,16 @@ document.getElementById('year').textContent = new Date().getFullYear();
     log('✅ Form submitted.');
     if (cancelled) return;
 
+    // A single Extract Text node reads ONE value into ONE variable — same as the
+    // real app (chain one Extract Text per piece of data you want to capture).
     setActiveNode(8);
     await sleep(300);
     confirmationEl.classList.add('flash');
-    log('🧠 Extracting the confirmation text …');
+    log('🧠 Extract Text — reading the ticket number …');
     await sleep(500);
     confirmationEl.classList.remove('flash');
-    addVar('confirmation_text', "Thanks, Ada! We'll reply within 24 hours.");
     addVar('ticket_id', 'A17-4821');
-    log('💾 Saved to variables: confirmation_text, ticket_id.');
+    log('💾 Saved to variable: ticket_id.');
 
     nodes.forEach(n => n.classList.add('done'));
     wires.forEach(w => w.classList.add('flowing'));
