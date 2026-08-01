@@ -436,12 +436,17 @@ a { color: inherit; }
 
 .hero {
   position: relative;
-  padding: 96px 0 56px;
+  padding: 96px 0 64px;
+  min-height: 640px;
+  display: flex;
+  align-items: center;
   text-align: center;
   overflow: hidden;
 }
 
-/* node-network canvas injected by main.js — decorative only */
+/* The running flow graph drawn by main.js. The mask cuts a hole through the
+   middle of it so the headline never has to compete with a wire, and the
+   flow reads as something happening *around* the message. */
 .hero-canvas {
   position: absolute;
   inset: 0;
@@ -449,9 +454,13 @@ a { color: inherit; }
   height: 100%;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.55;
-  -webkit-mask-image: radial-gradient(80% 70% at 50% 45%, #000 30%, transparent 76%);
-  mask-image: radial-gradient(80% 70% at 50% 45%, #000 30%, transparent 76%);
+  -webkit-mask-image: radial-gradient(52% 46% at 50% 50%, transparent 0%, rgba(0, 0, 0, 0.35) 58%, #000 80%);
+  mask-image: radial-gradient(52% 46% at 50% 50%, transparent 0%, rgba(0, 0, 0, 0.35) 58%, #000 80%);
+}
+
+@media (max-width: 880px) {
+  .hero { min-height: 0; display: block; padding-top: 64px; }
+  .hero-canvas { opacity: 0.5; }
 }
 .hero .container { position: relative; z-index: 1; }
 
@@ -655,6 +664,58 @@ a { color: inherit; }
 
 section { padding: 96px 0; }
 section.tight { padding: 72px 0; }
+
+/* ---------- section connectors ----------
+   The page is itself a flow: each section hangs off the previous one by a
+   wire, with a charge running down it. Same visual language as the canvas
+   in the app, and it costs two pseudo-elements and no JavaScript. */
+
+.flow-step { position: relative; }
+
+.flow-step::before,
+.flow-step::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.flow-step::before {
+  top: -46px;
+  width: 2px;
+  height: 92px;
+  transform: translateX(-50%);
+  background: repeating-linear-gradient(180deg, rgba(255, 138, 61, 0.5) 0 6px, transparent 6px 14px);
+  background-size: 2px 14px;
+  animation: wire-drip 1.2s linear infinite;
+  opacity: 0.5;
+}
+
+.flow-step::after {
+  top: -46px;
+  width: 7px;
+  height: 7px;
+  margin-top: -3px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px rgba(255, 138, 61, 0.9);
+  animation: wire-charge 2.8s var(--ease-soft) infinite;
+}
+
+@keyframes wire-drip { to { background-position: 0 14px; } }
+@keyframes wire-charge {
+  0%   { transform: translate(-50%, 0) scale(0.5); opacity: 0; }
+  12%  { transform: translate(-50%, 10px) scale(1); opacity: 1; }
+  88%  { transform: translate(-50%, 80px) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, 92px) scale(0.5); opacity: 0; }
+}
+
+/* Below this width the sections are packed tight enough that a 92px
+   connector would collide with the content above it. */
+@media (max-width: 760px) {
+  .flow-step::before, .flow-step::after { display: none; }
+}
 
 .section-header {
   max-width: 640px;
@@ -1615,4 +1676,6 @@ section.tight { padding: 72px 0; }
   .reveal { opacity: 1; transform: none; filter: none; }
   .hero-canvas, .grain { display: none; }
   .node-marquee-track { animation: none; }
+  /* the travelling charge is meaningless frozen — only the wire stays */
+  .flow-step::after { display: none; }
 }
