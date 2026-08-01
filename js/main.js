@@ -223,8 +223,8 @@ const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').mat
     { x: 0.085, y: 0.20, label: 'Start',       color: '#4e9e4e' },
     { x: 0.180, y: 0.45, label: 'Navigate',    color: '#4a86d8' },
     { x: 0.095, y: 0.70, label: 'Type',        color: '#d06a55' },
-    { x: 0.255, y: 0.90, label: 'Click',       color: '#e08640' },
-    { x: 0.730, y: 0.90, label: 'Select',      color: '#c9a227' },
+    { x: 0.255, y: 0.95, label: 'Click',       color: '#e08640' }, 
+    { x: 0.730, y: 0.95, label: 'Select',      color: '#c9a227' },
     { x: 0.905, y: 0.68, label: 'Extract Text',color: '#9a5fb0' },
     { x: 0.815, y: 0.42, label: 'Split',   color: '#3f9d9d' },
     { x: 0.915, y: 0.17, label: 'Export CSV',  color: '#5f7fd0' },
@@ -270,15 +270,22 @@ const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').mat
     canvas.height = height * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    showLabels = width > 760;
     ctx.font = '600 11.5px ui-sans-serif, system-ui, "Segoe UI", sans-serif';
+    const box = keepOut();
+
+    /* Labels are only worth showing if the margins beside the reserved
+       block are wide enough to hold the widest chip. Otherwise every chip
+       gets pushed above or below the copy and the flow collapses into two
+       cramped rows — dots read far better at that size. */
+    const widest = Math.max(...NODES.map(n => ctx.measureText(n.label).width)) + 34;
+    const band = box ? Math.min(box.left, width - box.right) : width;
+    showLabels = width > 760 && band > widest + 6;
 
     points = NODES.map(n => {
       const w = showLabels ? Math.round(ctx.measureText(n.label).width) + 34 : 18;
       return { x: n.x * width, y: n.y * height, w, h: showLabels ? 26 : 18 };
     });
 
-    const box = keepOut();
     if (box) points.forEach(p => avoid(p, box));
   }
 
@@ -290,13 +297,28 @@ const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').mat
     const content = hero.querySelector('.container');
     if (!content) return null;
     const hr = hero.getBoundingClientRect();
-    const cr = content.getBoundingClientRect();
-    const padX = 26, padY = 20;
+
+    /* The union of the actual blocks, not the container's box: the column is
+       1160px wide but the widest thing in it (the stat pills) is far
+       narrower, and reserving the full column left no usable margin to put
+       chips in — they all got shoved into two cramped rows. */
+    let left = Infinity, right = -Infinity, top = Infinity, bottom = -Infinity;
+    content.querySelectorAll(':scope > *').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.width === 0 || r.height === 0) return;
+      left = Math.min(left, r.left);
+      right = Math.max(right, r.right);
+      top = Math.min(top, r.top);
+      bottom = Math.max(bottom, r.bottom);
+    });
+    if (!isFinite(left)) return null;
+
+    const padX = 26, padY = 18;
     return {
-      left: cr.left - hr.left - padX,
-      right: cr.right - hr.left + padX,
-      top: cr.top - hr.top - padY,
-      bottom: cr.bottom - hr.top + padY,
+      left: left - hr.left - padX,
+      right: right - hr.left + padX,
+      top: top - hr.top - padY,
+      bottom: bottom - hr.top + padY,
     };
   }
 
