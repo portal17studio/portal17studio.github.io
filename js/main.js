@@ -35,7 +35,7 @@ const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').mat
   toTop.className = 'to-top';
   toTop.type = 'button';
   toTop.setAttribute('aria-label', 'Back to top');
-  toTop.textContent = 'â†‘';
+  toTop.textContent = '↑';
   toTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: REDUCED_MOTION ? 'auto' : 'smooth' });
   });
@@ -552,7 +552,7 @@ const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').mat
 
     const fallback = document.createElement('div');
     fallback.className = 'video-fallback';
-    fallback.innerHTML = '<strong>ðŸŽ¬ This demo video is coming soon</strong><span>We\'re still recording it â€” check back shortly, or follow along in the Playground above.</span>';
+    fallback.innerHTML = '<strong>🎬 This demo video is coming soon</strong><span>We\'re still recording it — check back shortly, or follow along in the Playground above.</span>';
     fallback.style.display = 'none';
 
     video.addEventListener('error', () => {
@@ -695,9 +695,9 @@ const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').mat
     confirmationEl.classList.remove('show', 'flash');
     confirmationEl.textContent = '';
     varsBox.innerHTML = '';
-    consoleBody.innerHTML = '<p class="muted">Click "Run Flow" to startâ€¦</p>';
+    consoleBody.innerHTML = '<p class="muted">Click "Run Flow" to start…</p>';
     runBtn.disabled = false;
-    runBtn.textContent = 'â–¶ Run Flow';
+    runBtn.textContent = '▶ Run Flow';
   }
 
   async function runFlow() {
@@ -706,76 +706,75 @@ const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').mat
     cancelled = false;
     running = true;
     runBtn.disabled = true;
-    runBtn.textContent = 'Runningâ€¦';
+    runBtn.textContent = 'Running…';
     consoleBody.innerHTML = '';
 
     const start = performance.now();
 
     setActiveNode(1);
-    log('ðŸš€ Flow started.');
+    log('🚀 Flow started.');
     await sleep(500);
     if (cancelled) return;
 
     setActiveNode(2);
-    log('ðŸŒ Opening https://example-shop.test/contact â€¦');
+    log('🌐 Opening https://example-shop.test/contact …');
     await sleep(500);
-    log('âœ… Page loaded.');
+    log('✅ Page loaded.');
     await sleep(350);
     if (cancelled) return;
 
     setActiveNode(3);
-    log(`âŒ¨ï¸ Typing "${DATA.name}" into Name â€¦`);
+    log(`⌨️ Typing "${DATA.name}" into Name …`);
     await typeInto(nameEl, DATA.name);
     if (cancelled) return;
 
     setActiveNode(4);
-    log(`âŒ¨ï¸ Typing "${DATA.email}" into Email â€¦`);
+    log(`⌨️ Typing "${DATA.email}" into Email …`);
     await typeInto(emailEl, DATA.email);
     if (cancelled) return;
 
     setActiveNode(5);
-    log(`ðŸ§¾ Selecting "${DATA.topic}" in Topic â€¦`);
+    log(`🧾 Selecting "${DATA.topic}" in Topic …`);
     await selectOption(topicEl, DATA.topic);
     if (cancelled) return;
 
     setActiveNode(6);
-    log('âŒ¨ï¸ Typing the message â€¦');
+    log('⌨️ Typing the message …');
     await typeInto(messageEl, DATA.message);
     if (cancelled) return;
 
     setActiveNode(7);
-    log('ðŸ–±ï¸ Clicking "Send message" â€¦');
+    log('🖱️ Clicking "Send message" …');
     await sleep(300);
     submitEl.classList.add('pg-pressed');
     await sleep(160);
     submitEl.classList.remove('pg-pressed');
-    confirmationEl.textContent = "âœ… Thanks, Ada! We'll reply within 24 hours. Ticket #A17-4821.";
-    confirmationEl.classList.add('show');
+    confirmationEl.textContent = "✅ Thanks, Ada! We'll reply within 24 hours. Ticket #A17-4821.";
     await sleep(450);
-    log('âœ… Form submitted.');
+    log('✅ Form submitted.');
     if (cancelled) return;
 
-    // A single Extract Text node reads ONE value into ONE variable â€” same as the
+    // A single Extract Text node reads ONE value into ONE variable — same as the
     // real app (chain one Extract Text per piece of data you want to capture).
     setActiveNode(8);
     await sleep(300);
     confirmationEl.classList.add('flash');
-    log('ðŸ§  Extract Text â€” reading the ticket number â€¦');
+    log('🧠 Extract Text — reading the ticket number …');
     await sleep(500);
     confirmationEl.classList.remove('flash');
     addVar('ticket_id', 'A17-4821');
-    log('ðŸ’¾ Saved to variable: ticket_id.');
+    log('💾 Saved to variable: ticket_id.');
 
     nodes.forEach(n => n.classList.remove('active'));
     nodes.forEach(n => n.classList.add('done'));
     wires.forEach(w => w.classList.add('flowing'));
 
     const elapsed = ((performance.now() - start) / 1000).toFixed(1);
-    log(`ðŸŽ‰ Flow finished in ${elapsed}s.`);
+    log(`🎉 Flow finished in ${elapsed}s.`);
 
     running = false;
     runBtn.disabled = false;
-    runBtn.textContent = 'â–¶ Run Flow Again';
+    runBtn.textContent = '▶ Run Flow Again';
   }
 
   runBtn.addEventListener('click', runFlow);
