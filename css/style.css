@@ -387,6 +387,13 @@ a { color: inherit; }
 .nav-links a.active::after { width: 100%; }
 
 .nav-cta { display: flex; align-items: center; gap: 12px; }
+/* Same rendered size on every page: the Store button's two-line label +
+   icon (index.html) is naturally bigger than a plain one-line "Back to
+   site" link (sandbox.html/privacy.html) -- without this the header ends
+   up a different size depending on which page you're on, jumping visibly
+   when navigating between them. min-height/min-width (not height/width) so
+   the content still centers via .btn's own align-items/justify-content. */
+.nav-cta .btn { min-height: 54px; min-width: 190px; }
 
 .nav-toggle {
   display: none;

@@ -772,6 +772,7 @@ const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').mat
     await sleep(160);
     submitEl.classList.remove('pg-pressed');
     confirmationEl.textContent = "✅ Thanks, Ada! We'll reply within 24 hours. Ticket #A17-4821.";
+    confirmationEl.classList.add('show');
     await sleep(450);
     log('✅ Form submitted.');
     if (cancelled) return;
