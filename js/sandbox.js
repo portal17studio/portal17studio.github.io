@@ -151,6 +151,29 @@ document.getElementById('resetSandbox')?.addEventListener('click', () => locatio
     });
   }, { rootMargin: '-30% 0px -55% 0px' });
   entries.forEach(e => io.observe(e.section));
+
+  /* The band above only spans the middle 15% of the viewport, so right at
+     the very top of the page exercise #1 hasn't reached it yet — nothing
+     intersects, and the chip strip is left showing whatever was current
+     from an earlier scroll instead of resetting to #1. A dedicated top
+     check (rAF-throttled, since scroll fires constantly) covers exactly
+     that gap without touching the band logic the rest of the page relies
+     on. */
+  let topCheckQueued = false;
+  function checkAtTop() {
+    topCheckQueued = false;
+    if ((document.scrollingElement || document.documentElement).scrollTop > 4) return;
+    const first = entries[0];
+    if (!first) return;
+    links.forEach(l => l.classList.toggle('current', l === first.link));
+    revealChip(first.link);
+  }
+  window.addEventListener('scroll', () => {
+    if (topCheckQueued) return;
+    topCheckQueued = true;
+    requestAnimationFrame(checkAtTop);
+  }, { passive: true });
+  checkAtTop(); // por si la página se carga ya en el tope (recarga, enlace directo)
 })();
 
 /* ---------------- generic form "submit" feedback ---------------- */
