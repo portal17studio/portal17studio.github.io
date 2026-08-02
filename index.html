@@ -58,7 +58,17 @@
     {
       "@type": "Question",
       "name": "Can a flow run without the app open?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Use the built-in Scheduler to register a real Windows Scheduled Task, or trigger any saved flow from the command line in unattended mode — no window needed." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Use the built-in Scheduler to register a real Windows Scheduled Task, or trigger any saved flow from the command line in unattended mode — no window needed. Each scheduled task can even override the flow's constants, so one flow can run several times a day with different parameters." }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do my passwords and API keys live?",
+      "acceptedAnswer": { "@type": "Answer", "text": "In the encrypted Secrets vault, stored only on your machine — never inside the flow file. Your flow just references them as [secret:name], so you can share or back up a .portal file without leaking a single credential. Everything stays local; nothing is sent to any cloud." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can it export what it collects to Excel?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Export Excel node writes a real .xlsx file (and Export CSV covers plain CSV). Put it inside a loop and it builds the spreadsheet up one row per pass — headers are written automatically, and the Transform node cleans messy scraped values (prices, dates, spaces) before they land in a cell." }
     },
     {
       "@type": "Question",
@@ -151,7 +161,7 @@
     <div class="hero-meta">
       <span>🪟 Windows 10 / 11</span>
       <span>🌐 <b data-count="9">9</b> languages</span>
-      <span>🧩 <b data-count="37">37</b> node types</span>
+      <span>🧩 <b data-count="44">44</b> node types</span>
       <span>🖥️ Browser + desktop apps</span>
       <span>🔒 100% local — nothing in the cloud</span>
     </div>
@@ -170,11 +180,18 @@
       <span class="node-chip"><img src="assets/icons/type.png" alt="">Type</span>
       <span class="node-chip"><img src="assets/icons/select.png" alt="">Select Option</span>
       <span class="node-chip"><img src="assets/icons/if.png" alt="">If / Else</span>
+      <span class="node-chip"><img src="assets/icons/switch.png" alt="">Switch</span>
+      <span class="node-chip"><img src="assets/icons/foreach.png" alt="">For Each</span>
       <span class="node-chip"><img src="assets/icons/split.png" alt="">Split Variable</span>
       <span class="node-chip"><img src="assets/icons/set_variable.png" alt="">Set Variable</span>
+      <span class="node-chip"><img src="assets/icons/transform.png" alt="">Transform</span>
       <span class="node-chip"><img src="assets/icons/extract_part.png" alt="">Extract Text</span>
+      <span class="node-chip"><img src="assets/icons/code.png" alt="">Run JS</span>
       <span class="node-chip"><img src="assets/icons/api.png" alt="">Call API</span>
       <span class="node-chip"><img src="assets/icons/sql_query.png" alt="">SQL Query</span>
+      <span class="node-chip"><img src="assets/icons/export_excel.png" alt="">Export Excel</span>
+      <span class="node-chip"><img src="assets/icons/email.png" alt="">Send Email</span>
+      <span class="node-chip"><img src="assets/icons/zip.png" alt="">Zip Folder</span>
       <span class="node-chip"><img src="assets/icons/calendar.png" alt="">Scheduler</span>
       <span class="node-chip"><img src="assets/icons/launch_program.png" alt="">Launch Program</span>
       <span class="node-chip"><img src="assets/icons/wait_window.png" alt="">Wait for Window</span>
@@ -185,7 +202,7 @@
       <span class="node-chip"><img src="assets/icons/group_box.png" alt="">Group</span>
     </div>
   </div>
-  <p class="marquee-caption">A few of the 37 node types you can drop onto the canvas.</p>
+  <p class="marquee-caption">A few of the 44 node types you can drop onto the canvas.</p>
 </div>
 
 <!-- ============ FEATURES ============ -->
@@ -213,7 +230,7 @@
       <div class="feature-card reveal">
         <div class="feature-icon"><img src="assets/icons/if.png" alt=""></div>
         <h3>Branching &amp; Loops</h3>
-        <p>If/Else branches and repeat loops let your flows make decisions and handle lists.</p>
+        <p>If/Else, If Exists, multi-way Switch, loops with exit conditions, and For Each over every element that matches a selector — scraping a whole product list is one loop.</p>
       </div>
 
       <div class="feature-card reveal">
@@ -229,9 +246,27 @@
       </div>
 
       <div class="feature-card reveal">
-        <div class="feature-icon"><img src="assets/icons/set_variable.png" alt=""></div>
-        <h3>Variables &amp; CSV Export</h3>
-        <p>Capture values as you go, reuse them anywhere in the flow and export everything to CSV.</p>
+        <div class="feature-icon"><img src="assets/icons/export_excel.png" alt=""></div>
+        <h3>Excel &amp; CSV Export</h3>
+        <p>Capture values as you go, reuse them anywhere in the flow, and build up a real Excel (.xlsx) or CSV file row by row as your loop runs.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/transform.png" alt=""></div>
+        <h3>Clean &amp; Transform Data</h3>
+        <p>Scraped text is messy. Trim it, change case, extract the number out of "1.234,50 €", replace with regex, or reformat dates — one node, no code.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/code.png" alt=""></div>
+        <h3>Run JavaScript</h3>
+        <p>The escape hatch for everything else: run a JS snippet on the page and save what it returns into a variable — read attributes, count elements, compute anything.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/secrets.png" alt=""></div>
+        <h3>Encrypted Secrets</h3>
+        <p>Keep passwords and API keys encrypted on your machine and reference them as [secret:name] — share a flow file without ever leaking a credential.</p>
       </div>
 
       <div class="feature-card reveal">
@@ -248,8 +283,8 @@
 
       <div class="feature-card reveal">
         <div class="feature-icon"><img src="assets/icons/calendar.png" alt=""></div>
-        <h3>Scheduler</h3>
-        <p>Run a saved flow automatically at a set time — even while Portal17 Studio is closed.</p>
+        <h3>Parameterized Scheduler</h3>
+        <p>Run a saved flow automatically at a set time — even while Portal17 Studio is closed. Override a flow's constants per task, so the same flow runs at 8:00 for Madrid and 9:00 for Barcelona.</p>
       </div>
 
     </div>
@@ -502,7 +537,17 @@
 
       <div class="faq-item reveal">
         <button class="faq-q">Can a flow run without the app open? <span class="chev">▾</span></button>
-        <div class="faq-a"><div class="faq-a-inner">Yes. Use the built-in Scheduler to register a real Windows Scheduled Task, or trigger any saved flow from the command line in unattended mode — no window needed.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Use the built-in Scheduler to register a real Windows Scheduled Task, or trigger any saved flow from the command line in unattended mode — no window needed. Each scheduled task can even override the flow's constants, so one flow can run several times a day with different parameters.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">Where do my passwords and API keys live? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">In the encrypted Secrets vault, stored only on your machine — never inside the flow file. Your flow just references them as [secret:name], so you can share or back up a .portal file without leaking a single credential. Everything stays local; nothing is sent to any cloud.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">Can it export what it collects to Excel? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. The Export Excel node writes a real .xlsx file (and Export CSV covers plain CSV). Put it inside a loop and it builds the spreadsheet up one row per pass — headers are written automatically, and the Transform node cleans messy scraped values (prices, dates, spaces) before they land in a cell.</div></div>
       </div>
 
       <div class="faq-item reveal">
