@@ -229,9 +229,8 @@ const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').mat
     { x: 0.815, y: 0.42, label: 'Split',   color: '#3f9d9d' },
     { x: 0.915, y: 0.17, label: 'Export CSV',  color: '#5f7fd0' },
   ];
-  // The last pair is a decorative branch — the runner only walks the chain.
   const EDGES = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7]];
-  const CHAIN = 6;
+  const CHAIN = EDGES.length;
 
   const STEP_MS = 900;      // time the runner spends on one wire
   const REST_MS = 1400;     // pause before the flow starts over
