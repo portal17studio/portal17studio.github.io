@@ -204,10 +204,24 @@ const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').mat
    between them, and the whole graph drifts with the pointer.
 
    Decorative, so: hidden from assistive tech, skipped entirely when motion
-   is reduced, and paused when it scrolls out of view or the tab is hidden. */
+   is reduced, and paused when it scrolls out of view or the tab is hidden.
+
+   Also skipped below the same 880px breakpoint where the CSS already drops
+   .hero back to its natural (short, content-driven) height instead of the
+   640px desktop minimum. The node positions are fractions of that box,
+   spread out with margins on both sides of the centered headline column —
+   on a narrow phone screen there IS no side margin (the text spans nearly
+   the full width), so avoid() keeps finding the ONLY free spot is a thin
+   strip right above the content and stacks every node there instead of
+   spreading them out — exactly the "all nodes appear at the top" bug.
+   Below that width the decoration has no room to make its point, and
+   running its per-frame canvas draws (shadowBlur is one of the priciest
+   Canvas2D operations) the whole time it's still even partly in view is
+   also real work competing with scroll compositing on exactly the phones
+   most likely to feel it -- skipping it here is a straight two-for-one. */
 (() => {
   const hero = document.querySelector('.hero');
-  if (!hero || REDUCED_MOTION) return;
+  if (!hero || REDUCED_MOTION || window.innerWidth <= 880) return;
 
   const canvas = document.createElement('canvas');
   canvas.className = 'hero-canvas';
