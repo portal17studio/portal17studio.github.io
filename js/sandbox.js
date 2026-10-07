@@ -134,7 +134,12 @@ document.getElementById('resetSandbox')?.addEventListener('click', () => locatio
      which is what made scrolling this page fight back. */
   function revealChip(link) {
     if (!strip || !link || strip.scrollWidth <= strip.clientWidth) return;
-    const target = link.offsetLeft - (strip.clientWidth - link.offsetWidth) / 2;
+    // Position of the chip INSIDE the strip. link.offsetLeft can't be used:
+    // the strip isn't the chip's offsetParent, so it also counted the page
+    // margin and on wide screens scrolled the strip even for chip #1.
+    const target = link === links[0] ? 0
+      : strip.scrollLeft + (link.getBoundingClientRect().left - strip.getBoundingClientRect().left)
+        - (strip.clientWidth - link.offsetWidth) / 2;
     const max = strip.scrollWidth - strip.clientWidth;
     strip.scrollTo({
       left: Math.max(0, Math.min(max, target)),
@@ -142,7 +147,12 @@ document.getElementById('resetSandbox')?.addEventListener('click', () => locatio
     });
   }
 
+  const atTop = () => (document.scrollingElement || document.documentElement).scrollTop <= 4;
+
   const io = new IntersectionObserver((observed) => {
+    // At the very top #1 always wins, even if a short first section lets
+    // #2 reach the detection band.
+    if (atTop()) { checkAtTop(); return; }
     observed.forEach(entry => {
       if (!entry.isIntersecting) return;
       const match = entries.find(e => e.section === entry.target);
@@ -162,7 +172,7 @@ document.getElementById('resetSandbox')?.addEventListener('click', () => locatio
   let topCheckQueued = false;
   function checkAtTop() {
     topCheckQueued = false;
-    if ((document.scrollingElement || document.documentElement).scrollTop > 4) return;
+    if (!atTop()) return;
     const first = entries[0];
     if (!first) return;
     links.forEach(l => l.classList.toggle('current', l === first.link));
@@ -174,6 +184,9 @@ document.getElementById('resetSandbox')?.addEventListener('click', () => locatio
     requestAnimationFrame(checkAtTop);
   }, { passive: true });
   checkAtTop(); // por si la página se carga ya en el tope (recarga, enlace directo)
+  // Fonts and images change the chips' widths after the first check.
+  window.addEventListener('load', checkAtTop);
+  window.addEventListener('resize', checkAtTop);
 })();
 
 /* ---------------- generic form "submit" feedback ---------------- */
