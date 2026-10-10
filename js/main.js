@@ -816,3 +816,124 @@ const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').mat
   runBtn.addEventListener('click', runFlow);
   resetBtn.addEventListener('click', resetAll);
 })();
+
+/* ---------------- recorder demo ----------------
+   A cursor works through a web page and a Windows program; each action
+   "records" the next node of the list on the right. Loops while the demo
+   is on screen. Without this script (or with reduced motion) the finished
+   flow is simply shown. */
+(() => {
+  const demo = document.getElementById('recDemo');
+  if (!demo || REDUCED_MOTION) return;
+  const stage = document.getElementById('recStage');
+  const cursor = document.getElementById('recCursor');
+  const keys = document.getElementById('recKeys');
+  const count = document.getElementById('recCount');
+  const nodes = Array.from(demo.querySelectorAll('.rec-node'));
+  const $ = (k) => stage.querySelector('[data-rec="' + k + '"]');
+  const web = stage.querySelector('.rec-web'), app = stage.querySelector('.rec-app');
+  const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+  let running = false, visible = false, runId = 0;
+
+  function moveTo(el, dx = 0.5, dy = 0.5) {
+    const s = stage.getBoundingClientRect(), r = el.getBoundingClientRect();
+    const x = r.left - s.left + r.width * dx, y = r.top - s.top + r.height * dy;
+    cursor.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+  }
+  async function click() {
+    cursor.classList.remove('click'); void cursor.offsetWidth; cursor.classList.add('click');
+    await sleep(260);
+  }
+  function showKeys(text) {
+    keys.textContent = text; keys.classList.add('show');
+  }
+  function hideKeys() { keys.classList.remove('show'); }
+  async function type(el, text, id) {
+    const t = el.querySelector('.rec-text');
+    for (const ch of text) {
+      if (id !== runId) return;
+      t.textContent += ch;
+      await sleep(70 + Math.random() * 60);
+    }
+  }
+  let n = 0;
+  function record() {
+    const node = nodes[n++];
+    if (!node) return;
+    nodes.forEach(x => x.classList.remove('fresh'));
+    node.classList.add('in', 'fresh');
+    count.textContent = n;
+  }
+  function focusWin(w) {
+    web.classList.toggle('focus', w === web);
+    app.classList.toggle('focus', w === app);
+  }
+  function reset() {
+    n = 0; count.textContent = '0';
+    nodes.forEach(x => x.classList.remove('in', 'fresh'));
+    stage.querySelectorAll('.rec-input .rec-text').forEach(t => t.textContent = '');
+    stage.querySelectorAll('.active').forEach(e => e.classList.remove('active'));
+    $('result').classList.remove('show');
+    $('orderid').classList.remove('selected');
+    $('combo').querySelector('.rec-text').textContent = 'Normal';
+    $('check').classList.remove('on');
+    hideKeys(); focusWin(null);
+  }
+
+  async function play(id) {
+    const alive = () => id === runId && visible;
+    reset();
+    await sleep(500); if (!alive()) return;
+    // --- web page ---
+    focusWin(web);
+    moveTo($('search'), 0.2); await sleep(800); await click(); if (!alive()) return;
+    $('search').classList.add('active'); record(); await sleep(250);
+    await type($('search'), 'ORD-1042', id); if (!alive()) return;
+    record(); await sleep(300);
+    showKeys('Enter'); await sleep(450); hideKeys();
+    $('search').classList.remove('active'); $('result').classList.add('show'); record();
+    await sleep(700); if (!alive()) return;
+    moveTo($('orderid'), 0.9); await sleep(800);
+    $('orderid').classList.add('selected'); await sleep(300);
+    showKeys('Ctrl+C'); await sleep(500); hideKeys(); record();
+    await sleep(500); if (!alive()) return;
+    // --- Windows program ---
+    focusWin(app);
+    moveTo($('appfield'), 0.2); await sleep(850); await click(); if (!alive()) return;
+    $('appfield').classList.add('active'); record(); await sleep(300);
+    showKeys('Ctrl+V'); await sleep(350);
+    $('appfield').querySelector('.rec-text').textContent = 'ORD-1042'; hideKeys(); await sleep(300);
+    $('appfield').classList.remove('active'); record(); await sleep(450); if (!alive()) return;
+    moveTo($('combo'), 0.8); await sleep(800); await click();
+    $('combo').classList.add('active'); await sleep(350);
+    $('combo').querySelector('.rec-text').textContent = 'High'; await sleep(250);
+    $('combo').classList.remove('active'); record(); await sleep(450); if (!alive()) return;
+    moveTo($('check'), 0.1); await sleep(750); await click();
+    $('check').classList.add('on'); record(); await sleep(450); if (!alive()) return;
+    moveTo($('save'), 0.5); await sleep(800); await click();
+    $('save').classList.add('pressed'); await sleep(160); $('save').classList.remove('pressed');
+    record(); focusWin(null);
+    await sleep(3200);
+  }
+
+  async function loop() {
+    if (running) return;
+    running = true;
+    demo.classList.add('animating');
+    while (visible) {
+      const id = ++runId;
+      await play(id);
+      if (id !== runId) break;
+    }
+    running = false;
+  }
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => {
+      visible = e.isIntersecting;
+      if (visible) loop(); else runId++;
+    }, { threshold: 0.15 }).observe(demo);
+  } else {
+    visible = true; loop();
+  }
+})();

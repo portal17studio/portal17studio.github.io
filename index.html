@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal17 Studio — Visual Browser Automation Software for Windows (No-Code)</title>
-<meta name="description" content="Portal17 Studio is visual browser automation software for Windows: build web automation flows by dragging nodes or recording your clicks — no coding required. Automate repetitive browser tasks, fill forms, extract data, and run flows on a schedule or from the command line. Available on the Microsoft Store.">
-<meta name="keywords" content="browser automation, web automation, automate browser, RPA software, no-code automation, task automation software, automatizar navegador, automatización web, record and replay browser, Windows automation tool">
+<title>Portal17 Studio — No-Code Automation for the Browser and Windows Apps</title>
+<meta name="description" content="Portal17 Studio is no-code automation software for Windows: record what you do in the browser and in any Windows program, or build flows by dragging nodes. Fill forms, move data between web and desktop apps, extract data, and run flows on a schedule or from the command line. Available on the Microsoft Store.">
+<meta name="keywords" content="browser automation, desktop automation, Windows app automation, RPA software, no-code automation, task automation software, record and replay, desktop recorder, automatizar navegador, automatizar Windows, automatización web, Windows automation tool">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0a0b12">
 <link rel="canonical" href="https://portal17studio.com/">
@@ -14,13 +14,13 @@
 <meta property="og:site_name" content="Portal17 Studio">
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://portal17studio.com/">
-<meta property="og:title" content="Portal17 Studio — Visual Browser Automation Software for Windows">
-<meta property="og:description" content="Build web automation flows by dragging nodes or recording your clicks. No coding required. Click once, run forever.">
+<meta property="og:title" content="Portal17 Studio — No-Code Automation for the Browser and Windows Apps">
+<meta property="og:description" content="Record what you do in the browser and in any Windows program — or drag nodes onto a canvas. No coding required. Click once, run forever.">
 <meta property="og:image" content="https://portal17studio.com/assets/icon.png">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Portal17 Studio — Visual Browser Automation Software for Windows">
-<meta name="twitter:description" content="Build web automation flows by dragging nodes or recording your clicks. No coding required. Click once, run forever.">
+<meta name="twitter:title" content="Portal17 Studio — No-Code Automation for the Browser and Windows Apps">
+<meta name="twitter:description" content="Record what you do in the browser and in any Windows program — or drag nodes onto a canvas. No coding required. Click once, run forever.">
 <meta name="twitter:image" content="https://portal17studio.com/assets/icon.png">
 
 <link rel="icon" href="favicon.ico">
@@ -33,7 +33,7 @@
   "name": "Portal17 Studio",
   "url": "https://portal17studio.com/",
   "image": "https://portal17studio.com/assets/icon.png",
-  "description": "Visual, node-based browser automation software for Windows. Build automation flows by dragging nodes or recording your actions — no coding required. Automate repetitive browser tasks, fill forms, extract data, and run flows on a schedule.",
+  "description": "Visual, node-based automation software for Windows. Record what you do in the browser and in any Windows program, or build flows by dragging nodes — no coding required. Fill forms, move data between web pages and desktop apps, extract data, and run flows on a schedule.",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Windows 10, Windows 11",
   "inLanguage": ["en", "es", "fr", "de", "it", "pt", "ru", "zh", "ja"],
@@ -93,7 +93,12 @@
     {
       "@type": "Question",
       "name": "Can it automate programs other than the browser?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Launch Program, Wait for Window, Click on Screen, Desktop Drag, Send Keys, Read Text on Screen (OCR), and Desktop Screenshot nodes can start, find, click into, drag within, type into, read text from, and capture images of any desktop window — not just the browser." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Windows app nodes work with the real controls of any program — click buttons, type into fields, tick boxes, choose from lists and read text — so they keep working when the window moves. For programs that draw their own interface you can point at a picture of the button instead. Launch Program, Wait for Window, Desktop Drag, Send Keys and Read Text on Screen (OCR) cover the rest." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the recorder work outside the browser?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. In Settings → Recording, tick Browser, Windows programs, or both. Clicks, typing, check boxes, drop-downs, lists, drag and drop, the Enter key and shortcuts are all recorded as nodes — even copy and paste, which becomes a variable so the flow copies the live value on every run. Passwords you type are stored encrypted, never in the flow." }
     }
   ]
 }
@@ -110,6 +115,7 @@
       <span>Portal17 Studio</span>
     </a>
     <ul class="nav-links">
+      <li><a href="#recorder">Recorder</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#playground">Playground</a></li>
       <li><a href="sandbox">Sandbox</a></li>
@@ -131,6 +137,7 @@
     </div>
   </div>
   <nav class="mobile-menu" id="mobileMenu">
+    <a href="#recorder">Recorder</a>
     <a href="#features">Features</a>
     <a href="#playground">Playground</a>
     <a href="sandbox">Sandbox</a>
@@ -150,19 +157,19 @@
     <h1>Portal17 <span class="accent-text">Studio</span></h1>
     <p class="hero-tagline">Click Once. Run Forever.</p>
     <p class="hero-sub">
-      Build browser automations by dragging nodes onto a canvas — or just click through
-      the task once and let Portal17 Studio record it for you. Then run it once, on a
-      schedule, or headless forever. No coding required.
+      Do the task once — in the browser, in Excel, in any Windows program — and
+      Portal17 Studio records every step as a flow. Or drag nodes onto a canvas.
+      Then run it once, on a schedule, or unattended forever. No coding required.
     </p>
     <div class="hero-ctas">
       <a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Get it on the Microsoft Store</a>
-      <a href="#playground" class="btn btn-ghost btn-lg">▶ Try the Playground</a>
+      <a href="#recorder" class="btn btn-ghost btn-lg">▶ See the recorder</a>
     </div>
     <div class="hero-meta">
       <span>🪟 Windows 10 / 11</span>
       <span>🌐 <b data-count="9">9</b> languages</span>
-      <span>🧩 <b data-count="46">46</b> node types</span>
-      <span>🖥️ Browser + desktop apps</span>
+      <span>🧩 <b data-count="53">53</b> node types</span>
+      <span>🎥 Records browser + Windows apps</span>
       <span>🔒 100% local — nothing in the cloud</span>
     </div>
   </div>
@@ -178,6 +185,7 @@
       <span class="node-chip"><img src="assets/icons/navigate.png" alt="">Navigate</span>
       <span class="node-chip"><img src="assets/icons/click.png" alt="">Click</span>
       <span class="node-chip"><img src="assets/icons/type.png" alt="">Type</span>
+      <span class="node-chip"><img src="assets/icons/press_key.png" alt="">Press Key</span>
       <span class="node-chip"><img src="assets/icons/select.png" alt="">Select Option</span>
       <span class="node-chip"><img src="assets/icons/if.png" alt="">If / Else</span>
       <span class="node-chip"><img src="assets/icons/switch.png" alt="">Switch</span>
@@ -193,7 +201,15 @@
       <span class="node-chip"><img src="assets/icons/email.png" alt="">Send Email</span>
       <span class="node-chip"><img src="assets/icons/zip.png" alt="">Zip Folder</span>
       <span class="node-chip"><img src="assets/icons/calendar.png" alt="">Scheduler</span>
+      <span class="node-chip chip-app"><img src="assets/icons/app_click.png" alt="">Click in App</span>
+      <span class="node-chip chip-app"><img src="assets/icons/app_type.png" alt="">Type in App</span>
+      <span class="node-chip chip-app"><img src="assets/icons/app_check.png" alt="">Check in App</span>
+      <span class="node-chip chip-app"><img src="assets/icons/app_select.png" alt="">Select in App</span>
+      <span class="node-chip chip-app"><img src="assets/icons/app_read.png" alt="">Read Text from App</span>
+      <span class="node-chip chip-app"><img src="assets/icons/app_wait.png" alt="">Wait for App Element</span>
       <span class="node-chip"><img src="assets/icons/launch_program.png" alt="">Launch Program</span>
+      <span class="node-chip"><img src="assets/icons/drag_drop_desktop.png" alt="">Desktop Drag</span>
+      <span class="node-chip"><img src="assets/icons/screen_ocr.png" alt="">Read Text on Screen</span>
       <span class="node-chip"><img src="assets/icons/wait_window.png" alt="">Wait for Window</span>
       <span class="node-chip"><img src="assets/icons/screen_click.png" alt="">Click on Screen</span>
       <span class="node-chip"><img src="assets/icons/send_keys.png" alt="">Send Keys</span>
@@ -202,8 +218,97 @@
       <span class="node-chip"><img src="assets/icons/group_box.png" alt="">Group</span>
     </div>
   </div>
-  <p class="marquee-caption">A few of the 46 node types you can drop onto the canvas.</p>
+  <p class="marquee-caption">A few of the 53 node types you can drop onto the canvas — for web pages and Windows programs alike.</p>
 </div>
+
+<!-- ============ RECORDER ============
+     Animated demo of the recorder: a cursor works across a web page and a
+     Windows program, and every action pops into the recorded flow on the
+     right. Driven by js/main.js (recorder demo); without JS it shows the
+     finished flow. -->
+<section id="recorder" class="recorder flow-step">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">New · Records your whole PC <span class="demo-tag">Live demo</span></span>
+      <h2>Do it once. Anywhere. It becomes a flow.</h2>
+      <p>
+        Hit Record and just work — on a web page, in Excel, in your company's desktop app.
+        Every click, every field you fill, every box you tick turns into a step you can run forever.
+        Even copy and paste: copy an order number on a website, paste it into a Windows program,
+        and the flow copies the <em>live</em> value on every run.
+      </p>
+    </div>
+
+    <div class="rec-demo reveal" id="recDemo">
+      <div class="rec-stage" id="recStage">
+        <div class="rec-toggles" aria-hidden="true">
+          <span class="rec-badge"><i></i>REC</span>
+          <span class="rec-toggle on">✓ Browser</span>
+          <span class="rec-toggle on">✓ Windows programs</span>
+        </div>
+
+        <!-- web page -->
+        <div class="rec-win rec-web">
+          <div class="rec-win-bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="rec-url">🔒 shop.test/orders</span></div>
+          <div class="rec-win-body">
+            <div class="rec-field-label">Search orders</div>
+            <div class="rec-input" data-rec="search"><span class="rec-text"></span><span class="rec-caret"></span></div>
+            <div class="rec-result" data-rec="result">
+              <span class="rec-result-tag">Order</span>
+              <span class="rec-result-id" data-rec="orderid">ORD-1042</span>
+              <span class="rec-result-name">Ana Ruiz · 3 items</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Windows program -->
+        <div class="rec-win rec-app">
+          <div class="rec-win-bar app"><span class="rec-app-icon">▦</span><span class="rec-url">Invoicing — Desktop app</span><span class="rec-winbtns">— ▢ ✕</span></div>
+          <div class="rec-win-body">
+            <div class="rec-field-label">Order number</div>
+            <div class="rec-input" data-rec="appfield"><span class="rec-text"></span><span class="rec-caret"></span></div>
+            <div class="rec-row">
+              <div>
+                <div class="rec-field-label">Priority</div>
+                <div class="rec-combo" data-rec="combo"><span class="rec-text">Normal</span><span class="rec-chevron">▾</span></div>
+              </div>
+              <label class="rec-check" data-rec="check"><span class="rec-box"></span>Urgent</label>
+            </div>
+            <div class="rec-actions"><span class="rec-btn" data-rec="save">Save invoice</span></div>
+          </div>
+        </div>
+
+        <div class="rec-cursor" id="recCursor" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 2l15 9.5-6.6 1.6 4 7.2-2.9 1.6-4-7.2L4 19z"/></svg>
+          <span class="rec-keys" id="recKeys"></span>
+        </div>
+      </div>
+
+      <div class="rec-flow">
+        <div class="rec-flow-head">Recorded flow <span id="recCount">0</span></div>
+        <ol class="rec-list" id="recList">
+          <li class="rec-node web"><img src="assets/icons/click.png" alt=""><b>Click</b><small>search box</small></li>
+          <li class="rec-node web"><img src="assets/icons/type.png" alt=""><b>Type</b><small>"ORD-1042"</small></li>
+          <li class="rec-node web"><img src="assets/icons/press_key.png" alt=""><b>Press Key</b><small>Enter</small></li>
+          <li class="rec-node web"><img src="assets/icons/extract_part.png" alt=""><b>Extract Text</b><small>Ctrl+C → [copy_1]</small></li>
+          <li class="rec-node app"><img src="assets/icons/app_click.png" alt=""><b>Click in App</b><small>Order number</small></li>
+          <li class="rec-node app"><img src="assets/icons/app_type.png" alt=""><b>Type in App</b><small>Ctrl+V → [copy_1]</small></li>
+          <li class="rec-node app"><img src="assets/icons/app_select.png" alt=""><b>Select in App</b><small>Priority = High</small></li>
+          <li class="rec-node app"><img src="assets/icons/app_check.png" alt=""><b>Check in App</b><small>Urgent ✓</small></li>
+          <li class="rec-node app"><img src="assets/icons/app_click.png" alt=""><b>Click in App</b><small>Save invoice</small></li>
+        </ol>
+        <div class="rec-legend"><span class="web">Web page</span><span class="app">Windows program</span></div>
+      </div>
+    </div>
+
+    <div class="rec-points">
+      <div class="rec-point reveal"><b>Real controls, not pixels</b><span>Buttons, fields, boxes and lists are found by what they are, so steps keep working when a window moves or resizes.</span></div>
+      <div class="rec-point reveal"><b>Built to survive change</b><span>Each recorded step keeps a backup and a snapshot of what you clicked — titles change, buttons move, the flow still finds its way.</span></div>
+      <div class="rec-point reveal"><b>Nothing gets lost</b><span>Mouse and keyboard are captured on their own and processed in order, even in heavy apps. Type as fast as you like.</span></div>
+      <div class="rec-point reveal"><b>Passwords stay secret</b><span>Passwords you type while recording go straight to the encrypted vault. The flow only says <code>[secret:…]</code>.</span></div>
+    </div>
+  </div>
+</section>
 
 <!-- ============ FEATURES ============ -->
 <section id="features">
@@ -223,8 +328,8 @@
 
       <div class="feature-card reveal">
         <div class="feature-icon"><img src="assets/icons/click.png" alt=""></div>
-        <h3>Smart Recorder</h3>
-        <p>Click through your task once and Portal17 Studio writes the flow for you automatically.</p>
+        <h3>Records Browser + Windows</h3>
+        <p>Do the task once — on a website or in any Windows program — and every click, field, box, list, drag and shortcut becomes a node. Pick what to record in Settings.</p>
       </div>
 
       <div class="feature-card reveal">
@@ -266,13 +371,31 @@
       <div class="feature-card reveal">
         <div class="feature-icon"><img src="assets/icons/secrets.png" alt=""></div>
         <h3>Encrypted Secrets</h3>
-        <p>Keep passwords and API keys encrypted on your machine and reference them as [secret:name] — share a flow file without ever leaking a credential.</p>
+        <p>Keep passwords and API keys encrypted on your machine and reference them as [secret:name]. Passwords typed while recording land here automatically — share a flow without leaking a credential.</p>
       </div>
 
       <div class="feature-card reveal">
-        <div class="feature-icon"><img src="assets/icons/launch_program.png" alt=""></div>
-        <h3>Beyond the Browser</h3>
-        <p>Launch a desktop program, wait for its window, click a screen position, and send it keystrokes.</p>
+        <div class="feature-icon"><img src="assets/icons/app_click.png" alt=""></div>
+        <h3>Any Windows Program</h3>
+        <p>Click buttons, fill fields, tick boxes, choose from lists and read text in any desktop app by its real controls. App draws its own interface? Point at a picture of the button instead.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/press_key.png" alt=""></div>
+        <h3>Keys &amp; Shortcuts</h3>
+        <p>Enter to search, Esc to close, arrows through suggestions, Ctrl+S to save — recorded as you press them and replayed even in the invisible browser.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/extract_part.png" alt=""></div>
+        <h3>Copy &amp; Paste That Follows the Data</h3>
+        <p>Ctrl+C and Ctrl+V while recording become a variable, so every run copies the current value — from a web page into a desktop app, or the other way round.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/webhook.png" alt=""></div>
+        <h3>Webhook Triggers</h3>
+        <p>Start a flow from any other app with a web call. Signed calls from Stripe, GitHub, Slack and standard webhooks are verified, and replays are rejected.</p>
       </div>
 
       <div class="feature-card reveal">
@@ -303,7 +426,7 @@
       <div class="how-step reveal">
         <div class="how-num">1</div>
         <h3>Build or Record</h3>
-        <p>Drag nodes onto the canvas, or click through the task once and let the recorder do the typing.</p>
+        <p>Drag nodes onto the canvas, or do the task once — in the browser or any Windows program — and let the recorder write it.</p>
       </div>
       <div class="how-wire"></div>
       <div class="how-step reveal">
@@ -572,7 +695,12 @@
 
       <div class="faq-item reveal">
         <button class="faq-q">Can it automate programs other than the browser? <span class="chev">▾</span></button>
-        <div class="faq-a"><div class="faq-a-inner">Yes. The Launch Program, Wait for Window, Click on Screen, Desktop Drag, Send Keys, Read Text on Screen (OCR), and Desktop Screenshot nodes can start, find, click into, drag within, type into, read text from, and capture images of any desktop window — not just the browser.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Yes. The Windows app nodes work with the real controls of any program — click buttons, type into fields, tick boxes, choose from lists and read text — so they keep working when the window moves. For programs that draw their own interface you can point at a picture of the button instead. Launch Program, Wait for Window, Desktop Drag, Send Keys and Read Text on Screen (OCR) cover the rest.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">Does the recorder work outside the browser? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. In Settings → Recording, tick Browser, Windows programs, or both. Clicks, typing, check boxes, drop-downs, lists, drag and drop, the Enter key and shortcuts are all recorded as nodes — even copy and paste, which becomes a variable so the flow copies the live value on every run. Passwords you type are stored encrypted, never in the flow.</div></div>
       </div>
 
     </div>
@@ -597,7 +725,7 @@
         </a>
         <a href="#playground" class="btn btn-ghost btn-lg">▶ Try the Playground first</a>
       </div>
-      <p class="download-req">Requires Windows 10 or later · Uses Microsoft Edge, Google Chrome, or the browser built into the app</p>
+      <p class="download-req">Requires Windows 10 or later · Automates Microsoft Edge, Google Chrome, the browser built into the app, and your Windows programs</p>
     </div>
   </div>
 </section>
