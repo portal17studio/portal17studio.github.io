@@ -153,18 +153,6 @@
 })();
 
 (() => {
-  const image = document.getElementById('workspaceImage');
-  const screenshots = {
-    orders: ['assets/studio-workflow.png', 'Actual Portal17 Studio interface with a workflow that loops through web articles, extracts text and images, makes decisions, exports to Excel and sends an email', 'A real workflow: read web articles, branch on conditions, export to Excel, extract images and send an email.', 1920, 1032],
-    logic: ['assets/studio-flow-control.png', 'Actual Portal17 Studio flow-control canvas with Start, Wait, Restart Browser, Navigate, If, If Exists, Switch, Loop, Break and For Each nodes connected through their ports', 'Outputs define the route: green and red for conditions and loops, separate ports for Switch cases, and cables joining the next input.', 1276, 835]
-  };
-  document.querySelectorAll('[data-workspace]').forEach(button => button.addEventListener('click', () => {
-    const [src, alt, caption, width, height] = screenshots[button.dataset.workspace];
-    document.querySelectorAll('[data-workspace]').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
-    image.src = src; image.alt = alt; image.width = width; image.height = height;
-    document.getElementById('workspaceCaption').textContent = caption;
-    document.getElementById('workspaceFull').href = src;
-  }));
   document.querySelectorAll('[data-data-tab]').forEach(button => button.addEventListener('click', () => {
     document.querySelectorAll('[data-data-tab]').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
     document.querySelectorAll('[data-data-panel]').forEach(panel => panel.hidden = panel.dataset.dataPanel !== button.dataset.dataTab);

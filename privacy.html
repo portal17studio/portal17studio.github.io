@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy — Portal17 Studio</title>
-<meta name="description" content="Portal17 Studio runs entirely on your computer. Read what data the app, the Microsoft Store, and this website do (and don't) collect.">
+<meta name="description" content="How Portal17 Studio handles local workflows, recordings, encrypted secrets, triggers, connected services and diagnostic reports, and how this website handles data.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#17181b">
 <link rel="canonical" href="https://portal17studio.com/privacy">
@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Portal17 Studio">
 <meta property="og:url" content="https://portal17studio.com/privacy">
 <meta property="og:title" content="Privacy Policy — Portal17 Studio">
-<meta property="og:description" content="Portal17 Studio runs entirely on your computer. Read what data the app, the Microsoft Store, and this website do (and don't) collect.">
+<meta property="og:description" content="How Portal17 Studio handles local workflows, recordings, encrypted secrets, triggers, connected services and diagnostic reports, and how this website handles data.">
 <meta property="og:image" content="https://portal17studio.com/assets/icon.png">
 
 <link rel="icon" href="favicon.ico">
@@ -40,7 +40,7 @@
   <div class="container">
     <span class="eyebrow">Legal</span>
     <h1>Privacy Policy</h1>
-    <p class="subtitle">Last updated: July 11, 2026</p>
+    <p class="subtitle">Last updated: <time datetime="2026-10-12">October 12, 2026</time></p>
   </div>
 </div>
 
@@ -48,38 +48,89 @@
   <div class="container">
 
     <div class="summary-card reveal">
-      <p>🔒 The short version: Portal17 Studio runs entirely on your own computer. We don't collect, transmit, sell, or have any access to your flows, variables, database credentials, or browsing activity.</p>
+      <p><strong>Your workflows run on your computer.</strong> Portal17 Studio does not automatically upload your projects, secrets or diagnostic reports to us, and does not send us usage analytics. Actions and triggers you configure can exchange data with websites, databases, email providers, APIs and optional Cloudflare tunnels. This policy explains those connections and the information saved locally.</p>
     </div>
 
-    <div class="prose reveal">
-      <p>This Privacy Policy explains what happens to your data when you use the Portal17 Studio desktop application, download it from the Microsoft Store, or visit this website (portal17studio.com). It applies to Portal17 Studio and every language the app is available in.</p>
-
-      <h2>The Desktop App</h2>
-      <p>Portal17 Studio is a local, offline-first application. Everything it does happens on your own machine:</p>
+    <nav class="privacy-contents" aria-label="Privacy policy sections">
+      <span>On this page</span>
       <ul>
-        <li><strong>Flows and projects (.portal files):</strong> saved wherever you choose on your computer. We never receive a copy of them.</li>
-        <li><strong>Variables and constants:</strong> stored locally in the app's Data Store and, if you use the CSV export feature, written only to a file you pick yourself.</li>
-        <li><strong>Browser automation:</strong> the app uses Microsoft Playwright to drive a real browser on your machine. Whatever pages your flows visit, and whatever you type into them, is between you and those websites — Portal17 Studio does not log, monitor, or transmit that activity to us.</li>
-        <li><strong>Database connections (SQL Query node):</strong> any connection string, credentials, or query results you configure stay local to your computer. We never see or receive them.</li>
-        <li><strong>Scheduler:</strong> scheduled flows are registered as ordinary tasks in the Windows Task Scheduler, on your machine. Nothing about your schedule is sent anywhere.</li>
-        <li><strong>No telemetry:</strong> the app does not include analytics or usage-tracking SDKs of any kind.</li>
+        <li><a href="#local-data">Local data</a></li>
+        <li><a href="#recording">Recording</a></li>
+        <li><a href="#secrets">Secrets</a></li>
+        <li><a href="#connections">Connections</a></li>
+        <li><a href="#triggers">Triggers</a></li>
+        <li><a href="#reports">Diagnostics</a></li>
+        <li><a href="#your-control">Your control</a></li>
+        <li><a href="#website">This website</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
+    </nav>
 
-      <h2>Microsoft Store</h2>
-      <p>If you install Portal17 Studio from the Microsoft Store, Microsoft itself collects standard account, purchase, and diagnostic information as part of operating the Store and Windows — the same as for any other Store app. That data is handled entirely under Microsoft's own privacy commitments, not ours. See the <a href="https://privacy.microsoft.com/en-us/privacystatement" target="_blank" rel="noopener">Microsoft Privacy Statement</a> for details.</p>
+    <div class="prose reveal">
+      <p>This policy covers the Portal17 Studio desktop application and portal17studio.com, including its demos and practice sandbox. It applies to all interface languages. “We” refers to the publisher of Portal17 Studio. Services you connect to, the Microsoft Store and this website's hosting provider also have their own privacy policies.</p>
 
-      <h2>This Website</h2>
-      <p>portal17studio.com is a static site with no backend, no accounts, and no cookies. The interactive Playground and Sandbox pages run entirely in your browser for demonstration purposes — nothing you click, type, or "submit" there is transmitted to us or stored anywhere; it resets the moment you reload the page.</p>
+      <h2 id="local-data">Data stored on your computer</h2>
+      <p>Portal17 Studio processes your automation locally. It does not require a Portal17 account or provide a publisher-operated cloud service for storing your projects.</p>
+      <ul>
+        <li><strong>Projects and data:</strong> <code>.portal</code> files contain the nodes, connections, properties, constants and tables you save. Variables are used during execution; exports, downloaded files and other outputs are written to the locations you configure. These files can contain personal or business information handled by your flows.</li>
+        <li><strong>Preferences and history:</strong> the app saves settings, workspace and open-file paths, trigger configuration and execution history in <code>.portal17studio</code> within your Windows user folder. Logs and history can include flow names, paths, timestamps, status and error details.</li>
+        <li><strong>Browser sessions:</strong> automation uses a browser on your computer. If you enable the persistent browser profile, cookies, sign-in sessions and website storage can remain in the local <code>browser-profile</code> folder between runs.</li>
+      </ul>
+      <p>Ordinary project files, settings, exports and logs are not all encrypted by the app. A folder synchronized by OneDrive, another backup service or a shared drive is subject to the access and synchronization settings of that service.</p>
 
-      <h2>Children's Privacy</h2>
-      <p>Portal17 Studio is not directed at children under 13, and we do not knowingly collect personal information from anyone. Since neither the app nor this website collects personal data in the first place, this is naturally the case regardless of the user's age.</p>
+      <h2 id="recording">Browser and Windows recording</h2>
+      <p>When you start recording, the enabled browser and/or Windows recorder captures interactions to create editable nodes. Depending on the action, this can include clicks, keystrokes, entered text, selected values, page addresses, application and window names, and control selectors.</p>
+      <p>Desktop recording can read clipboard content used in recorded copy-and-paste actions and save control image snapshots for selector repair. Screen capture, image extraction and OCR actions also process the content you target. Text and images saved in a flow or output file may contain information visible in the source application.</p>
+      <p>Recognized password fields are stored through the local Secrets feature and referenced by name in recorded nodes. Other sensitive text, unrecognized password fields and visible information in images are not guaranteed to be concealed. Review recorded flows and images before sharing them.</p>
 
-      <h2>Changes to This Policy</h2>
-      <p>If this policy ever changes — for example, if a future version of the app adds an optional online feature — we'll update this page and revise the "Last updated" date above.</p>
+      <h2 id="secrets">Passwords, tokens and Secrets</h2>
+      <p>The Secrets feature stores values in the local <code>secrets.dat</code> file using AES-GCM encryption with a randomly generated 256-bit key. The key is stored separately in <code>secret.key</code> in the same user configuration folder. A flow can use a reference such as <code>[secret:name]</code> instead of embedding the value in its <code>.portal</code> file.</p>
+      <p>The app also uses this store for credentials such as IMAP passwords, webhook signing secrets and Cloudflare tunnel tokens. Secrets are resolved locally when the configured action or service needs them; authentication can then send them to the service you selected.</p>
+      <p>This storage protects secret values from appearing directly in shared flows when references are used. Someone with access to both the encrypted file and its key can decrypt them. Credentials entered directly into ordinary node properties, constants or exported files may be saved as plain text. Protect access to your Windows account and configuration folder.</p>
 
-      <h2>Contact Us</h2>
-      <!-- TODO: replace with your real contact email -->
-      <p>Questions about this policy? Email us at <a href="mailto:contact@portal17studio.com">contact@portal17studio.com</a>.</p>
+      <h2 id="connections">Connections you configure</h2>
+      <p>Local execution does not mean that every workflow is offline. Your nodes can send and receive information through the connections you choose:</p>
+      <ul>
+        <li><strong>Websites and APIs:</strong> navigation, form entry, file uploads and API calls exchange the addresses, request data, files and authentication information needed for those actions with the destination service.</li>
+        <li><strong>Databases:</strong> SQL actions connect to the database you specify and exchange authentication information, queries and results. That database may be on your computer, on your network or hosted remotely.</li>
+        <li><strong>Email:</strong> Send Email uses your configured SMTP provider. Sender and recipient addresses, message contents and attachments are sent to that provider and the intended recipients.</li>
+        <li><strong>Files and other programs:</strong> flows can read, write or launch resources you select, including shared folders and programs with their own network connections.</li>
+      </ul>
+      <p>These exchanges are part of your automation, not uploads to the Portal17 Studio publisher. The destination's privacy policy, access rules and the connection settings you choose apply to that information.</p>
+
+      <h2 id="triggers">Triggers, webhooks and background execution</h2>
+      <p>Enabled triggers can monitor the folders, files, applications or email accounts you configure. Outlook and IMAP email triggers can make sender and recipient details, subjects, message bodies and attachment information available to your flow. Trigger settings, checkpoints and execution logs are kept locally.</p>
+      <p>The webhook listener accepts requests on your own computer. It listens on the local loopback address by default; allowing access from your network is optional. Incoming request bodies, headers and query values can be passed to the flow and handled by its actions.</p>
+      <p>If you enable a public Cloudflare tunnel, webhook requests travel through Cloudflare to your local listener. This can involve request content, IP addresses and traffic metadata. Both temporary tunnels and tunnels configured through your own Cloudflare account use that provider's infrastructure. See the <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare Privacy Policy</a>.</p>
+      <p>Optional background execution can keep enabled triggers running after the editor closes. Scheduled flows run through Windows Task Scheduler. Their data handling is the same as when you run the flow manually; closing the editor alone does not disable a background service or a scheduled task.</p>
+
+      <h2 id="reports">Diagnostics, screenshots and error reports</h2>
+      <p>The app does not automatically send diagnostic or failure reports to us. Diagnostic tests and execution logs are generated on your computer. A saved diagnostic report can include the app and Windows versions, display and keyboard information, test results and error details. The web connectivity diagnostic makes a request to this website's sandbox.</p>
+      <p>When an action exhausts its failure handling, the app can create a local report in <code>.portal17studio/reports</code>. It can contain a screenshot of the full desktop across your monitors, a screenshot of the current automated browser page, the page address and title, node properties, error information and details of visible Windows controls.</p>
+      <p>Some recognized credential property names are masked in the text report. Screenshots and arbitrary text are not guaranteed to be redacted and may include personal or confidential information. Review and redact reports before sending them to anyone. Reports reach us only if you choose to share them, for example with a support request.</p>
+
+      <h2 id="your-control">Retention and your control</h2>
+      <p>Your saved projects and outputs remain in their chosen locations until you remove them. The local execution history retains up to 300 entries and can be cleared in the app. The app attempts to retain the 20 most recent failure-report folders; separately saved diagnostic reports and other logs may remain until you delete them.</p>
+      <p>You can stop recording, disable triggers and public tunnels, turn off background execution, remove scheduled Windows tasks, clear execution history, remove saved Secrets, and delete projects, exports, browser-profile data and reports. Close the app and stop its background service before removing its configuration files. Removing a secret's key also prevents the app from decrypting the remaining secrets.</p>
+      <p>Uninstalling the app should not be relied on to delete every project, output or user configuration file. Deleting local files does not remove copies in backups or data already delivered to a website, database, email recipient or other service; those copies follow the destination's rules.</p>
+
+      <h2 id="store">Microsoft Store and Windows</h2>
+      <p>Microsoft handles Store installation, purchases, updates and related account information. Windows and the Store may also process diagnostic information according to your Microsoft settings. This is separate from the app's local workflow data. See the <a href="https://www.microsoft.com/en-us/privacy/privacystatement" target="_blank" rel="noopener">Microsoft Privacy Statement</a>.</p>
+
+      <h2 id="website">This website, demos and sandbox</h2>
+      <p>portal17studio.com is a static website hosted on GitHub Pages. It has no Portal17 user accounts, advertising trackers or analytics scripts, and its own pages do not set cookies. GitHub logs visitors' IP addresses for security purposes when serving GitHub Pages sites, including visits without a GitHub account. See <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection" target="_blank" rel="noopener">GitHub Pages data collection</a> and the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub Privacy Statement</a>.</p>
+      <p>The interactive demos, playground and practice sandbox run in your browser. Their practice forms do not submit entered values or selected files to a server; their state resets when you reload. Use sample information for practice. Loading pages, images and the demo video still makes normal requests to the hosting provider.</p>
+      <p>Links to the Microsoft Store, connected services or other external websites take you to services governed by their own policies.</p>
+
+      <h2 id="contact">Contact and information you share</h2>
+      <p>If you email us, we receive your email address, message and any attachments you choose to send. We use that information to respond to your request and handle the related support or privacy issue. Do not include passwords, API keys or unredacted confidential reports.</p>
+      <p>For questions about this policy or information you have shared directly with us, contact <a href="mailto:contact@portal17studio.com">contact@portal17studio.com</a>. You can use the same address to request access to, correction of or deletion of information you have sent us, subject to applicable obligations. We cannot delete data held independently by services you connect to.</p>
+
+      <h2 id="children">Children's privacy</h2>
+      <p>Portal17 Studio is not directed at children under 13. We do not knowingly solicit personal information from children. If you believe a child has sent us personal information, contact us so we can address it.</p>
+
+      <h2 id="policy-changes">Changes to this policy</h2>
+      <p>We will update this page when the app's data handling or the website's services change and revise the date above. The current policy describes local storage and the optional connected features available in Portal17 Studio.</p>
     </div>
 
   </div>

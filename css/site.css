@@ -155,6 +155,13 @@ body { background: var(--bg); }
 .privacy-page .prose ul { padding-left: 22px; }
 .privacy-page .prose li { margin-bottom: 15px; }
 .privacy-page .prose a { color: #becaff; overflow-wrap: anywhere; }
+.privacy-page .prose code { font-size: .9em; color: #d2d9f3; overflow-wrap: anywhere; }
+.privacy-page .prose h2 { scroll-margin-top: 100px; }
+.privacy-contents { margin: 0 0 35px; padding-block: 22px; border-block: 1px solid #343743; }
+.privacy-contents > span { display: block; margin-bottom: 14px; color: #a4aec9; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; }
+.privacy-contents ul { display: flex; flex-wrap: wrap; gap: 4px 25px; margin: 0; padding: 0; list-style: none; }
+.privacy-contents a { display: inline-flex; align-items: center; min-height: 44px; color: #d2d9f3; font-size: 13px; text-decoration: underline; text-underline-offset: 4px; }
+.privacy-contents a:hover { color: #f5841b; }
 .sandbox-page .sandbox-hero { padding: 62px 0 45px; }
 .sandbox-page .sandbox-hero h1 { font-size: clamp(36px,4vw,48px); letter-spacing: -.035em; }
 .sandbox-page .sandbox-hero h1 em { color: #f5841b; background: none; -webkit-text-fill-color: #f5841b; animation: none; }
@@ -245,8 +252,6 @@ body { background: var(--bg); }
   .page-jumps a { font-size: 11px; }
   .detail-page #studio { padding-top: 38px; }
   .detail-page .section-header p { font-size: 14px; }
-  .detail-page .workspace-tabs { gap: 7px; }
-  .detail-page .workspace-tabs button { font-size: 10px; padding: 9px 11px; }
   .detail-page .studio-frame-bar { font-size: 9px; }
   .detail-page .studio-frame figcaption { font-size: 11px; }
   .detail-page .data-store-tabs { overflow-x: auto; }
