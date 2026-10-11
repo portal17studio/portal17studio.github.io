@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal17 Studio Features — Browser, Desktop, Data &amp; Scheduling</title>
+<meta name="description" content="Explore Portal17 Studio automation features: browser and Windows recording, Excel, APIs, databases, encrypted secrets and scheduled workflows.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#17181b">
+<link rel="canonical" href="https://portal17studio.com/features.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Portal17 Studio">
+<meta property="og:url" content="https://portal17studio.com/features.html">
+<meta property="og:title" content="Portal17 Studio Features — Browser, Desktop, Data &amp; Scheduling">
+<meta property="og:description" content="Explore Portal17 Studio automation features: browser and Windows recording, Excel, APIs, databases, encrypted secrets and scheduled workflows.">
+<meta property="og:image" content="https://portal17studio.com/assets/icon.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Portal17 Studio Features — Browser, Desktop, Data &amp; Scheduling">
+<meta name="twitter:description" content="Explore Portal17 Studio automation features: browser and Windows recording, Excel, APIs, databases, encrypted secrets and scheduled workflows.">
+<meta name="twitter:image" content="https://portal17studio.com/assets/icon.png">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="css/refresh.css">
+<link rel="stylesheet" href="css/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need to know how to code?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Flows are built by dragging nodes onto a canvas and connecting them, or by recording yourself performing the task once. No scripting required." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which browsers does it support?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Microsoft Edge, Google Chrome, or the browser built into the app — pick your channel from Settings." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a flow run without the app open?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Use the built-in Scheduler to register a real Windows Scheduled Task, or trigger any saved flow from the command line in unattended mode — no window needed. Each scheduled task can even override the flow's constants, so one flow can run several times a day with different parameters." }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do my passwords and API keys live?",
+      "acceptedAnswer": { "@type": "Answer", "text": "In the encrypted Secrets vault, stored only on your machine — never inside the flow file. Your flow just references them as [secret:name], so you can share or back up a .portal file without leaking a single credential. The vault stays on your computer. Your flows can connect to the websites and services you choose." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can it export what it collects to Excel?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Export Excel node writes a real .xlsx file (and Export CSV covers plain CSV). Put it inside a loop and it builds the spreadsheet up one row per pass — headers are written automatically, and the Transform node cleans messy scraped values (prices, dates, spaces) before they land in a cell." }
+    },
+    {
+      "@type": "Question",
+      "name": "What languages is the interface available in?",
+      "acceptedAnswer": { "@type": "Answer", "text": "English, Spanish, French, German, Italian, Portuguese, Russian, Chinese, and Japanese — switch anytime from Settings." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I pull data from a database mid-flow?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, with the SQL Query node. PostgreSQL and SQL Server drivers are bundled — pick one and connect. MySQL, Oracle, or any other JDBC database works too: just drop that database's driver file into the app's drivers folder (one click opens it for you) and connect." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can it call APIs and use JSON data?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, with the Call API node. Make GET, POST, PUT, PATCH or DELETE requests, send headers and a body, then pull fields straight out of the JSON response into variables by their path. It's the reliable way to get data when a site blocks scraping." }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if the browser fails to start?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Portal17 Studio shows a clear warning instead of crashing, and disables Run/Record until you fix the browser settings and restart the engine — with one click, right from the toolbar." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can it automate programs other than the browser?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Windows app nodes work with the real controls of any program — click buttons, type into fields, tick boxes, choose from lists and read text — so they keep working when the window moves. For programs that draw their own interface you can point at a picture of the button instead. Launch Program, Wait for Window, Desktop Drag, Send Keys and Read Text on Screen (OCR) cover the rest." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the recorder work outside the browser?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. In Settings → Recording, tick Browser, Windows programs, or both. Clicks, typing, check boxes, drop-downs, lists, drag and drop, the Enter key and shortcuts are all recorded as nodes — even copy and paste, which becomes a variable so the flow copies the live value on every run. Passwords you type are stored encrypted, never in the flow." }
+    }
+  ]
+}
+</script>
+</head>
+<body class="site-v2 detail-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand" aria-label="Portal17 Studio home"><img src="assets/icon.png" alt="" width="36" height="36"><span>Portal17 Studio</span></a>
+    <nav class="desktop-nav" aria-label="Main navigation"><ul class="nav-links"><li><a href="studio.html">Product</a></li><li><a href="features.html" aria-current="page">Features</a></li><li><a href="demos.html">Demos</a></li><li><a href="sandbox.html">Sandbox</a></li></ul></nav>
+    <div class="nav-cta"><a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" class="btn btn-primary nav-download" target="_blank" rel="noopener">Get the app <span aria-hidden="true">↗</span></a><button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle menu" aria-controls="mobileMenu" aria-expanded="false"><span aria-hidden="true">☰</span></button></div>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation"><a href="studio.html">Product</a><a href="features.html" aria-current="page">Features</a><a href="demos.html">Demos</a><a href="sandbox.html">Sandbox</a><a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" class="mobile-download" target="_blank" rel="noopener">Get Portal17 Studio ↗</a></nav>
+</header>
+<main id="main">
+<div class="page-intro"><div class="container"><a class="breadcrumb" href="index.html">Home <span aria-hidden="true">/</span></a><span class="eyebrow">FEATURES &amp; ANSWERS</span><h1>Built for the whole process.</h1><p>The actions, data tools and execution controls that turn a repetitive task into a reusable workflow.</p><nav class="page-jumps" aria-label="Feature sections"><a href="#features">Capabilities</a><a href="#how">Running &amp; scheduling</a><a href="#faq">Questions &amp; answers</a></nav></div></div><section id="features">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">THE ACTIONS PANEL</span>
+      <h2>The right building block.<br>For every part of the job.</h2>
+      <p>Explore the tools behind the canvas: record and build, work with data, or manage execution.</p>
+    </div>
+    <div class="feature-filters" role="group" aria-label="Filter product capabilities"><button type="button" data-filter="all" aria-pressed="true">All capabilities</button><button type="button" data-filter="build" aria-pressed="false">Build &amp; record</button><button type="button" data-filter="data" aria-pressed="false">Work with data</button><button type="button" data-filter="run" aria-pressed="false">Run &amp; manage</button></div>
+    <div class="feature-grid">
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/split.png" alt=""></div>
+        <h3>Visual Flow Builder</h3>
+        <p>Drag nodes onto a canvas and wire them together — no coding, just building blocks.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/click.png" alt=""></div>
+        <h3>Records Browser + Windows</h3>
+        <p>Do the task once — on a website or in any Windows program — and every click, field, box, list, drag and shortcut becomes a node. Pick what to record in Settings.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/if.png" alt=""></div>
+        <h3>Branching &amp; Loops</h3>
+        <p>If/Else, If Exists, multi-way Switch, loops with exit conditions, and For Each over every element that matches a selector — scraping a whole product list is one loop.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/sql_query.png" alt=""></div>
+        <h3>Database Queries</h3>
+        <p>Pull data straight from PostgreSQL or SQL Server out of the box — or plug in the driver for MySQL, Oracle, or any other JDBC database yourself.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/api.png" alt=""></div>
+        <h3>Call REST APIs</h3>
+        <p>Fetch data from any HTTP API and pull fields straight out of the JSON into variables — the dependable way to get data when a site blocks scraping.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/export_excel.png" alt=""></div>
+        <h3>Excel &amp; CSV Export</h3>
+        <p>Capture values as you go, reuse them anywhere in the flow, and build up a real Excel (.xlsx) or CSV file row by row as your loop runs.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/transform.png" alt=""></div>
+        <h3>Clean &amp; Transform Data</h3>
+        <p>Scraped text is messy. Trim it, change case, extract the number out of "1.234,50 €", replace with regex, or reformat dates — one node, no code.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/code.png" alt=""></div>
+        <h3>Run JavaScript</h3>
+        <p>The escape hatch for everything else: run a JS snippet on the page and save what it returns into a variable — read attributes, count elements, compute anything.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/secrets.png" alt=""></div>
+        <h3>Encrypted Secrets</h3>
+        <p>Keep passwords and API keys encrypted on your machine and reference them as [secret:name]. Passwords typed while recording land here automatically — share a flow without leaking a credential.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/app_click.png" alt=""></div>
+        <h3>Windows App Automation</h3>
+        <p>Click buttons, fill fields, tick boxes, choose from lists and read text in any desktop app by its real controls. App draws its own interface? Point at a picture of the button instead.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/press_key.png" alt=""></div>
+        <h3>Keys &amp; Shortcuts</h3>
+        <p>Enter to search, Esc to close, arrows through suggestions, Ctrl+S to save — recorded as you press them and replayed even in the invisible browser.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/extract_part.png" alt=""></div>
+        <h3>Copy &amp; Paste That Follows the Data</h3>
+        <p>Ctrl+C and Ctrl+V while recording become a variable, so every run copies the current value — from a web page into a desktop app, or the other way round.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/webhook.png" alt=""></div>
+        <h3>Triggers</h3>
+        <p>Start a flow by itself when a file lands in a folder, an email arrives in Outlook or any IMAP inbox, you press a shortcut or Windows starts, or from any other app with a signed webhook. They can keep running in the background with the app closed.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/loop.png" alt=""></div>
+        <h3>Recordings That Clean Themselves</h3>
+        <p>Stop recording and the flow is tidied for you: clicks before typing disappear, waits and keys are merged, and filling the same form three times becomes one loop over a table.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/wait_element.png" alt=""></div>
+        <h3>Waits That Know What to Wait For</h3>
+        <p>Wait until a message, a button or a table appears — or until a “loading…” goes away — instead of guessing seconds.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/upload_file.png" alt=""></div>
+        <h3>File Uploads</h3>
+        <p>Hand one or several files to any “Choose file” on a page, hidden inputs included, with no Windows dialog to get stuck on.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/desktop_screenshot.png" alt=""></div>
+        <h3>Know Why a Step Failed</h3>
+        <p>Every failure leaves a report: a screenshot, the step and its settings, what was being looked for and what the window actually had. A built-in check tests automation on your PC in one click.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/pause.png" alt=""></div>
+        <h3>Debug Without Starting Over</h3>
+        <p>Breakpoints, step-by-step runs and “Run from here” on any node: try the end of a long flow on what is already open, without repeating the start.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/group_box.png" alt=""></div>
+        <h3>Groups &amp; Sticky Notes</h3>
+        <p>Organize big flows into collapsible groups and leave yourself sticky notes as you go.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon"><img src="assets/icons/calendar.png" alt=""></div>
+        <h3>Parameterized Scheduler</h3>
+        <p>Run a saved flow automatically at a set time — even while Portal17 Studio is closed. Override a flow's constants per task, so the same flow runs at 8:00 for Madrid and 9:00 for Barcelona.</p>
+      </div>
+
+      <div class="feature-card reveal" data-category="build">
+        <div class="feature-icon"><img src="assets/icons/group_box.png" alt=""></div>
+        <h3>Reusable Subflows</h3>
+        <p>Use Call Portal to run another saved flow. Pass different constants to the same process instead of rebuilding it for every project.</p>
+      </div>
+      <div class="feature-card reveal" data-category="data">
+        <div class="feature-icon"><img src="assets/icons/set_variable.png" alt=""></div>
+        <h3>Tables &amp; Parameters</h3>
+        <p>Keep constants, live variables and tables together in the Data Store. Fill a form once for each row and reuse values across your flow.</p>
+      </div>
+      <div class="feature-card reveal" data-category="run">
+        <div class="feature-icon"><img src="assets/icons/if.png" alt=""></div>
+        <h3>Recovery on Your Terms</h3>
+        <p>Choose what happens when a node fails: retry, stop, continue, or follow a separate error path. Build recovery into the process.</p>
+      </div>
+      <div class="feature-card reveal" data-category="run">
+        <div class="feature-icon"><img src="assets/icons/wait_element.png" alt=""></div>
+        <h3>Automatic Selector Repair</h3>
+        <p>Recorded steps keep fallback information about the element you picked, helping the flow find it again when the interface changes.</p>
+      </div>
+
+    </div>
+  </div>
+</section><section id="how" class="tight flow-step">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">EXECUTION, WITH VISIBILITY</span>
+      <h2>Run the flow.<br>Stay in control.</h2>
+      <p>Inspect a single step, recover from an error, or let a saved process run on a schedule.</p>
+    </div>
+    <div class="how-steps">
+      <div class="how-step reveal">
+        <div class="how-num"><img src="assets/icons/start.png" alt=""></div>
+        <span class="mode-label">INTERACTIVE RUNS</span><h3>Play. Pause. Inspect.</h3>
+        <p>Run with F5, step through nodes with F7 and pause with F9. Set breakpoints or run from a selected node to test a part of the process.</p><div class="shortcut-row"><kbd>F5</kbd> Run <kbd>F7</kbd> Step <kbd>F9</kbd> Pause</div>
+      </div>
+      <div class="how-wire"></div>
+      <div class="how-step reveal">
+        <div class="how-num"><img src="assets/icons/desktop_screenshot.png" alt=""></div>
+        <span class="mode-label">WHEN SOMETHING FAILS</span><h3>Recover with a plan.</h3>
+        <p>Retry, stop, continue, or follow an error output. Review the screenshot, node settings and diagnostic details saved when a step fails.</p><div class="error-route"><span>Step</span><i>↗</i><span>Retry / error path</span></div>
+      </div>
+      <div class="how-wire"></div>
+      <div class="how-step reveal">
+        <div class="how-num"><img src="assets/icons/calendar.png" alt=""></div>
+        <span class="mode-label">SCHEDULES &amp; EVENTS</span><h3>Start when it matters.</h3>
+        <p>Use Windows Scheduled Tasks or the command line for unattended runs. Trigger flows from folders, incoming email, shortcuts, Windows startup or webhooks.</p><div class="schedule-summary"><span class="status-dot"></span> One saved flow · Different parameters</div>
+      </div>
+    </div>
+  </div>
+</section><section id="faq" class="tight flow-step">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">A FEW THINGS TO KNOW</span>
+      <h2>Before you build<br>your first flow.</h2><p>The essentials about browsers, desktop apps, data and unattended execution.</p>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item reveal">
+        <button class="faq-q">Do I need to know how to code? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">No. Flows are built by dragging nodes onto a canvas and connecting them, or by recording yourself performing the task once. No scripting required.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">Which browsers does it support? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Microsoft Edge, Google Chrome, or the browser built into the app — pick your channel from Settings.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">Can a flow run without the app open? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Use the built-in Scheduler to register a real Windows Scheduled Task, or trigger any saved flow from the command line in unattended mode — no window needed. Each scheduled task can even override the flow's constants, so one flow can run several times a day with different parameters. Triggers (folders, email, shortcuts, webhooks) can also run in the background, starting with Windows, while the app is closed.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">Where do my passwords and API keys live? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">In the encrypted Secrets vault, stored only on your machine — never inside the flow file. Your flow just references them as [secret:name], so you can share or back up a .portal file without leaking a single credential. The vault stays on your computer. Your flows can connect to the websites and services you choose.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">Can it export what it collects to Excel? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. The Export Excel node writes a real .xlsx file (and Export CSV covers plain CSV). Put it inside a loop and it builds the spreadsheet up one row per pass — headers are written automatically, and the Transform node cleans messy scraped values (prices, dates, spaces) before they land in a cell.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">What languages is the interface available in? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">English, Spanish, French, German, Italian, Portuguese, Russian, Chinese, and Japanese — switch anytime from Settings.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">Can I pull data from a database mid-flow? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes, with the SQL Query node. PostgreSQL and SQL Server drivers are bundled — pick one and connect. MySQL, Oracle, or any other JDBC database works too: just drop that database's driver file into the app's drivers folder (one click opens it for you) and connect.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">Can it call APIs and use JSON data? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes, with the Call API node. Make GET, POST, PUT, PATCH or DELETE requests, send headers and a body, then pull fields straight out of the JSON response into variables by their path. It's the reliable way to get data when a site blocks scraping.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">What happens if the browser fails to start? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Portal17 Studio shows a clear warning instead of crashing, and disables Run/Record until you fix the browser settings and restart the engine — with one click, right from the toolbar.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">Can it automate programs other than the browser? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. The Windows app nodes work with the real controls of any program — click buttons, type into fields, tick boxes, choose from lists and read text — so they keep working when the window moves. For programs that draw their own interface you can point at a picture of the button instead. Launch Program, Wait for Window, Desktop Drag, Send Keys and Read Text on Screen (OCR) cover the rest.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">What happens when a step fails? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">You choose per node: retry, stop the flow, carry on, or follow a separate error path. Each failure also saves a report with a screenshot, the node's settings and what the program window contained at that moment, so you can see why without running it again. Help → Check tests automation on your computer and tells you in plain words what works.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">Does the recorder work outside the browser? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. In Settings → Recording, tick Browser, Windows programs, or both. Clicks, typing, check boxes, drop-downs, lists, drag and drop, the Enter key and shortcuts are all recorded as nodes — even copy and paste, which becomes a variable so the flow copies the live value on every run. Passwords you type are stored encrypted, never in the flow.</div></div>
+      </div>
+
+    </div>
+  </div>
+</section><section class="closing-cta"><div class="container"><div><span class="eyebrow">PORTAL17 STUDIO FOR WINDOWS</span><h2>Ready to make work flow?</h2><p>Build your first automation with Portal17 Studio.</p></div><a class="btn btn-primary btn-lg" href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" target="_blank" rel="noopener">Get it on Microsoft Store <span aria-hidden="true">↗</span></a></div></section>
+</main>
+<footer class="site-footer">
+  <div class="container"><div class="footer-grid">
+    <div class="footer-identity"><a class="footer-brand" href="index.html"><img src="assets/icon.png" width="32" height="32" alt=""><span>Portal17 Studio</span></a><p>Visual automation for your browser<br>and your Windows apps.</p><span class="footer-tagline">Click Once. Run Forever.</span></div>
+    <div class="footer-column"><h3>Product</h3><a href="studio.html">Explore the studio</a><a href="features.html">All features</a><a href="features.html#faq">Questions &amp; answers</a><a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" target="_blank" rel="noopener">Microsoft Store ↗</a></div>
+    <div class="footer-column"><h3>Resources</h3><a href="demos.html">Demos &amp; video</a><a href="sandbox.html">Practice sandbox</a><a href="privacy.html">Privacy policy</a><span>Windows 10 &amp; 11</span></div>
+  </div><div class="footer-bottom"><span>© <span id="year">2026</span> Portal17 Studio</span><span>Built for the work you repeat.</span></div></div>
+</footer>
+<script src="js/main.js"></script>
+<script src="js/refresh.js"></script>
+</body>
+</html>

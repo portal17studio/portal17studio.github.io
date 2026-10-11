@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal17 Studio Demos — Watch, Try &amp; Practice</title>
+<meta name="description" content="Watch a real Portal17 Studio recording, run an interactive workflow simulation, and practice with the automation sandbox.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#17181b">
+<link rel="canonical" href="https://portal17studio.com/demos.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Portal17 Studio">
+<meta property="og:url" content="https://portal17studio.com/demos.html">
+<meta property="og:title" content="Portal17 Studio Demos — Watch, Try &amp; Practice">
+<meta property="og:description" content="Watch a real Portal17 Studio recording, run an interactive workflow simulation, and practice with the automation sandbox.">
+<meta property="og:image" content="https://portal17studio.com/assets/icon.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Portal17 Studio Demos — Watch, Try &amp; Practice">
+<meta name="twitter:description" content="Watch a real Portal17 Studio recording, run an interactive workflow simulation, and practice with the automation sandbox.">
+<meta name="twitter:image" content="https://portal17studio.com/assets/icon.png">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="css/refresh.css">
+<link rel="stylesheet" href="css/site.css">
+
+</head>
+<body class="site-v2 detail-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand" aria-label="Portal17 Studio home"><img src="assets/icon.png" alt="" width="36" height="36"><span>Portal17 Studio</span></a>
+    <nav class="desktop-nav" aria-label="Main navigation"><ul class="nav-links"><li><a href="studio.html">Product</a></li><li><a href="features.html">Features</a></li><li><a href="demos.html" aria-current="page">Demos</a></li><li><a href="sandbox.html">Sandbox</a></li></ul></nav>
+    <div class="nav-cta"><a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" class="btn btn-primary nav-download" target="_blank" rel="noopener">Get the app <span aria-hidden="true">↗</span></a><button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle menu" aria-controls="mobileMenu" aria-expanded="false"><span aria-hidden="true">☰</span></button></div>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation"><a href="studio.html">Product</a><a href="features.html">Features</a><a href="demos.html" aria-current="page">Demos</a><a href="sandbox.html">Sandbox</a><a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" class="mobile-download" target="_blank" rel="noopener">Get Portal17 Studio ↗</a></nav>
+</header>
+<main id="main">
+<div class="page-intro"><div class="container"><a class="breadcrumb" href="index.html">Home <span aria-hidden="true">/</span></a><span class="eyebrow">SEE IT IN ACTION</span><h1>Meet your next workflow.</h1><p>Watch a real recording, follow an interactive example, then try building your own flow in the practice sandbox.</p><nav class="page-jumps" aria-label="Demo sections"><a href="#recording">Watch the recording</a><a href="#playground">Try the interactive demo</a><a href="sandbox.html">Open the sandbox ↗</a></nav></div></div><section id="recording" class="recording-section"><div class="container"><div class="section-header"><span class="eyebrow">A REAL PRODUCT RECORDING</span><h2>From a task to a flow.<br>In under a minute.</h2><p>Watch Portal17 Studio record actions on the practice website and turn them into editable nodes.</p></div><div class="recording-player"><video controls playsinline preload="metadata" poster="assets/studio-workflow.png" aria-label="Portal17 Studio recording demonstration"><source src="assets/videos/demo-recording.mp4" type="video/mp4"><p>Your browser cannot play this video. <a href="assets/videos/demo-recording.mp4">Open the recording</a>.</p></video></div><p class="recording-caption">57 seconds · Actual Portal17 Studio recording</p></div></section><section id="playground" class="playground flow-step">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">INTERACTIVE DEMO <span class="demo-tag">Interactive simulation</span></span>
+      <h2>Watch the connections<br>become actions.</h2>
+      <p>
+        Run this example to follow a form-filling process: navigate, type, choose an option,
+        submit and read the ticket number into a variable. The canvas, form and log update
+        together. This is a browser simulation; no message is sent.
+      </p>
+    </div>
+
+    <!-- flow canvas: its own full-width row so the node chain always has
+         room to breathe and never needs horizontal scrolling -->
+    <div class="pg-panel reveal">
+      <div class="pg-panel-header"><span><img src="assets/icon.png" alt=""> Contact form.portal</span><small>SIMULATED EXECUTION</small></div>
+
+      <div class="pg-canvas" id="pgCanvas">
+        <div class="pg-node" data-step="1" style="--node-color:#186b18;">
+          <div class="pg-node-chip"><img src="assets/icons/start.png" alt=""><span class="pg-node-label">Start</span></div>
+          <div class="pg-node-tip">Every flow begins here. Nothing runs before this node fires.</div>
+        </div>
+        <div class="pg-wire"></div>
+        <div class="pg-node" data-step="2" style="--node-color:#18569e;">
+          <div class="pg-node-chip"><img src="assets/icons/navigate.png" alt=""><span class="pg-node-label">Navigate</span></div>
+          <div class="pg-node-tip">Opens the target page — here, our demo contact form.</div>
+        </div>
+        <div class="pg-wire"></div>
+        <div class="pg-node" data-step="3" style="--node-color:#8c3527;">
+          <div class="pg-node-chip"><img src="assets/icons/type.png" alt=""><span class="pg-node-label">Type</span></div>
+          <div class="pg-node-tip">Types the name into the Name field, one character at a time.</div>
+        </div>
+        <div class="pg-wire"></div>
+        <div class="pg-node" data-step="4" style="--node-color:#8c3527;">
+          <div class="pg-node-chip"><img src="assets/icons/type.png" alt=""><span class="pg-node-label">Type</span></div>
+          <div class="pg-node-tip">Types the email address into the Email field.</div>
+        </div>
+        <div class="pg-wire"></div>
+        <div class="pg-node" data-step="5" style="--node-color:#8c5f23;">
+          <div class="pg-node-chip"><img src="assets/icons/select.png" alt=""><span class="pg-node-label">Select</span></div>
+          <div class="pg-node-tip">Picks an option from the Topic dropdown.</div>
+        </div>
+        <div class="pg-wire"></div>
+        <div class="pg-node" data-step="6" style="--node-color:#8c3527;">
+          <div class="pg-node-chip"><img src="assets/icons/type.png" alt=""><span class="pg-node-label">Type</span></div>
+          <div class="pg-node-tip">Types the message into the Message field.</div>
+        </div>
+        <div class="pg-wire"></div>
+        <div class="pg-node" data-step="7" style="--node-color:#994717;">
+          <div class="pg-node-chip"><img src="assets/icons/click.png" alt=""><span class="pg-node-label">Click</span></div>
+          <div class="pg-node-tip">Presses the Send message button and waits for the page to respond.</div>
+        </div>
+        <div class="pg-wire"></div>
+        <div class="pg-node" data-step="8" style="--node-color:#713585;">
+          <div class="pg-node-chip"><img src="assets/icons/extract_part.png" alt=""><span class="pg-node-label">Extract Text</span></div>
+          <div class="pg-node-tip">Reads the ticket number from the confirmation into a variable — one Extract Text node captures one value.</div>
+        </div>
+      </div>
+
+      <div class="pg-controls">
+        <button id="pgRun" class="btn btn-primary">▶ Run Flow</button>
+        <button id="pgReset" class="btn btn-ghost">↺ Reset</button>
+      </div>
+
+      <ol class="pg-steps-explainer">
+        <li><strong>Start</strong> — the flow is launched.</li>
+        <li><strong>Navigate</strong> — the demo page below opens.</li>
+        <li><strong>Type / Select</strong> — name, email, topic and message get filled in, field by field.</li>
+        <li><strong>Click</strong> — the Send button is pressed like a real visitor would.</li>
+        <li><strong>Extract Text</strong> — reads one value into a variable: the ticket number from the confirmation.</li>
+      </ol>
+    </div>
+
+    <!-- fake browser + console, side by side below the flow -->
+    <div class="pg-demo-row">
+      <div class="reveal">
+        <div class="fake-browser">
+          <div class="fake-browser-bar">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <div class="fake-url">🔒 example-shop.test/contact</div>
+          </div>
+          <div class="fake-page">
+            <h3>Contact us</h3>
+            <label for="pgName">Name</label>
+            <input id="pgName" type="text" readonly>
+            <label for="pgEmail">Email</label>
+            <input id="pgEmail" type="text" readonly>
+            <label for="pgTopic">Topic</label>
+            <select id="pgTopic" disabled>
+              <option>General question</option>
+              <option>Support</option>
+              <option>Billing</option>
+            </select>
+            <label for="pgMessage">Message</label>
+            <textarea id="pgMessage" readonly></textarea>
+            <button id="pgSubmit" class="fake-submit" disabled>Send message</button>
+            <div id="pgConfirmation" class="pg-confirmation"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="pg-console">
+          <div class="pg-console-header"><span class="status-dot"></span> Log console <small>LIVE SIMULATION</small></div>
+          <div class="pg-console-body" id="pgConsoleBody">
+            <p class="muted">Click "Run Flow" to start…</p>
+          </div>
+        </div>
+
+        <div class="pg-vars" id="pgVars"></div>
+      </div>
+    </div>
+
+    <div class="pg-sandbox-cta reveal">
+      <p>
+        This playground is a simulation that runs entirely in your browser for illustration.
+        Want to build a real flow yourself?
+      </p>
+      <a href="sandbox.html" class="btn btn-ghost btn-lg">🧪 Open the practice sandbox ↗</a>
+    </div>
+  </div>
+</section><div class="related-page container"><div><span class="eyebrow">NOW IT’S YOUR TURN</span><h2>A safe place to build your first flow.</h2><p>Fourteen real, interactive exercises. Forms, tables, tabs, waits and more.</p></div><a class="btn btn-primary" href="sandbox.html">Open the practice sandbox →</a></div>
+</main>
+<footer class="site-footer">
+  <div class="container"><div class="footer-grid">
+    <div class="footer-identity"><a class="footer-brand" href="index.html"><img src="assets/icon.png" width="32" height="32" alt=""><span>Portal17 Studio</span></a><p>Visual automation for your browser<br>and your Windows apps.</p><span class="footer-tagline">Click Once. Run Forever.</span></div>
+    <div class="footer-column"><h3>Product</h3><a href="studio.html">Explore the studio</a><a href="features.html">All features</a><a href="features.html#faq">Questions &amp; answers</a><a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" target="_blank" rel="noopener">Microsoft Store ↗</a></div>
+    <div class="footer-column"><h3>Resources</h3><a href="demos.html">Demos &amp; video</a><a href="sandbox.html">Practice sandbox</a><a href="privacy.html">Privacy policy</a><span>Windows 10 &amp; 11</span></div>
+  </div><div class="footer-bottom"><span>© <span id="year">2026</span> Portal17 Studio</span><span>Built for the work you repeat.</span></div></div>
+</footer>
+<script src="js/main.js"></script>
+<script src="js/refresh.js"></script>
+</body>
+</html>

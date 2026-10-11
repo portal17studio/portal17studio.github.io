@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inside Portal17 Studio — Visual Editor, Recorder &amp; Data</title>
+<meta name="description" content="Explore the visual editor, browser and Windows recorder, and Data Store in Portal17 Studio.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#17181b">
+<link rel="canonical" href="https://portal17studio.com/studio.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Portal17 Studio">
+<meta property="og:url" content="https://portal17studio.com/studio.html">
+<meta property="og:title" content="Inside Portal17 Studio — Visual Editor, Recorder &amp; Data">
+<meta property="og:description" content="Explore the visual editor, browser and Windows recorder, and Data Store in Portal17 Studio.">
+<meta property="og:image" content="https://portal17studio.com/assets/icon.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Inside Portal17 Studio — Visual Editor, Recorder &amp; Data">
+<meta name="twitter:description" content="Explore the visual editor, browser and Windows recorder, and Data Store in Portal17 Studio.">
+<meta name="twitter:image" content="https://portal17studio.com/assets/icon.png">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="css/refresh.css">
+<link rel="stylesheet" href="css/site.css">
+
+</head>
+<body class="site-v2 detail-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand" aria-label="Portal17 Studio home"><img src="assets/icon.png" alt="" width="36" height="36"><span>Portal17 Studio</span></a>
+    <nav class="desktop-nav" aria-label="Main navigation"><ul class="nav-links"><li><a href="studio.html" aria-current="page">Product</a></li><li><a href="features.html">Features</a></li><li><a href="demos.html">Demos</a></li><li><a href="sandbox.html">Sandbox</a></li></ul></nav>
+    <div class="nav-cta"><a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" class="btn btn-primary nav-download" target="_blank" rel="noopener">Get the app <span aria-hidden="true">↗</span></a><button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle menu" aria-controls="mobileMenu" aria-expanded="false"><span aria-hidden="true">☰</span></button></div>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation"><a href="studio.html" aria-current="page">Product</a><a href="features.html">Features</a><a href="demos.html">Demos</a><a href="sandbox.html">Sandbox</a><a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" class="mobile-download" target="_blank" rel="noopener">Get Portal17 Studio ↗</a></nav>
+</header>
+<main id="main">
+<div class="page-intro"><div class="container"><a class="breadcrumb" href="index.html">Home <span aria-hidden="true">/</span></a><span class="eyebrow">THE PRODUCT</span><h1>Your work, on one canvas.</h1><p>Record a task. Shape the logic. Keep your data moving. Explore the three parts of Portal17 Studio that bring your process together.</p><nav class="page-jumps" aria-label="Product sections"><a href="#studio">Visual editor</a><a href="#recorder">Recorder</a><a href="#data">Data Store</a></nav></div></div><section class="studio-section" id="studio">
+  <div class="container">
+    <div class="studio-heading"><div><span class="eyebrow">INSIDE THE STUDIO</span><h2>A canvas for your process.<br>A connection for every step.</h2></div><p>Drag an action from the left. Configure its properties on the right. Join its output to the next node and follow the logic across the canvas.</p></div>
+    <div class="workspace-tabs" role="group" aria-label="Choose a real product screenshot"><button type="button" data-workspace="orders" aria-pressed="true">Excel, images &amp; email.portal</button><button type="button" data-workspace="logic" aria-pressed="false">Flow control.portal</button><a href="assets/studio-workflow.png" id="workspaceFull" target="_blank" rel="noopener">Open full-size ↗</a></div>
+    <figure class="studio-frame reveal"><div class="studio-frame-bar"><span><img src="assets/icon.png" alt=""> Portal17 Studio / Visual editor</span><span>ACTUAL PRODUCT VIEW</span></div><img id="workspaceImage" src="assets/studio-workflow.png" alt="Actual Portal17 Studio interface with a workflow that loops through web articles, extracts text and images, makes decisions, exports to Excel and sends an email" width="1920" height="1032" loading="lazy"><figcaption id="workspaceCaption">A real workflow: read web articles, branch on conditions, export to Excel, extract images and send an email.</figcaption></figure>
+    <div class="workspace-map"><div><span>01</span><h3>Choose an action</h3><p>Web, Windows, data and flow-control nodes, grouped in the Actions panel.</p></div><div><span>02</span><h3>Connect the logic</h3><p>Cyan ports join the steps. Decisions and loops have separate outputs for each path.</p></div><div><span>03</span><h3>Make it reusable</h3><p>Configure properties, store data, group nodes and call other .portal flows.</p></div></div>
+    <div class="studio-facts"><div><b>55</b><span>node types to build with</span></div><div><b>9</b><span>interface languages</span></div><div><b>.portal</b><span>portable, reusable flows</span></div><div><b>Your PC</b><span>local execution &amp; secret storage</span></div></div>
+  </div>
+</section><section id="recorder" class="recorder flow-step">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">RECORD THE WAY YOU WORK <span class="demo-tag">Illustrative demo</span></span>
+      <h2>You do the task.<br>The recorder connects the steps.</h2>
+      <p>
+        Hit Record and just work — on a web page, in Excel, in your company's desktop app.
+        Clicks, typing, check boxes and shortcuts become editable nodes.
+        Even copy and paste: copy an order number on a website, paste it into a Windows program,
+        and the flow copies the <em>live</em> value on every run.
+      </p>
+    </div>
+
+    <div class="rec-demo reveal" id="recDemo">
+      <div class="rec-stage" id="recStage">
+        <div class="rec-toggles" aria-hidden="true">
+          <span class="rec-badge"><i></i>REC</span>
+          <span class="rec-toggle on">✓ Browser</span>
+          <span class="rec-toggle on">✓ Windows programs</span>
+        </div>
+
+        <!-- web page -->
+        <div class="rec-win rec-web">
+          <div class="rec-win-bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="rec-url">🔒 shop.test/orders</span></div>
+          <div class="rec-win-body">
+            <div class="rec-field-label">Search orders</div>
+            <div class="rec-input" data-rec="search"><span class="rec-text"></span><span class="rec-caret"></span></div>
+            <div class="rec-result" data-rec="result">
+              <span class="rec-result-tag">Order</span>
+              <span class="rec-result-id" data-rec="orderid">ORD-1042</span>
+              <span class="rec-result-name">Ana Ruiz · 3 items</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Windows program -->
+        <div class="rec-win rec-app">
+          <div class="rec-win-bar app"><span class="rec-app-icon">▦</span><span class="rec-url">Invoicing — Desktop app</span><span class="rec-winbtns">— ▢ ✕</span></div>
+          <div class="rec-win-body">
+            <div class="rec-field-label">Order number</div>
+            <div class="rec-input" data-rec="appfield"><span class="rec-text"></span><span class="rec-caret"></span></div>
+            <div class="rec-row">
+              <div>
+                <div class="rec-field-label">Priority</div>
+                <div class="rec-combo" data-rec="combo"><span class="rec-text">Normal</span><span class="rec-chevron">▾</span></div>
+              </div>
+              <label class="rec-check" data-rec="check"><span class="rec-box"></span>Urgent</label>
+            </div>
+            <div class="rec-actions"><span class="rec-btn" data-rec="save">Save invoice</span></div>
+          </div>
+        </div>
+
+        <div class="rec-cursor" id="recCursor" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 2l15 9.5-6.6 1.6 4 7.2-2.9 1.6-4-7.2L4 19z"/></svg>
+          <span class="rec-keys" id="recKeys"></span>
+        </div>
+      </div>
+
+      <div class="rec-flow">
+        <div class="rec-flow-head">Recorded flow <span id="recCount">9</span></div>
+        <div class="rec-graph">
+        <ol class="rec-list" id="recList">
+          <li class="rec-node web"><img src="assets/icons/click.png" alt=""><b>Click</b><small>search box</small></li>
+          <li class="rec-node web"><img src="assets/icons/type.png" alt=""><b>Type</b><small>"ORD-1042"</small></li>
+          <li class="rec-node web"><img src="assets/icons/press_key.png" alt=""><b>Press Key</b><small>Enter</small></li>
+          <li class="rec-node web"><img src="assets/icons/extract_part.png" alt=""><b>Extract Text</b><small>Ctrl+C → [copy_1]</small></li>
+          <li class="rec-node app"><img src="assets/icons/app_click.png" alt=""><b>Click in App</b><small>Order number</small></li>
+          <li class="rec-node app"><img src="assets/icons/app_type.png" alt=""><b>Type in App</b><small>Ctrl+V → [copy_1]</small></li>
+          <li class="rec-node app"><img src="assets/icons/app_select.png" alt=""><b>Select in App</b><small>Priority = High</small></li>
+          <li class="rec-node app"><img src="assets/icons/app_check.png" alt=""><b>Check in App</b><small>Urgent ✓</small></li>
+          <li class="rec-node app"><img src="assets/icons/app_click.png" alt=""><b>Click in App</b><small>Save invoice</small></li>
+        </ol>
+        </div>
+        <div class="rec-legend"><span class="web">Web page</span><span class="app">Windows program</span></div>
+      </div>
+    </div>
+
+    <div class="rec-points">
+      <div class="rec-point reveal"><b>Real controls, not pixels</b><span>Buttons, fields, boxes and lists are found by what they are, so steps keep working when a window moves or resizes.</span></div>
+      <div class="rec-point reveal"><b>Built to survive change</b><span>Each recorded step keeps a backup and a snapshot of what you clicked — titles change, buttons move, the flow still finds its way.</span></div>
+      <div class="rec-point reveal"><b>Recorded in sequence</b><span>Mouse and keyboard are captured on their own and processed in order, even in heavy apps. Type as fast as you like.</span></div>
+      <div class="rec-point reveal"><b>Passwords stay secret</b><span>Passwords you type while recording go straight to the encrypted vault. The flow only says <code>[secret:…]</code>.</span></div>
+      <div class="rec-point reveal"><b>See what it captured</b><span>Every control you click is outlined for a moment, and a small floating panel shows the last step recorded.</span></div>
+      <div class="rec-point reveal"><b>Pause and add steps</b><span>F9 pauses and resumes. From the panel, add “wait until this appears”, “read this text” or a short wait in a click.</span></div>
+      <div class="rec-point reveal"><b>Tidied up when you stop</b><span>Extra steps are merged, repeated steps become a loop over a table of what you typed, and the nodes are laid out neatly.</span></div>
+      <div class="rec-point reveal"><b>File uploads included</b><span>When a page asks for files, you pick them in Portal17 and the flow keeps the real paths — no file dialog left waiting on replay.</span></div>
+    </div>
+  </div>
+</section><section id="data" class="data-section">
+  <div class="container data-layout">
+    <div class="data-copy"><span class="eyebrow">DATA THAT MOVES WITH THE FLOW</span><h2>Read it. Transform it.<br>Use it in the next step.</h2><p>Bring together values from a page, a desktop control, an API or a database. Keep them in the Data Store and reference them wherever the process needs them.</p><ul class="data-benefits"><li><img src="assets/icons/extract_part.png" alt=""><span><b>Read from the source</b>Extract text, read application controls, or select fields from a JSON response.</span></li><li><img src="assets/icons/transform.png" alt=""><span><b>Make values usable</b>Trim text, replace with regex, parse numbers and reformat dates.</span></li><li><img src="assets/icons/export_excel.png" alt=""><span><b>Put the result to work</b>Fill another app, write an Excel or CSV file, or send an email.</span></li></ul></div>
+    <div class="data-store-demo"><div class="editor-panel-title">Data Store <span>ILLUSTRATIVE VALUES</span></div><div class="data-tabs" role="group" aria-label="Explore the Data Store"><button type="button" data-data-tab="variables" aria-pressed="true">Live variables</button><button type="button" data-data-tab="constants" aria-pressed="false">Constants</button><button type="button" data-data-tab="tables" aria-pressed="false">Tables</button><button type="button" data-data-tab="secrets" aria-pressed="false">Secrets</button></div>
+      <div class="data-panel" data-data-panel="variables"><div class="data-table"><div class="table-labels"><span>NAME</span><span>VALUE</span></div><div><code>order_id</code><span>ORD-1042</span></div><div><code>customer</code><span>Ana Ruiz</span></div><div><code>total</code><span>249.00</span></div></div><p>Live values captured during a run. A recorded copy and paste can become <code>[copy_1]</code>, so the next run reads fresh data.</p><div class="expression-line"><span>Type in App</span><code>[order_id]</code><span class="expression-output">→ ORD-1042</span></div></div>
+      <div class="data-panel" data-data-panel="constants" hidden><div class="data-table"><div class="table-labels"><span>NAME</span><span>VALUE</span></div><div><code>region</code><span>Madrid</span></div><div><code>report_name</code><span>daily-orders.xlsx</span></div><div><code>review_limit</code><span>1000</span></div></div><p>Named settings stored in the .portal file. Override them for a scheduled run, from the command line, or when calling a subflow.</p><div class="expression-line"><span>Flow parameter</span><code>[region]</code><span class="expression-output">→ Madrid</span></div></div>
+      <div class="data-panel" data-data-panel="tables" hidden><div class="data-table"><div class="table-labels"><span>CUSTOMER</span><span>ORDER</span></div><div><span>Ana Ruiz</span><code>ORD-1042</code></div><div><span>David Martin</span><code>ORD-1043</code></div><div><span>Emma Wilson</span><code>ORD-1044</code></div></div><p>Keep rows inside your flow and use For Each to fill a form for every row. The recorder can turn repeated form entries into a table and a loop.</p><div class="expression-line"><span>For Each</span><code>one row → one form</code></div></div>
+      <div class="data-panel" data-data-panel="secrets" hidden><div class="data-table"><div class="table-labels"><span>SECRET NAME</span><span>VALUE</span></div><div><code>portal_password</code><span>••••••••••••</span></div><div><code>api_key</code><span>••••••••••••</span></div></div><p>Passwords and API keys stay in an encrypted vault on your computer. The flow contains a reference, rather than the credential itself.</p><div class="expression-line"><span>Type</span><code>[secret:portal_password]</code></div></div>
+    </div>
+  </div>
+</section><div class="related-page container"><div><span class="eyebrow">GO A LITTLE DEEPER</span><h2>The tools behind your workflow.</h2><p>Explore the full feature set, from branching and data to debugging and schedules.</p></div><a class="btn btn-ghost" href="features.html">Explore all features →</a></div><section class="closing-cta"><div class="container"><div><span class="eyebrow">PORTAL17 STUDIO FOR WINDOWS</span><h2>Ready to make work flow?</h2><p>Build your first automation with Portal17 Studio.</p></div><a class="btn btn-primary btn-lg" href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" target="_blank" rel="noopener">Get it on Microsoft Store <span aria-hidden="true">↗</span></a></div></section>
+</main>
+<footer class="site-footer">
+  <div class="container"><div class="footer-grid">
+    <div class="footer-identity"><a class="footer-brand" href="index.html"><img src="assets/icon.png" width="32" height="32" alt=""><span>Portal17 Studio</span></a><p>Visual automation for your browser<br>and your Windows apps.</p><span class="footer-tagline">Click Once. Run Forever.</span></div>
+    <div class="footer-column"><h3>Product</h3><a href="studio.html">Explore the studio</a><a href="features.html">All features</a><a href="features.html#faq">Questions &amp; answers</a><a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" target="_blank" rel="noopener">Microsoft Store ↗</a></div>
+    <div class="footer-column"><h3>Resources</h3><a href="demos.html">Demos &amp; video</a><a href="sandbox.html">Practice sandbox</a><a href="privacy.html">Privacy policy</a><span>Windows 10 &amp; 11</span></div>
+  </div><div class="footer-bottom"><span>© <span id="year">2026</span> Portal17 Studio</span><span>Built for the work you repeat.</span></div></div>
+</footer>
+<script src="js/main.js"></script>
+<script src="js/refresh.js"></script>
+</body>
+</html>
