@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal17 Studio — No-Code Automation for the Browser and Windows Apps</title>
+<title>Portal17 Studio — No-Code RPA for Browser &amp; Windows</title>
 <meta name="description" content="Portal17 Studio is no-code automation software for Windows: record what you do in the browser and in any Windows program, or build flows by dragging nodes. Fill forms, move data between web and desktop apps, extract data, and run flows on a schedule or from the command line. Available on the Microsoft Store.">
 <meta name="keywords" content="browser automation, desktop automation, Windows app automation, RPA software, no-code automation, task automation software, record and replay, desktop recorder, automatizar navegador, automatizar Windows, automatización web, Windows automation tool">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#0a0b12">
+<meta name="theme-color" content="#17181b">
 <link rel="canonical" href="https://portal17studio.com/">
 
 <meta property="og:type" content="website">
@@ -25,6 +25,7 @@
 
 <link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/refresh.css">
 
 <script type="application/ld+json">
 {
@@ -63,7 +64,7 @@
     {
       "@type": "Question",
       "name": "Where do my passwords and API keys live?",
-      "acceptedAnswer": { "@type": "Answer", "text": "In the encrypted Secrets vault, stored only on your machine — never inside the flow file. Your flow just references them as [secret:name], so you can share or back up a .portal file without leaking a single credential. Everything stays local; nothing is sent to any cloud." }
+      "acceptedAnswer": { "@type": "Answer", "text": "In the encrypted Secrets vault, stored only on your machine — never inside the flow file. Your flow just references them as [secret:name], so you can share or back up a .portal file without leaking a single credential. The vault stays on your computer. Your flows can connect to the websites and services you choose." }
     },
     {
       "@type": "Question",
@@ -104,7 +105,8 @@
 }
 </script>
 </head>
-<body>
+<body class="home-page">
+<a class="skip-link" href="#main">Skip to content</a>
 <div class="bg-glow"></div>
 
 <!-- ============ NAV ============ -->
@@ -115,12 +117,11 @@
       <span>Portal17 Studio</span>
     </a>
     <ul class="nav-links">
-      <li><a href="#recorder">Recorder</a></li>
-      <li><a href="#features">Features</a></li>
+      <li><a href="#studio">The studio</a></li>
+      <li><a href="#features">Capabilities</a></li>
       <li><a href="#playground">Playground</a></li>
-      <li><a href="sandbox">Sandbox</a></li>
-      <li><a href="#how">How it works</a></li>
-      <li><a href="#videos">Videos</a></li>
+      <li><a href="sandbox.html">Sandbox</a></li>
+      <li><a href="#videos">Learn</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <div class="nav-cta">
@@ -137,41 +138,64 @@
     </div>
   </div>
   <nav class="mobile-menu" id="mobileMenu">
-    <a href="#recorder">Recorder</a>
-    <a href="#features">Features</a>
-    <a href="#playground">Playground</a>
-    <a href="sandbox">Sandbox</a>
-    <a href="#how">How it works</a>
-    <a href="#videos">Videos</a>
-    <a href="#faq">FAQ</a>
-    <a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" target="_blank" rel="noopener">Get it from Microsoft Store</a>
+    <a href="#studio">The studio</a><a href="#recorder">Recorder</a><a href="#data">Data Store</a><a href="#features">Capabilities</a><a href="#how">Running &amp; scheduling</a><a href="#playground">Playground</a><a href="sandbox.html">Practice sandbox</a><a href="#videos">Learn &amp; practice</a><a href="#faq">FAQ</a><a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" target="_blank" rel="noopener">Microsoft Store ↗</a>
   </nav>
 </header>
 
 <div id="top"></div>
+<main id="main">
 
 <!-- ============ HERO ============ -->
-<section class="hero">
+<section class="hero hero-refresh">
+  <div class="container hero-layout">
+    <div class="hero-copy">
+      <span class="eyebrow"><i class="status-dot"></i> VISUAL RPA FOR WINDOWS</span>
+      <h1>Click once.<br><span class="accent-text">Run forever.</span></h1>
+      <p class="hero-sub">Your browser. Your Windows apps. One connected flow. Record the work you do, build it visually, and run it on your terms — without writing code.</p>
+      <div class="hero-ctas">
+        <a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Get Portal17 Studio <span aria-hidden="true">↗</span></a>
+        <a href="#recorder" class="hero-demo-link"><span aria-hidden="true">▶</span> See it in action</a>
+      </div>
+      <p class="hero-note">Built for Windows 10 &amp; 11 <span>·</span> No code required</p>
+    </div>
+    <div class="workflow-preview" aria-label="Interactive illustrative automation preview">
+      <div class="preview-titlebar"><span class="preview-brand"><img src="assets/icon.png" alt=""> Portal17 Studio</span><span class="preview-local"><i class="status-dot"></i> Runs locally</span></div>
+      <div class="preview-toolbar"><span><span class="preview-file" id="previewFile">Daily reports.portal</span><small>ILLUSTRATIVE WORKFLOW</small></span><button id="previewRun" class="preview-run" type="button">▶ Run flow</button></div>
+      <div class="preview-canvas">
+        <span class="canvas-label">CONNECTED NODES. A REPEATABLE PROCESS.</span>
+        <div class="preview-flow" id="previewFlow">
+          <div class="preview-node" data-step="0"><span class="node-symbol green">▷</span><span><b>Start</b><small>Your next free hour starts here</small></span><i class="node-state"></i></div>
+          <div class="preview-node" data-step="1"><span class="node-symbol blue"><img src="assets/icons/navigate.png" alt=""></span><span><b>Navigate</b><small>Open your reporting portal</small></span><i class="node-state"></i></div>
+          <div class="preview-node" data-step="2"><span class="node-symbol purple"><img src="assets/icons/extract_part.png" alt=""></span><span><b>Extract Text</b><small>Read the latest report data</small></span><i class="node-state"></i></div>
+          <div class="preview-node" data-step="3"><span class="node-symbol orange"><img src="assets/icons/export_excel.png" alt=""></span><span><b>Export Excel</b><small>Save a ready-to-use spreadsheet</small></span><i class="node-state"></i></div>
+        </div>
+        <span class="canvas-zoom" aria-hidden="true">− &nbsp; 100% &nbsp; +</span>
+      </div>
+      <div class="preview-console" role="status" aria-live="polite" id="previewStatus"><span class="console-dot"></span> Ready when you are. Try running this flow.</div>
+      <div class="preview-scenarios" role="group" aria-label="Choose an example workflow"><button type="button" data-scenario="reports" aria-pressed="true">Daily reports</button><button type="button" data-scenario="desktop" aria-pressed="false">Desktop work</button><button type="button" data-scenario="api" aria-pressed="false">API to Excel</button></div>
+    </div>
+  </div>
+</section>
+<div class="capability-strip container" aria-label="Product capabilities"><span>BUILD · RECORD · RUN<br><b>One studio. Connected work.</b></span><span><img src="assets/icons/navigate.png" alt=""> Web automation</span><span><img src="assets/icons/app_click.png" alt=""> Windows applications</span><span><img src="assets/icons/sql_query.png" alt=""> APIs &amp; databases</span><span><img src="assets/icons/calendar.png" alt=""> Schedules &amp; triggers</span></div>
+
+<section id="solutions" class="solutions-section">
   <div class="container">
-    <div class="hero-icon-wrap"><img src="assets/icon.png" alt="Portal17 Studio"></div>
-    <h1>Portal17 <span class="accent-text">Studio</span></h1>
-    <p class="hero-tagline">Click Once. Run Forever.</p>
-    <p class="hero-sub">
-      Do the task once — in the browser, in Excel, in any Windows program — and
-      Portal17 Studio records every step as a flow. Or drag nodes onto a canvas.
-      Then run it once, on a schedule, or unattended forever. No coding required.
-    </p>
-    <div class="hero-ctas">
-      <a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Get it on the Microsoft Store</a>
-      <a href="#recorder" class="btn btn-ghost btn-lg">▶ See the recorder</a>
+    <div class="section-header reveal"><span class="eyebrow">01 / WHAT YOU CAN AUTOMATE</span><h2>The whole task.<br>Not just the browser.</h2><p>Connect web pages, desktop controls and data in the same process.</p></div>
+    <div class="solutions-grid">
+      <a class="solution-card reveal" href="#recorder"><span class="solution-number">01 / OPERATIONS</span><div class="solution-art art-operations" aria-hidden="true"><span class="mini-window">Web portal <b>Order #1042</b></span><span class="art-arrow">↗</span><span class="mini-window mini-offset">Windows app <b>Invoice saved ✓</b></span></div><h3>Connect the work<br>between your apps.</h3><p>Move order details from a website into a desktop application. Record the whole process, including copy and paste.</p><span class="solution-link">Meet the recorder <span>↗</span></span></a>
+      <a class="solution-card reveal" href="#playground"><span class="solution-number">02 / DATA &amp; REPORTING</span><div class="solution-art art-data" aria-hidden="true"><div class="mini-table"><span>PRODUCT</span><span>PRICE</span><span>Monitor</span><b>249.00</b><span>Keyboard</span><b>89.00</b><span>Mouse</span><b>45.00</b></div><span class="export-badge">.xlsx ↗</span></div><h3>From scattered data<br>to a clean spreadsheet.</h3><p>Read web tables, query a database, or call an API. Clean the values and export them to Excel or CSV.</p><span class="solution-link">Try an example <span>↗</span></span></a>
+      <a class="solution-card reveal" href="#how"><span class="solution-number">03 / ROUTINES</span><div class="solution-art art-schedule" aria-hidden="true"><span class="schedule-clock">08<span>:00</span></span><span class="schedule-pill"><i class="status-dot"></i> Daily report · Scheduled</span><span class="schedule-line">MON &nbsp; TUE &nbsp; WED &nbsp; THU &nbsp; FRI</span></div><h3>Your routine.<br>Without the routine.</h3><p>Schedule saved flows or start them when a file arrives, an email lands, or Windows starts.</p><span class="solution-link">See how it works <span>↗</span></span></a>
     </div>
-    <div class="hero-meta">
-      <span>🪟 Windows 10 / 11</span>
-      <span>🌐 <b data-count="9">9</b> languages</span>
-      <span>🧩 <b data-count="55">55</b> node types</span>
-      <span>🎥 Records browser + Windows apps</span>
-      <span>🔒 100% local — nothing in the cloud</span>
-    </div>
+  </div>
+</section>
+
+<section class="studio-section" id="studio">
+  <div class="container">
+    <div class="studio-heading"><div><span class="eyebrow">02 / INSIDE THE STUDIO</span><h2>A canvas for your process.<br>A connection for every step.</h2></div><p>Drag an action from the left. Configure its properties on the right. Join its output to the next node and follow the logic across the canvas.</p></div>
+    <div class="workspace-tabs" role="group" aria-label="Choose a real product screenshot"><button type="button" data-workspace="orders" aria-pressed="true">Excel, images &amp; email.portal</button><button type="button" data-workspace="logic" aria-pressed="false">Flow control.portal</button><a href="assets/studio-workflow.png" id="workspaceFull" target="_blank" rel="noopener">Open full-size ↗</a></div>
+    <figure class="studio-frame reveal"><div class="studio-frame-bar"><span><img src="assets/icon.png" alt=""> Portal17 Studio / Visual editor</span><span>ACTUAL PRODUCT VIEW</span></div><img id="workspaceImage" src="assets/studio-workflow.png" alt="Actual Portal17 Studio interface with a workflow that loops through web articles, extracts text and images, makes decisions, exports to Excel and sends an email" width="1920" height="1032" loading="lazy"><figcaption id="workspaceCaption">A real workflow: read web articles, branch on conditions, export to Excel, extract images and send an email.</figcaption></figure>
+    <div class="workspace-map"><div><span>01</span><h3>Choose an action</h3><p>Web, Windows, data and flow-control nodes, grouped in the Actions panel.</p></div><div><span>02</span><h3>Connect the logic</h3><p>Cyan ports join the steps. Decisions and loops have separate outputs for each path.</p></div><div><span>03</span><h3>Make it reusable</h3><p>Configure properties, store data, group nodes and call other .portal flows.</p></div></div>
+    <div class="studio-facts"><div><b>55</b><span>node types to build with</span></div><div><b>9</b><span>interface languages</span></div><div><b>.portal</b><span>portable, reusable flows</span></div><div><b>Your PC</b><span>local execution &amp; secret storage</span></div></div>
   </div>
 </section>
 
@@ -229,11 +253,11 @@
 <section id="recorder" class="recorder flow-step">
   <div class="container">
     <div class="section-header reveal">
-      <span class="eyebrow">Records your whole PC <span class="demo-tag">Live demo</span></span>
-      <h2>Do it once. Anywhere. It becomes a flow.</h2>
+      <span class="eyebrow">03 / RECORD THE WAY YOU WORK <span class="demo-tag">Illustrative demo</span></span>
+      <h2>You do the task.<br>The recorder connects the steps.</h2>
       <p>
         Hit Record and just work — on a web page, in Excel, in your company's desktop app.
-        Every click, every field you fill, every box you tick turns into a step you can run forever.
+        Clicks, typing, check boxes and shortcuts become editable nodes.
         Even copy and paste: copy an order number on a website, paste it into a Windows program,
         and the flow copies the <em>live</em> value on every run.
       </p>
@@ -285,7 +309,8 @@
       </div>
 
       <div class="rec-flow">
-        <div class="rec-flow-head">Recorded flow <span id="recCount">0</span></div>
+        <div class="rec-flow-head">Recorded flow <span id="recCount">9</span></div>
+        <div class="rec-graph">
         <ol class="rec-list" id="recList">
           <li class="rec-node web"><img src="assets/icons/click.png" alt=""><b>Click</b><small>search box</small></li>
           <li class="rec-node web"><img src="assets/icons/type.png" alt=""><b>Type</b><small>"ORD-1042"</small></li>
@@ -297,6 +322,7 @@
           <li class="rec-node app"><img src="assets/icons/app_check.png" alt=""><b>Check in App</b><small>Urgent ✓</small></li>
           <li class="rec-node app"><img src="assets/icons/app_click.png" alt=""><b>Click in App</b><small>Save invoice</small></li>
         </ol>
+        </div>
         <div class="rec-legend"><span class="web">Web page</span><span class="app">Windows program</span></div>
       </div>
     </div>
@@ -304,7 +330,7 @@
     <div class="rec-points">
       <div class="rec-point reveal"><b>Real controls, not pixels</b><span>Buttons, fields, boxes and lists are found by what they are, so steps keep working when a window moves or resizes.</span></div>
       <div class="rec-point reveal"><b>Built to survive change</b><span>Each recorded step keeps a backup and a snapshot of what you clicked — titles change, buttons move, the flow still finds its way.</span></div>
-      <div class="rec-point reveal"><b>Nothing gets lost</b><span>Mouse and keyboard are captured on their own and processed in order, even in heavy apps. Type as fast as you like.</span></div>
+      <div class="rec-point reveal"><b>Recorded in sequence</b><span>Mouse and keyboard are captured on their own and processed in order, even in heavy apps. Type as fast as you like.</span></div>
       <div class="rec-point reveal"><b>Passwords stay secret</b><span>Passwords you type while recording go straight to the encrypted vault. The flow only says <code>[secret:…]</code>.</span></div>
       <div class="rec-point reveal"><b>See what it captured</b><span>Every control you click is outlined for a moment, and a small floating panel shows the last step recorded.</span></div>
       <div class="rec-point reveal"><b>Pause and add steps</b><span>F9 pauses and resumes. From the panel, add “wait until this appears”, “read this text” or a short wait in a click.</span></div>
@@ -314,14 +340,27 @@
   </div>
 </section>
 
+<section id="data" class="data-section">
+  <div class="container data-layout">
+    <div class="data-copy"><span class="eyebrow">04 / DATA THAT MOVES WITH THE FLOW</span><h2>Read it. Transform it.<br>Use it in the next step.</h2><p>Bring together values from a page, a desktop control, an API or a database. Keep them in the Data Store and reference them wherever the process needs them.</p><ul class="data-benefits"><li><img src="assets/icons/extract_part.png" alt=""><span><b>Read from the source</b>Extract text, read application controls, or select fields from a JSON response.</span></li><li><img src="assets/icons/transform.png" alt=""><span><b>Make values usable</b>Trim text, replace with regex, parse numbers and reformat dates.</span></li><li><img src="assets/icons/export_excel.png" alt=""><span><b>Put the result to work</b>Fill another app, write an Excel or CSV file, or send an email.</span></li></ul></div>
+    <div class="data-store-demo"><div class="editor-panel-title">Data Store <span>ILLUSTRATIVE VALUES</span></div><div class="data-tabs" role="group" aria-label="Explore the Data Store"><button type="button" data-data-tab="variables" aria-pressed="true">Live variables</button><button type="button" data-data-tab="constants" aria-pressed="false">Constants</button><button type="button" data-data-tab="tables" aria-pressed="false">Tables</button><button type="button" data-data-tab="secrets" aria-pressed="false">Secrets</button></div>
+      <div class="data-panel" data-data-panel="variables"><div class="data-table"><div class="table-labels"><span>NAME</span><span>VALUE</span></div><div><code>order_id</code><span>ORD-1042</span></div><div><code>customer</code><span>Ana Ruiz</span></div><div><code>total</code><span>249.00</span></div></div><p>Live values captured during a run. A recorded copy and paste can become <code>[copy_1]</code>, so the next run reads fresh data.</p><div class="expression-line"><span>Type in App</span><code>[order_id]</code><span class="expression-output">→ ORD-1042</span></div></div>
+      <div class="data-panel" data-data-panel="constants" hidden><div class="data-table"><div class="table-labels"><span>NAME</span><span>VALUE</span></div><div><code>region</code><span>Madrid</span></div><div><code>report_name</code><span>daily-orders.xlsx</span></div><div><code>review_limit</code><span>1000</span></div></div><p>Named settings stored in the .portal file. Override them for a scheduled run, from the command line, or when calling a subflow.</p><div class="expression-line"><span>Flow parameter</span><code>[region]</code><span class="expression-output">→ Madrid</span></div></div>
+      <div class="data-panel" data-data-panel="tables" hidden><div class="data-table"><div class="table-labels"><span>CUSTOMER</span><span>ORDER</span></div><div><span>Ana Ruiz</span><code>ORD-1042</code></div><div><span>David Martin</span><code>ORD-1043</code></div><div><span>Emma Wilson</span><code>ORD-1044</code></div></div><p>Keep rows inside your flow and use For Each to fill a form for every row. The recorder can turn repeated form entries into a table and a loop.</p><div class="expression-line"><span>For Each</span><code>one row → one form</code></div></div>
+      <div class="data-panel" data-data-panel="secrets" hidden><div class="data-table"><div class="table-labels"><span>SECRET NAME</span><span>VALUE</span></div><div><code>portal_password</code><span>••••••••••••</span></div><div><code>api_key</code><span>••••••••••••</span></div></div><p>Passwords and API keys stay in an encrypted vault on your computer. The flow contains a reference, rather than the credential itself.</p><div class="expression-line"><span>Type</span><code>[secret:portal_password]</code></div></div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ FEATURES ============ -->
 <section id="features">
   <div class="container">
     <div class="section-header reveal">
-      <span class="eyebrow">Everything you need</span>
-      <h2>Automation that reads like a flowchart</h2>
-      <p>Every feature below shipped because a real, repetitive browser task needed it.</p>
+      <span class="eyebrow">05 / THE ACTIONS PANEL</span>
+      <h2>The right building block.<br>For every part of the job.</h2>
+      <p>Explore the tools behind the canvas: record and build, work with data, or manage execution.</p>
     </div>
+    <div class="feature-filters" role="group" aria-label="Filter product capabilities"><button type="button" data-filter="all" aria-pressed="true">All capabilities</button><button type="button" data-filter="build" aria-pressed="false">Build &amp; record</button><button type="button" data-filter="data" aria-pressed="false">Work with data</button><button type="button" data-filter="run" aria-pressed="false">Run &amp; manage</button></div>
     <div class="feature-grid">
 
       <div class="feature-card reveal">
@@ -380,7 +419,7 @@
 
       <div class="feature-card reveal">
         <div class="feature-icon"><img src="assets/icons/app_click.png" alt=""></div>
-        <h3>Any Windows Program</h3>
+        <h3>Windows App Automation</h3>
         <p>Click buttons, fill fields, tick boxes, choose from lists and read text in any desktop app by its real controls. App draws its own interface? Point at a picture of the button instead.</p>
       </div>
 
@@ -399,7 +438,7 @@
       <div class="feature-card reveal">
         <div class="feature-icon"><img src="assets/icons/webhook.png" alt=""></div>
         <h3>Triggers</h3>
-        <p>Start a flow by itself when a file lands in a folder, an email arrives in Outlook or any IMAP inbox, you press a shortcut or Windows starts &mdash; all offline &mdash; or from any other app with a signed webhook. They can keep running in the background with the app closed.</p>
+        <p>Start a flow by itself when a file lands in a folder, an email arrives in Outlook or any IMAP inbox, you press a shortcut or Windows starts, or from any other app with a signed webhook. They can keep running in the background with the app closed.</p>
       </div>
 
       <div class="feature-card reveal">
@@ -444,6 +483,27 @@
         <p>Run a saved flow automatically at a set time — even while Portal17 Studio is closed. Override a flow's constants per task, so the same flow runs at 8:00 for Madrid and 9:00 for Barcelona.</p>
       </div>
 
+      <div class="feature-card reveal" data-category="build">
+        <div class="feature-icon"><img src="assets/icons/group_box.png" alt=""></div>
+        <h3>Reusable Subflows</h3>
+        <p>Use Call Portal to run another saved flow. Pass different constants to the same process instead of rebuilding it for every project.</p>
+      </div>
+      <div class="feature-card reveal" data-category="data">
+        <div class="feature-icon"><img src="assets/icons/set_variable.png" alt=""></div>
+        <h3>Tables &amp; Parameters</h3>
+        <p>Keep constants, live variables and tables together in the Data Store. Fill a form once for each row and reuse values across your flow.</p>
+      </div>
+      <div class="feature-card reveal" data-category="run">
+        <div class="feature-icon"><img src="assets/icons/if.png" alt=""></div>
+        <h3>Recovery on Your Terms</h3>
+        <p>Choose what happens when a node fails: retry, stop, continue, or follow a separate error path. Build recovery into the process.</p>
+      </div>
+      <div class="feature-card reveal" data-category="run">
+        <div class="feature-icon"><img src="assets/icons/wait_element.png" alt=""></div>
+        <h3>Automatic Selector Repair</h3>
+        <p>Recorded steps keep fallback information about the element you picked, helping the flow find it again when the interface changes.</p>
+      </div>
+
     </div>
   </div>
 </section>
@@ -452,27 +512,27 @@
 <section id="how" class="tight flow-step">
   <div class="container">
     <div class="section-header reveal">
-      <span class="eyebrow">Three steps</span>
-      <h2>From idea to “it just runs”</h2>
-      <p>The same loop, whether you're filling one form or scraping a thousand rows.</p>
+      <span class="eyebrow">06 / EXECUTION, WITH VISIBILITY</span>
+      <h2>Run the flow.<br>Stay in control.</h2>
+      <p>Inspect a single step, recover from an error, or let a saved process run on a schedule.</p>
     </div>
     <div class="how-steps">
       <div class="how-step reveal">
-        <div class="how-num">1</div>
-        <h3>Build or Record</h3>
-        <p>Drag nodes onto the canvas, or do the task once — in the browser or any Windows program — and let the recorder write it.</p>
+        <div class="how-num"><img src="assets/icons/start.png" alt=""></div>
+        <span class="mode-label">INTERACTIVE RUNS</span><h3>Play. Pause. Inspect.</h3>
+        <p>Run with F5, step through nodes with F7 and pause with F9. Set breakpoints or run from a selected node to test a part of the process.</p><div class="shortcut-row"><kbd>F5</kbd> Run <kbd>F7</kbd> Step <kbd>F9</kbd> Pause</div>
       </div>
       <div class="how-wire"></div>
       <div class="how-step reveal">
-        <div class="how-num">2</div>
-        <h3>Connect &amp; Configure</h3>
-        <p>Wire nodes together, add branches and loops, capture values into variables.</p>
+        <div class="how-num"><img src="assets/icons/desktop_screenshot.png" alt=""></div>
+        <span class="mode-label">WHEN SOMETHING FAILS</span><h3>Recover with a plan.</h3>
+        <p>Retry, stop, continue, or follow an error output. Review the screenshot, node settings and diagnostic details saved when a step fails.</p><div class="error-route"><span>Step</span><i>↗</i><span>Retry / error path</span></div>
       </div>
       <div class="how-wire"></div>
       <div class="how-step reveal">
-        <div class="how-num">3</div>
-        <h3>Run — Forever</h3>
-        <p>Run it now, on a schedule, or headless from the command line. Click once, run forever.</p>
+        <div class="how-num"><img src="assets/icons/calendar.png" alt=""></div>
+        <span class="mode-label">SCHEDULES &amp; EVENTS</span><h3>Start when it matters.</h3>
+        <p>Use Windows Scheduled Tasks or the command line for unattended runs. Trigger flows from folders, incoming email, shortcuts, Windows startup or webhooks.</p><div class="schedule-summary"><span class="status-dot"></span> One saved flow · Different parameters</div>
       </div>
     </div>
   </div>
@@ -482,20 +542,19 @@
 <section id="playground" class="playground flow-step">
   <div class="container">
     <div class="section-header reveal">
-      <span class="eyebrow">Try it yourself <span class="demo-tag">Live demo</span></span>
-      <h2>The Playground</h2>
+      <span class="eyebrow">07 / FOLLOW A FLOW <span class="demo-tag">Interactive simulation</span></span>
+      <h2>Watch the connections<br>become actions.</h2>
       <p>
-        This is a live simulation running entirely in your browser — a "Hello World" flow
-        that opens a contact form, fills it in, submits it, and extracts the confirmation
-        message. It's exactly the sequence the real app follows on a real page. Hit
-        <strong>Run Flow</strong> and watch it happen.
+        Run this example to follow a form-filling process: navigate, type, choose an option,
+        submit and read the ticket number into a variable. The canvas, form and log update
+        together. This is a browser simulation; no message is sent.
       </p>
     </div>
 
     <!-- flow canvas: its own full-width row so the node chain always has
          room to breathe and never needs horizontal scrolling -->
     <div class="pg-panel reveal">
-      <div class="pg-panel-header">Flow — <strong>Hello World</strong></div>
+      <div class="pg-panel-header"><span><img src="assets/icon.png" alt=""> Contact form.portal</span><small>SIMULATED EXECUTION</small></div>
 
       <div class="pg-canvas" id="pgCanvas">
         <div class="pg-node" data-step="1" style="--node-color:#186b18;">
@@ -583,7 +642,7 @@
 
       <div class="reveal">
         <div class="pg-console">
-          <div class="pg-console-header">Execution log</div>
+          <div class="pg-console-header"><span class="status-dot"></span> Log console <small>LIVE SIMULATION</small></div>
           <div class="pg-console-body" id="pgConsoleBody">
             <p class="muted">Click "Run Flow" to start…</p>
           </div>
@@ -598,66 +657,18 @@
         This playground is a simulation that runs entirely in your browser for illustration.
         Want to build a real flow yourself?
       </p>
-      <a href="sandbox" class="btn btn-ghost btn-lg">🧪 Open the practice sandbox ↗</a>
+      <a href="sandbox.html" class="btn btn-ghost btn-lg">🧪 Open the practice sandbox ↗</a>
     </div>
   </div>
 </section>
 
 <!-- ============ VIDEOS ============ -->
-<section id="videos" class="flow-step">
+<section id="videos" class="resources-section">
   <div class="container">
-    <div class="section-header reveal">
-      <span class="eyebrow">See it in action</span>
-      <h2>Video demos</h2>
-      <p>Short walkthroughs of Portal17 Studio in real use, recorded on our <a href="sandbox">practice sandbox</a> page. Videos are being recorded — check back soon.</p>
-    </div>
-
-    <div class="video-grid">
-
-      <div class="video-card reveal">
-        <div class="video-thumb vthumb-1" data-video="assets/videos/demo-recording.mp4" data-title="Record your first flow">
-          <video class="video-thumb-media" src="assets/videos/demo-recording.mp4#t=9"
-                 preload="metadata" muted playsinline tabindex="-1" aria-hidden="true"></video>
-          <span class="video-badge">Demo</span>
-          <span class="video-len">0:57</span>
-          <button class="play-btn" aria-label="Play video">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-        </div>
-        <div class="video-card-body">
-          <h3>Record your first flow</h3>
-          <p>Click through a real page once — watch Portal17 Studio turn it into a working flow.</p>
-        </div>
-      </div>
-
-      <div class="video-card reveal">
-        <div class="video-thumb vthumb-2" data-video="assets/videos/demo-branching.mp4" data-title="Branching, loops &amp; SQL">
-          <span class="video-badge">Demo</span>
-          <button class="play-btn" aria-label="Play video">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-          <span class="video-len">Coming soon</span>
-        </div>
-        <div class="video-card-body">
-          <h3>Branching, loops &amp; SQL</h3>
-          <p>If/Else logic, repeat loops, and pulling live data from a database mid-flow.</p>
-        </div>
-      </div>
-
-      <div class="video-card reveal">
-        <div class="video-thumb vthumb-3" data-video="assets/videos/demo-scheduler.mp4" data-title="Scheduling unattended runs">
-          <span class="video-badge">Demo</span>
-          <button class="play-btn" aria-label="Play video">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-          <span class="video-len">Coming soon</span>
-        </div>
-        <div class="video-card-body">
-          <h3>Scheduling unattended runs</h3>
-          <p>Set it once in the Scheduler and it keeps running — even with the app closed.</p>
-        </div>
-      </div>
-
+    <div class="section-header"><span class="eyebrow">08 / LEARN BY DOING</span><h2>Your first flow.<br>Your next possibility.</h2><p>Watch a real recording, then build your own flow with interactive practice exercises.</p></div>
+    <div class="resources-grid">
+      <div class="resource-video video-card"><div class="video-thumb vthumb-1" data-video="assets/videos/demo-recording.mp4" data-title="Record your first flow"><video class="video-thumb-media" src="assets/videos/demo-recording.mp4#t=9" preload="metadata" muted playsinline tabindex="-1" aria-hidden="true"></video><span class="video-badge">REAL PRODUCT RECORDING</span><span class="video-len">0:57</span><button class="play-btn" aria-label="Play video"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div><div class="video-card-body"><span class="resource-type">WATCH / 57 SECONDS</span><h3>From a recording to a flow.</h3><p>See Portal17 Studio capture a task on the practice website and turn the actions into nodes.</p></div></div>
+      <a class="resource-card" href="sandbox.html"><span class="resource-type">PRACTICE / 14 EXERCISES</span><span class="resource-symbol">{ }</span><h3>A sandbox built<br>for automation.</h3><p>Forms, tables, iframes, tabs, drag and drop, loading delays and unstable selectors. Real interactions, ready for your first flow.</p><span class="resource-action">Open the sandbox <span>↗</span></span></a>
     </div>
   </div>
 </section>
@@ -677,8 +688,8 @@
 <section id="faq" class="tight flow-step">
   <div class="container">
     <div class="section-header reveal">
-      <span class="eyebrow">Questions</span>
-      <h2>Frequently asked questions</h2>
+      <span class="eyebrow">09 / A FEW THINGS TO KNOW</span>
+      <h2>Before you build<br>your first flow.</h2><p>The essentials about browsers, desktop apps, data and unattended execution.</p>
     </div>
     <div class="faq-list">
 
@@ -699,7 +710,7 @@
 
       <div class="faq-item reveal">
         <button class="faq-q">Where do my passwords and API keys live? <span class="chev">▾</span></button>
-        <div class="faq-a"><div class="faq-a-inner">In the encrypted Secrets vault, stored only on your machine — never inside the flow file. Your flow just references them as [secret:name], so you can share or back up a .portal file without leaking a single credential. Everything stays local; nothing is sent to any cloud.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">In the encrypted Secrets vault, stored only on your machine — never inside the flow file. Your flow just references them as [secret:name], so you can share or back up a .portal file without leaking a single credential. The vault stays on your computer. Your flows can connect to the websites and services you choose.</div></div>
       </div>
 
       <div class="faq-item reveal">
@@ -750,7 +761,8 @@
 <section id="download" class="tight">
   <div class="container">
     <div class="download-panel reveal">
-      <h2>Ready to click once and run forever?</h2>
+      <img class="download-icon" src="assets/icon.png" alt=""><span class="eyebrow">YOUR NEXT WORKFLOW STARTS HERE</span>
+      <h2>Make the connection.<br>Automate the repetition.</h2>
       <p>Portal17 Studio is available now on the Microsoft Store for Windows 10 and 11.</p>
       <div class="download-ctas">
         <a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" class="btn btn-store btn-lg" target="_blank" rel="noopener">
@@ -770,33 +782,19 @@
 </section>
 
 <!-- ============ FOOTER ============ -->
+</main>
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <img src="assets/icon.png" alt="Portal17 Studio">
-        <span>Portal17 Studio</span>
-      </div>
-      <ul class="footer-links">
-        <li><a href="#features">Features</a></li>
-        <li><a href="#playground">Playground</a></li>
-        <li><a href="sandbox">Sandbox</a></li>
-        <li><a href="#videos">Videos</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="privacy">Privacy Policy</a></li>
-        <li><a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" target="_blank" rel="noopener">Microsoft Store</a></li>
-		<li><a href="https://saasbrowser.com/en/saas/1584023/portal17-studio" target="_blank" rel="noopener"><img src="https://static-files.saasbrowser.com/saas-browser-badge-17.svg" alt="Portal17 Studio - Find B2B SaaS tools" width="200" /></a></li>
-		<!--<li><a href="https://viberank.dev/apps/Portal17%20Studio" target="_blank" rel="noopener noreferrer"><img src="https://viberank.dev/badge?app=Portal17%20Studio&theme=dark" alt="Portal17 Studio on VibeRank" /></a></li>-->
-	  </ul>
-    </div>
-    <p class="footer-fine">
-      © <span id="year"></span> Portal17 Studio. Click Once. Run Forever.<br>
-      Interface available in English, Spanish, French, German, Italian, Portuguese, Russian, Chinese, and Japanese.
-    </p>
+  <div class="container"><div class="footer-grid">
+    <div class="footer-identity"><a class="footer-brand" href="#top"><img src="assets/icon.png" alt=""><span>Portal17 Studio</span></a><p>Visual automation for the web<br>and the Windows desktop.</p><span class="footer-tagline">Click Once. Run Forever.</span></div>
+    <div class="footer-column"><h3>Explore the studio</h3><a href="#studio">Visual editor</a><a href="#recorder">Recorder</a><a href="#data">Data Store</a><a href="#features">Capabilities</a><a href="#how">Running &amp; scheduling</a></div>
+    <div class="footer-column"><h3>Start building</h3><a href="#playground">Interactive demo</a><a href="sandbox.html">Practice sandbox</a><a href="#videos">Watch a recording</a><a href="#faq">Questions &amp; answers</a></div>
+    <div class="footer-column"><h3>Portal17 Studio</h3><a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" target="_blank" rel="noopener">Microsoft Store ↗</a><a href="privacy">Privacy policy</a><a href="https://saasbrowser.com/en/saas/1584023/portal17-studio" target="_blank" rel="noopener">SaaS Browser listing ↗</a><span>Windows 10 &amp; 11</span><span>9 interface languages</span></div>
+    </div><div class="footer-bottom"><span>© <span id="year"></span> Portal17 Studio</span><span>Built around your process. Runs on your computer.</span></div>
   </div>
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/refresh.js"></script>
 </body>
 </html>
 
