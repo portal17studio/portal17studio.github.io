@@ -35,26 +35,34 @@
       <span>Portal17 Studio</span>
     </a>
     <ul class="nav-links">
+      <li><a href="/#recorder">Recorder</a></li>
+      <li><a href="/#use-cases">Use cases</a></li>
       <li><a href="/#features">Features</a></li>
       <li><a href="/#playground">Playground</a></li>
       <li><a href="sandbox" class="active">Sandbox</a></li>
-	  <li><a href="/#how">How it works</a></li>
-      <li><a href="/#videos">Videos</a></li>
       <li><a href="/#faq">FAQ</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="/" class="btn btn-ghost">← Back to site</a>
+      <a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" class="btn btn-store" target="_blank" rel="noopener">
+        <svg class="win-logo" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="38" height="38" fill="#4fd6e8"/>
+          <rect x="46" y="4" width="38" height="38" fill="#ff8a3d"/>
+          <rect x="4" y="46" width="38" height="38" fill="#ff8a3d"/>
+          <rect x="46" y="46" width="38" height="38" fill="#4fd6e8"/>
+        </svg>
+        <span class="store-label"><small>Get it from</small><strong>Microsoft Store</strong></span>
+      </a>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
     </div>
   </div>
   <nav class="mobile-menu" id="mobileMenu">
+    <a href="/">Home</a>
+    <a href="/#use-cases">Use cases</a>
     <a href="/#features">Features</a>
     <a href="/#playground">Playground</a>
     <a href="sandbox">Sandbox</a>
-	<a href="/#how">How it works</a>
-    <a href="/#videos">Videos</a>
     <a href="/#faq">FAQ</a>
-    <a href="/">← Back to site</a>
+    <a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" target="_blank" rel="noopener">Get it from Microsoft Store</a>
   </nav>
 </header>
 
@@ -63,18 +71,19 @@
     <span class="eyebrow">Practice sandbox</span>
     <h1>A safe place to <em>click around</em></h1>
     <p>
-      Fourteen exercises, from the basics to the ones that actually break flows.
-      Everything here is real, interactive, and completely harmless — no accounts
-      are created, no messages are sent, nothing is saved anywhere. Log in, fill a
-      form, sort a table, then work up to waiting on slow content, switching to a
-      new tab, looping through pages and surviving elements whose id changes every
-      time you touch them. Break it as often as you like — a reload puts it back
-      exactly the way it started.
+      Fourteen real exercises — from a login form to slow content, new tabs, pagination and
+      elements whose id changes every time you touch them. Nothing is created, sent or saved,
+      so break it as often as you like: a reload puts everything back.
     </p>
     <div class="sandbox-hero-actions">
       <button id="resetSandbox" class="btn btn-ghost">↺ Reset this page</button>
       <a href="/#playground" class="btn btn-ghost">▶ See the scripted demo instead</a>
     </div>
+    <ol class="sbx-how">
+      <li><b>1</b><span><strong>Open Portal17 Studio</strong> and press Record, with the browser ticked.</span></li>
+      <li><b>2</b><span><strong>Do an exercise here</strong> as you normally would — every action becomes a node.</span></li>
+      <li><b>3</b><span><strong>Stop, then Run.</strong> Reload this page first and watch the flow redo it on its own.</span></li>
+    </ol>
   </div>
 </section>
 
@@ -107,6 +116,7 @@
     <div class="sbx-card sbx-narrow reveal">
       <h2><span class="sbx-num">1</span> Login form</h2>
       <p class="sbx-hint">Classic username/password automation target — try filling and submitting it.</p>
+      <div class="sbx-nodes" aria-label="Nodes this exercise practises"><em>Practises</em><span><img src="assets/icons/type.png" alt="">Type</span><span><img src="assets/icons/check.png" alt="">Check/Radio</span><span><img src="assets/icons/click.png" alt="">Click</span></div>
       <form class="sbx-form" data-sbx-form="login">
         <label for="loginUser">Username</label>
         <input id="loginUser" type="text" placeholder="ada.lovelace">
@@ -126,6 +136,7 @@
     <div class="sbx-card reveal">
       <h2><span class="sbx-num">2</span> Support request</h2>
       <p class="sbx-hint">A richer form: text fields, a dropdown, radio buttons, a slider, and a textarea.</p>
+      <div class="sbx-nodes" aria-label="Nodes this exercise practises"><em>Practises</em><span><img src="assets/icons/type.png" alt="">Type</span><span><img src="assets/icons/select.png" alt="">Select</span><span><img src="assets/icons/check.png" alt="">Check/Radio</span><span><img src="assets/icons/slider.png" alt="">Slider</span><span><img src="assets/icons/upload_file.png" alt="">Upload File</span></div>
       <form class="sbx-form sbx-form-grid" data-sbx-form="support">
         <div>
           <label for="supName">Full name</label>
@@ -185,6 +196,7 @@
         <div class="sbx-cart-badge">🛒 Cart: <span id="cartCount">0</span> item(s) · $<span id="cartTotal">0.00</span></div>
       </div>
       <p class="sbx-hint">Loop over a list of items and click a button on each one — a very common automation pattern.</p>
+      <div class="sbx-nodes" aria-label="Nodes this exercise practises"><em>Practises</em><span><img src="assets/icons/foreach.png" alt="">For Each</span><span><img src="assets/icons/click.png" alt="">Click</span><span><img src="assets/icons/extract_part.png" alt="">Extract Text</span></div>
       <div class="sbx-products" id="productGrid">
         <div class="sbx-product" data-name="Wireless Mouse" data-price="19.99">
           <div class="sbx-product-thumb">🖱️</div>
@@ -225,6 +237,7 @@
     <div class="sbx-card reveal">
       <h2><span class="sbx-num">4</span> Sortable data table</h2>
       <p class="sbx-hint">Click a column header to sort, tick rows, then delete the selected ones — good for scraping and bulk-action practice.</p>
+      <div class="sbx-nodes" aria-label="Nodes this exercise practises"><em>Practises</em><span><img src="assets/icons/click.png" alt="">Click</span><span><img src="assets/icons/check.png" alt="">Check/Radio</span><span><img src="assets/icons/foreach.png" alt="">For Each</span><span><img src="assets/icons/export_excel.png" alt="">Export Excel</span></div>
       <div class="sbx-table-wrap">
         <table class="sbx-table" id="dataTable">
           <thead>
@@ -258,6 +271,7 @@
     <div class="sbx-card reveal">
       <h2><span class="sbx-num">5</span> Tabbed panel</h2>
       <p class="sbx-hint">Practice clicking between sections that show and hide content.</p>
+      <div class="sbx-nodes" aria-label="Nodes this exercise practises"><em>Practises</em><span><img src="assets/icons/click.png" alt="">Click</span><span><img src="assets/icons/extract_part.png" alt="">Extract Text</span></div>
       <div class="sbx-tabs">
         <div class="sbx-tab-bar">
           <button class="sbx-tab-btn active" data-tab="profile">Profile</button>
@@ -287,6 +301,7 @@
     <div class="sbx-card sbx-narrow reveal">
       <h2><span class="sbx-num">6</span> Modal dialog</h2>
       <p class="sbx-hint">Some flows need to open a dialog, click something inside it, then close it.</p>
+      <div class="sbx-nodes" aria-label="Nodes this exercise practises"><em>Practises</em><span><img src="assets/icons/click.png" alt="">Click</span><span><img src="assets/icons/wait_element.png" alt="">Wait for Element</span></div>
       <button class="btn btn-primary" id="openModalBtn">Open terms &amp; conditions</button>
     </div>
   </div>
@@ -310,6 +325,7 @@
     <div class="sbx-card sbx-narrow reveal">
       <h2><span class="sbx-num">7</span> Multi-step wizard</h2>
       <p class="sbx-hint">Great for practicing flows with Next/Back buttons and a few steps in a row.</p>
+      <div class="sbx-nodes" aria-label="Nodes this exercise practises"><em>Practises</em><span><img src="assets/icons/type.png" alt="">Type</span><span><img src="assets/icons/click.png" alt="">Click</span></div>
       <div class="sbx-wizard-steps">
         <span class="sbx-wizard-dot active" data-step="1">1</span>
         <span class="sbx-wizard-line"></span>
@@ -351,6 +367,7 @@
         Switch into the iframe, fill in the form, then return to the main page.
         A common automation scenario.
       </p>
+      <div class="sbx-nodes" aria-label="Nodes this exercise practises"><em>Practises</em><span><img src="assets/icons/iframe.png" alt="">Iframe</span><span><img src="assets/icons/type.png" alt="">Type</span><span><img src="assets/icons/exit_iframe.png" alt="">Exit Iframe</span></div>
 
       <div class="sbx-iframe-frame">
         <iframe
@@ -375,6 +392,7 @@
         Drag a card out of "To do" and drop it onto "Done" — a common pattern
         in kanban boards and task lists.
       </p>
+      <div class="sbx-nodes" aria-label="Nodes this exercise practises"><em>Practises</em><span><img src="assets/icons/drag_drop.png" alt="">Drag</span></div>
 
       <div class="sbx-dnd-board" id="dndBoard">
         <div class="sbx-dnd-column" data-zone="todo" id="dndTodo">
@@ -402,6 +420,7 @@
         These are the two waits you keep running into, and they are not the same
         problem: one element isn't there yet, the other is there but won't respond.
       </p>
+      <div class="sbx-nodes" aria-label="Nodes this exercise practises"><em>Practises</em><span><img src="assets/icons/wait_element.png" alt="">Wait for Element</span><span><img src="assets/icons/extract_part.png" alt="">Extract Text</span></div>
       <div class="sbx-tasks">
 
         <div class="sbx-task">
@@ -440,6 +459,7 @@
         something there, and come back — that's the Open&nbsp;Tab / Switch&nbsp;Tab /
         Close&nbsp;Tab trio in Portal17 Studio.
       </p>
+      <div class="sbx-nodes" aria-label="Nodes this exercise practises"><em>Practises</em><span><img src="assets/icons/switch_tab.png" alt="">Switch Tab</span><span><img src="assets/icons/close_tab.png" alt="">Close Tab</span></div>
       <div class="sbx-btn-row">
         <a class="btn btn-ghost" href="sandbox-iframe.html" target="_blank" rel="noopener" id="newTabLink">Open a link in a new tab ↗</a>
         <button class="btn btn-ghost" id="newWindowBtn">Open a popup window</button>
@@ -458,6 +478,7 @@
         Twelve records spread over three pages. Scraping all of them means looping:
         read the page, click Next, repeat until Next is disabled.
       </p>
+      <div class="sbx-nodes" aria-label="Nodes this exercise practises"><em>Practises</em><span><img src="assets/icons/loop.png" alt="">Loop</span><span><img src="assets/icons/ifexists.png" alt="">If Exists</span><span><img src="assets/icons/click.png" alt="">Click</span><span><img src="assets/icons/extract_part.png" alt="">Extract Text</span></div>
       <div class="sbx-table-wrap">
         <table class="sbx-table" id="pagedTable">
           <thead>
@@ -485,6 +506,7 @@
         opens on top of that. Clicking straight at the coordinates of a buried item
         won't work — the flow has to hover its way in.
       </p>
+      <div class="sbx-nodes" aria-label="Nodes this exercise practises"><em>Practises</em><span><img src="assets/icons/hover.png" alt="">Hover</span><span><img src="assets/icons/click.png" alt="">Click</span></div>
       <nav class="sbx-menubar" id="sbxMenubar">
         <div class="sbx-menu">
           <button class="sbx-menu-top" type="button">Reports ▾</button>
@@ -516,6 +538,7 @@
         and the switch below shoves it down the page. Both break flows that were
         recorded against a fragile selector — good practice for picking a stable one.
       </p>
+      <div class="sbx-nodes" aria-label="Nodes this exercise practises"><em>Practises</em><span><img src="assets/icons/click.png" alt="">Click</span><span><img src="assets/icons/restart_browser.png" alt="">Self-repairing selector</span></div>
       <div class="sbx-shift-banner" id="shiftBanner" hidden>
         ⚠️ A notice appeared and pushed everything below it down.
       </div>
@@ -540,19 +563,35 @@
 
 <footer class="site-footer">
   <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <img src="assets/icon.png" alt="Portal17 Studio">
-        <span>Portal17 Studio</span>
+    <div class="footer-cols">
+      <div class="footer-about">
+        <div class="footer-brand">
+          <img src="assets/icon.png" alt="Portal17 Studio">
+          <span>Portal17 Studio</span>
+        </div>
+        <p>This sandbox is for practice only — nothing you enter here is stored or sent anywhere.</p>
       </div>
-      <ul class="footer-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/#playground">Playground</a></li>
-        <li><a href="/#faq">FAQ</a></li>
-        <li><a href="privacy">Privacy Policy</a></li>
-      </ul>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="/#recorder">Recorder</a>
+        <a href="/#use-cases">Use cases</a>
+        <a href="/#features">Features</a>
+        <a href="/#reliability">Reliability</a>
+      </div>
+      <div class="footer-col">
+        <h4>Try it</h4>
+        <a href="/#playground">Playground</a>
+        <a href="sandbox">Practice sandbox</a>
+        <a href="/#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get it</h4>
+        <a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" target="_blank" rel="noopener">Microsoft Store</a>
+        <a href="privacy">Privacy Policy</a>
+        <a href="mailto:contact@portal17studio.com">contact@portal17studio.com</a>
+      </div>
     </div>
-    <p class="footer-fine">This sandbox is for practice only — nothing you enter here is stored or sent anywhere.</p>
+    <p class="footer-fine">© <span id="year"></span> Portal17 Studio. Click Once. Run Forever.</p>
   </div>
 </footer>
 

@@ -728,3 +728,29 @@ html { scroll-padding-top: calc(var(--nav-h, 72px) + var(--index-h, 56px) + 24px
 @media (prefers-reduced-motion: reduce) {
   .sandbox-hero h1 em { animation: none; }
 }
+
+/* ---------- how to use the page + what each exercise practises ---------- */
+
+.sbx-how {
+  list-style: none; margin: 34px auto 0; padding: 0; max-width: 980px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; text-align: left;
+}
+@media (max-width: 760px) { .sbx-how { grid-template-columns: 1fr; } }
+.sbx-how li {
+  display: grid; grid-template-columns: 32px 1fr; gap: 12px; align-items: start;
+  padding: 14px 16px; border-radius: var(--radius-md); border: 1px solid var(--border-soft); background: var(--glass);
+}
+.sbx-how b {
+  width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center;
+  background: var(--grad-brand); color: #1a0b02; font-size: 14px;
+}
+.sbx-how span { color: var(--text-dim); font-size: 14px; }
+.sbx-how strong { color: var(--text); }
+
+.sbx-nodes { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: -4px 0 18px; }
+.sbx-nodes em { font-style: normal; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); margin-right: 4px; }
+.sbx-nodes span {
+  display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600;
+  padding: 3px 9px 3px 4px; border-radius: 8px; background: var(--panel-alt); border: 1px solid var(--border-soft);
+}
+.sbx-nodes img { width: 18px; height: 18px; padding: 3px; border-radius: 5px; background: linear-gradient(135deg, #c2410c, #e0662b); }

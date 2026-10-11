@@ -937,3 +937,36 @@ const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').mat
     visible = true; loop();
   }
 })();
+
+/* ---------------- feature tabs ----------------
+   The groups are all in the page; with JS only the chosen one shows. */
+(() => {
+  const section = document.getElementById('features');
+  if (!section) return;
+  const tabs = Array.from(section.querySelectorAll('.ft-tab'));
+  const groups = Array.from(section.querySelectorAll('.ft-group'));
+  if (tabs.length === 0 || groups.length === 0) return;
+  section.classList.add('has-ft-tabs');
+
+  function show(name, focus) {
+    tabs.forEach(t => {
+      const on = t.dataset.group === name;
+      t.classList.toggle('active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      if (on && focus) t.focus();
+    });
+    groups.forEach(g => g.classList.toggle('active', g.dataset.group === name));
+  }
+
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => show(t.dataset.group, false));
+    t.addEventListener('keydown', (e) => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      e.preventDefault();
+      const next = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+      show(next.dataset.group, true);
+    });
+  });
+  show(tabs[0].dataset.group, false);
+})();
