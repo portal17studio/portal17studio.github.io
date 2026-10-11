@@ -30,34 +30,26 @@
       <span>Portal17 Studio</span>
     </a>
     <ul class="nav-links">
-      <li><a href="/#recorder">Recorder</a></li>
-      <li><a href="/#use-cases">Use cases</a></li>
       <li><a href="/#features">Features</a></li>
       <li><a href="/#playground">Playground</a></li>
       <li><a href="sandbox">Sandbox</a></li>
+      <li><a href="/#how">How it works</a></li>
+      <li><a href="/#videos">Videos</a></li>
       <li><a href="/#faq">FAQ</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" class="btn btn-store" target="_blank" rel="noopener">
-        <svg class="win-logo" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="4" y="4" width="38" height="38" fill="#4fd6e8"/>
-          <rect x="46" y="4" width="38" height="38" fill="#ff8a3d"/>
-          <rect x="4" y="46" width="38" height="38" fill="#ff8a3d"/>
-          <rect x="46" y="46" width="38" height="38" fill="#4fd6e8"/>
-        </svg>
-        <span class="store-label"><small>Get it from</small><strong>Microsoft Store</strong></span>
-      </a>
+      <a href="/" class="btn btn-ghost">← Back to site</a>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
     </div>
   </div>
   <nav class="mobile-menu" id="mobileMenu">
-    <a href="/">Home</a>
-    <a href="/#use-cases">Use cases</a>
     <a href="/#features">Features</a>
     <a href="/#playground">Playground</a>
     <a href="sandbox">Sandbox</a>
+    <a href="/#how">How it works</a>
+    <a href="/#videos">Videos</a>
     <a href="/#faq">FAQ</a>
-    <a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" target="_blank" rel="noopener">Get it from Microsoft Store</a>
+    <a href="/">← Back to site</a>
   </nav>
 </header>
 
@@ -65,7 +57,7 @@
   <div class="container">
     <span class="eyebrow">Legal</span>
     <h1>Privacy Policy</h1>
-    <p class="subtitle">Last updated: October 11, 2026</p>
+    <p class="subtitle">Last updated: July 11, 2026</p>
   </div>
 </div>
 
@@ -73,48 +65,38 @@
   <div class="container">
 
     <div class="summary-card reveal">
-      <p>🔒 The short version: Portal17 Studio runs on your own computer. We don't collect, receive, sell or have any access to your flows, variables, passwords, files or browsing. The app has no analytics and no account. It only connects to the services <em>you</em> point it at.</p>
+      <p>🔒 The short version: Portal17 Studio runs entirely on your own computer. We don't collect, transmit, sell, or have any access to your flows, variables, database credentials, or browsing activity.</p>
     </div>
 
     <div class="prose reveal">
-      <p>This policy explains what happens to your data when you use the Portal17 Studio desktop app, get it from the Microsoft Store, or visit this website (portal17studio.com). It applies to every language the app is available in.</p>
+      <p>This Privacy Policy explains what happens to your data when you use the Portal17 Studio desktop application, download it from the Microsoft Store, or visit this website (portal17studio.com). It applies to Portal17 Studio and every language the app is available in.</p>
 
-      <h2>What stays on your computer</h2>
+      <h2>The Desktop App</h2>
+      <p>Portal17 Studio is a local, offline-first application. Everything it does happens on your own machine:</p>
       <ul>
-        <li><strong>Flows (.portal files)</strong> are saved wherever you choose. We never receive a copy.</li>
-        <li><strong>Variables, constants and tables</strong> live in the app while it runs and are written only to files you pick (Excel, CSV…).</li>
-        <li><strong>Passwords and API keys</strong> are kept encrypted in the Secrets vault on your computer. Flows only contain a reference such as <code>[secret:name]</code>, and passwords typed while recording go straight to the vault.</li>
-        <li><strong>Run history</strong> (when each flow ran, how long it took, how it ended and the variables at the end) is stored in your user folder.</li>
-        <li><strong>Failure reports</strong> are saved locally when a step fails: screenshots of the screen and of the web page, the step's settings (with secrets hidden) and a list of what the program window contained. Screenshots may show whatever was on your screen at that moment. Only the 20 most recent reports are kept, and you can delete the folder at any time.</li>
-        <li><strong>Scheduled flows and triggers</strong> are registered on your computer (Windows Task Scheduler, a shortcut in your Startup folder for the background service). Nothing about them is sent to us.</li>
+        <li><strong>Flows and projects (.portal files):</strong> saved wherever you choose on your computer. We never receive a copy of them.</li>
+        <li><strong>Variables and constants:</strong> stored locally in the app's Data Store and, if you use the CSV export feature, written only to a file you pick yourself.</li>
+        <li><strong>Browser automation:</strong> the app uses Microsoft Playwright to drive a real browser on your machine. Whatever pages your flows visit, and whatever you type into them, is between you and those websites — Portal17 Studio does not log, monitor, or transmit that activity to us.</li>
+        <li><strong>Database connections (SQL Query node):</strong> any connection string, credentials, or query results you configure stay local to your computer. We never see or receive them.</li>
+        <li><strong>Scheduler:</strong> scheduled flows are registered as ordinary tasks in the Windows Task Scheduler, on your machine. Nothing about your schedule is sent anywhere.</li>
+        <li><strong>No telemetry:</strong> the app does not include analytics or usage-tracking SDKs of any kind.</li>
       </ul>
-
-      <h2>Connections the app makes — only when you use them</h2>
-      <p>Portal17 Studio has no servers of its own and sends nothing to us. It only connects to the places your flows and settings tell it to:</p>
-      <ul>
-        <li><strong>Websites</strong> your flows visit, in Edge, Chrome or the browser built into the app. What you do there is between you and those websites.</li>
-        <li><strong>APIs, databases and email servers</strong> you configure in nodes such as Call API, SQL Query and Send Email, using the addresses and credentials you provide.</li>
-        <li><strong>Email triggers</strong> read the inbox you choose (Outlook on your computer, or an IMAP server you configure) to start flows when a message arrives. The IMAP password is kept in the encrypted vault, and attachments are saved (if that option is on) into the app's folder in your user profile so the flow can use them.</li>
-        <li><strong>Webhooks</strong> are received by a small server running on your computer. If you choose to give it a public address, the connection goes through a Cloudflare tunnel (the free <em>cloudflared</em> tool, which you install yourself or download from Cloudflare's official GitHub page when you ask). That traffic is then handled by Cloudflare under its own privacy policy.</li>
-        <li><strong>Check this computer</strong> (Settings → General) tests the internet connection by opening portal17studio.com/sandbox once, like any visit to this website.</li>
-      </ul>
-      <p>There is no telemetry: the app includes no analytics, crash-reporting or usage-tracking components of any kind.</p>
 
       <h2>Microsoft Store</h2>
-      <p>If you install Portal17 Studio from the Microsoft Store, Microsoft collects standard account, purchase and diagnostic information as part of running the Store and Windows — the same as for any other Store app. That data is handled under Microsoft's own commitments, not ours. See the <a href="https://privacy.microsoft.com/en-us/privacystatement" target="_blank" rel="noopener">Microsoft Privacy Statement</a>.</p>
+      <p>If you install Portal17 Studio from the Microsoft Store, Microsoft itself collects standard account, purchase, and diagnostic information as part of operating the Store and Windows — the same as for any other Store app. That data is handled entirely under Microsoft's own privacy commitments, not ours. See the <a href="https://privacy.microsoft.com/en-us/privacystatement" target="_blank" rel="noopener">Microsoft Privacy Statement</a> for details.</p>
 
-      <h2>This website</h2>
-      <p>portal17studio.com is a static site with no backend, no accounts, no analytics and no cookies. The Playground and the practice Sandbox run entirely in your browser: nothing you click, type or “submit” there is sent to us or stored, and it all resets when you reload the page.</p>
-      <p>The site is hosted on GitHub Pages, which, like any web host, may record technical information such as IP addresses to operate and protect the service (see GitHub's privacy statement). The directory badge in the footer is an image loaded from saasbrowser.com.</p>
+      <h2>This Website</h2>
+      <p>portal17studio.com is a static site with no backend, no accounts, and no cookies. The interactive Playground and Sandbox pages run entirely in your browser for demonstration purposes — nothing you click, type, or "submit" there is transmitted to us or stored anywhere; it resets the moment you reload the page.</p>
 
-      <h2>Children's privacy</h2>
-      <p>Portal17 Studio is not directed at children under 13, and we do not knowingly collect personal information from anyone. Since neither the app nor this website collects personal data, this holds regardless of age.</p>
+      <h2>Children's Privacy</h2>
+      <p>Portal17 Studio is not directed at children under 13, and we do not knowingly collect personal information from anyone. Since neither the app nor this website collects personal data in the first place, this is naturally the case regardless of the user's age.</p>
 
-      <h2>Changes to this policy</h2>
-      <p>If this policy changes — for example, if a future version adds an optional online feature — we'll update this page and the “Last updated” date above.</p>
+      <h2>Changes to This Policy</h2>
+      <p>If this policy ever changes — for example, if a future version of the app adds an optional online feature — we'll update this page and revise the "Last updated" date above.</p>
 
-      <h2>Contact</h2>
-      <p>Questions about this policy? Email <a href="mailto:contact@portal17studio.com">contact@portal17studio.com</a>.</p>
+      <h2>Contact Us</h2>
+      <!-- TODO: replace with your real contact email -->
+      <p>Questions about this policy? Email us at <a href="mailto:contact@portal17studio.com">contact@portal17studio.com</a>.</p>
     </div>
 
   </div>
@@ -123,35 +105,22 @@
 <!-- ============ FOOTER ============ -->
 <footer class="site-footer">
   <div class="container">
-    <div class="footer-cols">
-      <div class="footer-about">
-        <div class="footer-brand">
-          <img src="assets/icon.png" alt="Portal17 Studio">
-          <span>Portal17 Studio</span>
-        </div>
-        <p>No-code automation for the browser and every Windows program. Click once, run forever.</p>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/icon.png" alt="Portal17 Studio">
+        <span>Portal17 Studio</span>
       </div>
-      <div class="footer-col">
-        <h4>Product</h4>
-        <a href="/#recorder">Recorder</a>
-        <a href="/#use-cases">Use cases</a>
-        <a href="/#features">Features</a>
-        <a href="/#reliability">Reliability</a>
-      </div>
-      <div class="footer-col">
-        <h4>Try it</h4>
-        <a href="/#playground">Playground</a>
-        <a href="sandbox">Practice sandbox</a>
-        <a href="/#faq">FAQ</a>
-      </div>
-      <div class="footer-col">
-        <h4>Get it</h4>
-        <a href="https://apps.microsoft.com/store/detail/9MX9PN25FSGB?cid=DevShareMCLPCS" target="_blank" rel="noopener">Microsoft Store</a>
-        <a href="privacy">Privacy Policy</a>
-        <a href="mailto:contact@portal17studio.com">contact@portal17studio.com</a>
-      </div>
+      <ul class="footer-links">
+        <li><a href="/#features">Features</a></li>
+        <li><a href="/#playground">Playground</a></li>
+        <li><a href="sandbox">Sandbox</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+        <li><a href="privacy">Privacy Policy</a></li>
+      </ul>
     </div>
-    <p class="footer-fine">© <span id="year"></span> Portal17 Studio. Click Once. Run Forever.</p>
+    <p class="footer-fine">
+      © <span id="year"></span> Portal17 Studio. Click Once. Run Forever.
+    </p>
   </div>
 </footer>
 
