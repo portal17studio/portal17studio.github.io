@@ -40,7 +40,7 @@
   <div class="container">
     <span class="eyebrow">Legal</span>
     <h1>Privacy Policy</h1>
-    <p class="subtitle">Last updated: <time datetime="2026-10-12">October 12, 2026</time></p>
+    <p class="subtitle">Last updated: <time datetime="2026-10-15">October 15, 2026</time></p>
   </div>
 </div>
 
@@ -58,6 +58,7 @@
         <li><a href="#recording">Recording</a></li>
         <li><a href="#secrets">Secrets</a></li>
         <li><a href="#connections">Connections</a></li>
+        <li><a href="#connected-email">Gmail and connected email</a></li>
         <li><a href="#triggers">Triggers</a></li>
         <li><a href="#reports">Diagnostics</a></li>
         <li><a href="#your-control">Your control</a></li>
@@ -84,22 +85,43 @@
       <p>Recognized password fields are stored through the local Secrets feature and referenced by name in recorded nodes. Other sensitive text, unrecognized password fields and visible information in images are not guaranteed to be concealed. Review recorded flows and images before sharing them.</p>
 
       <h2 id="secrets">Passwords, tokens and Secrets</h2>
-      <p>The Secrets feature stores values in the local <code>secrets.dat</code> file using AES-GCM encryption with a randomly generated 256-bit key. The key is stored separately in <code>secret.key</code> in the same user configuration folder. A flow can use a reference such as <code>[secret:name]</code> instead of embedding the value in its <code>.portal</code> file.</p>
-      <p>The app also uses this store for credentials such as IMAP passwords, webhook signing secrets and Cloudflare tunnel tokens. Secrets are resolved locally when the configured action or service needs them; authentication can then send them to the service you selected.</p>
-      <p>This storage protects secret values from appearing directly in shared flows when references are used. Someone with access to both the encrypted file and its key can decrypt them. Credentials entered directly into ordinary node properties, constants or exported files may be saved as plain text. Protect access to your Windows account and configuration folder.</p>
-
+      <p>The Secrets feature encrypts values locally using AES-256-GCM. On Windows, the encryption key is protected with Windows Data Protection API (DPAPI), tied to the Windows user profile. This store includes saved passwords and OAuth access and refresh tokens. Copying its encrypted files alone to another Windows user does not normally allow them to be decrypted.</p>
+      <p>Versions that used an unprotected local key migrate that key when the updated app accesses the store: the app saves and verifies the DPAPI-protected key before removing the old key file. Existing backups can still contain copies created by an earlier version. Non-Windows development environments do not provide Windows DPAPI protection.</p>
+      <p>A flow can reference a secret by name instead of embedding it in a <code>.portal</code> file. OAuth-connected mail nodes store a connection identifier rather than the account's tokens. The app also uses its local secret store for IMAP passwords, webhook signing secrets and Cloudflare tunnel tokens.</p>
+      <p>Encryption does not protect against every threat, including malicious software running as the same Windows user or a compromised device. Ordinary node properties, constants, message data, exports, reports and files are not all encrypted by the app. Authentication sends the credentials or tokens needed for a connection directly to the corresponding service over the connection it requires.</p>
       <h2 id="connections">Connections you configure</h2>
       <p>Local execution does not mean that every workflow is offline. Your nodes can send and receive information through the connections you choose:</p>
       <ul>
         <li><strong>Websites and APIs:</strong> navigation, form entry, file uploads and API calls exchange the addresses, request data, files and authentication information needed for those actions with the destination service.</li>
         <li><strong>Databases:</strong> SQL actions connect to the database you specify and exchange authentication information, queries and results. That database may be on your computer, on your network or hosted remotely.</li>
-        <li><strong>Email:</strong> Send Email uses your configured SMTP provider. Sender and recipient addresses, message contents and attachments are sent to that provider and the intended recipients.</li>
+        <li><strong>Email:</strong> Read Emails, email triggers and Send Email can use your OAuth-connected mailbox or the other account methods you configure. Send Email uses that account or your manual SMTP provider. Sender and recipient addresses, message contents and attachments are sent to that provider and the intended recipients.</li>
         <li><strong>Files and other programs:</strong> flows can read, write or launch resources you select, including shared folders and programs with their own network connections.</li>
       </ul>
       <p>These exchanges are part of your automation, not uploads to the Portal17 Studio publisher. The destination's privacy policy, access rules and the connection settings you choose apply to that information.</p>
 
+      <h2 id="connected-email">Gmail, Microsoft and connected email accounts</h2>
+      <p>Connecting an email account is optional. Before connecting, you can review this policy from the app's connected-mail controls. Google or Microsoft presents its own sign-in and consent screen in your browser. Portal17 receives authorization tokens after you approve access; it does not receive your Google or Microsoft account password through this OAuth sign-in.</p>
+
+      <h3>What email data the app accesses</h3>
+      <p>For the mailbox and folders you select, connected-mail actions can access your email address, message identifiers, folder information, senders and recipients, subjects, timestamps, message bodies and attachments. Read Emails makes selected message data available to your flow. Email triggers check for new messages, maintain local checkpoints and can save attachments locally for the flow. Send Email processes the recipients, subject, text or HTML body and attachments specified by your flow.</p>
+      <p>Gmail IMAP/SMTP OAuth uses the restricted scope <code>https://mail.google.com/</code>. Google describes this permission as allowing reading, composing, sending and permanently deleting email. Portal17 uses it for the email features described here because Gmail's IMAP/SMTP authentication requires that scope. The current connected-mail actions do not offer a permanent-delete operation. Marking messages as read or moving them between folders happens only when configured in the flow. Microsoft connections request the corresponding IMAP and SMTP permissions and offline access for token renewal.</p>
+
+      <h3>How email data is used</h3>
+      <p>Email data is used to perform the automation you configure: read and filter messages, extract information, save attachments, run a flow when a message arrives, optionally mark or move processed messages, and send messages to your chosen recipients. Schedules and enabled background triggers may perform these operations while the editor is closed. Connecting an account alone does not send an email; sending requires a configured Send Email action to execute.</p>
+      <p>We do not use Google user data for advertising, sell it, provide it to data brokers, or use it to train generalized artificial-intelligence or machine-learning models. We do not routinely inspect users' mailbox data. If you choose to send us a support message or report, we receive the material you explicitly share and use it for that request.</p>
+
+      <h3>Where data is stored and who receives it</h3>
+      <p>Portal17 connects directly from your computer to Google or Microsoft using encrypted transport. The publisher does not operate a mailbox synchronization server or receive a copy of your OAuth tokens or messages as part of connecting, reading or sending mail. Tokens are saved in the local encrypted Secrets store described above. Connection metadata, such as the provider, email address and connection label, is stored locally and is not all encrypted.</p>
+      <p>Message data can remain in local workflow results, saved projects, tables, exports, attachment folders, logs or reports, depending on the actions you run. Such files may contain personal information and are not automatically all encrypted or redacted. This includes screenshots or error reports that capture visible email data.</p>
+      <p>Google or Microsoft processes the authentication and mailbox requests. For sending, your email provider and the recipients receive the message and attachments. Your own workflow may also deliberately transfer selected email data to destinations you configure, such as an API, another email address, a database, a website or a shared or synchronized folder. Those transfers serve the automation you request, are under your control and are subject to the destination's policies. Portal17 does not independently disclose mailbox data to advertising, analytics or data-broker services.</p>
+      <p>Portal17 Studio follows the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a> and its Limited Use requirements when handling Google user data. Use and transfers of that data are limited to providing or improving the user-facing features described here, in accordance with that policy.</p>
+
+      <h3>Retention, disconnection and deletion</h3>
+      <p>Saved authorization tokens remain on your computer until you disconnect or remove the connection, replace them through a new sign-in, or delete the relevant local data. Tokens may expire or be revoked by the provider. A connection's saved token can be renewed in the background while the connection is authorized and used by enabled features.</p>
+      <p>In the connected-mail manager, <strong>Disconnect</strong> removes the saved access and refresh tokens for that connection. <strong>Remove connection</strong> also removes its connection metadata and saved application credential entry. To revoke the provider-side authorization, remove Portal17 Studio from <a href="https://myaccount.google.com/connections" target="_blank" rel="noopener">your Google Account connections</a> or the corresponding Microsoft account or organization application settings.</p>
+      <p>Disconnecting does not erase emails already stored by your provider, delivered messages, downloaded attachments, exported data, saved flow content or backups. Delete those copies in their respective locations. Stop related flows and disable schedules and triggers when you no longer want them to access email. If you sent email data directly to our support address, you may request its deletion using the contact details below, subject to applicable obligations.</p>
       <h2 id="triggers">Triggers, webhooks and background execution</h2>
-      <p>Enabled triggers can monitor the folders, files, applications or email accounts you configure. Outlook and IMAP email triggers can make sender and recipient details, subjects, message bodies and attachment information available to your flow. Trigger settings, checkpoints and execution logs are kept locally.</p>
+      <p>Enabled triggers can monitor the folders, files, applications or email accounts you configure. Outlook, IMAP and OAuth-connected email triggers can make sender and recipient details, subjects, message bodies and attachment information available to your flow. Trigger settings, checkpoints and execution logs are kept locally.</p>
       <p>The webhook listener accepts requests on your own computer. It listens on the local loopback address by default; allowing access from your network is optional. Incoming request bodies, headers and query values can be passed to the flow and handled by its actions.</p>
       <p>If you enable a public Cloudflare tunnel, webhook requests travel through Cloudflare to your local listener. This can involve request content, IP addresses and traffic metadata. Both temporary tunnels and tunnels configured through your own Cloudflare account use that provider's infrastructure. See the <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare Privacy Policy</a>.</p>
       <p>Optional background execution can keep enabled triggers running after the editor closes. Scheduled flows run through Windows Task Scheduler. Their data handling is the same as when you run the flow manually; closing the editor alone does not disable a background service or a scheduled task.</p>
@@ -130,7 +152,7 @@
       <p>Portal17 Studio is not directed at children under 13. We do not knowingly solicit personal information from children. If you believe a child has sent us personal information, contact us so we can address it.</p>
 
       <h2 id="policy-changes">Changes to this policy</h2>
-      <p>We will update this page when the app's data handling or the website's services change and revise the date above. The current policy describes local storage and the optional connected features available in Portal17 Studio.</p>
+      <p>We will update this page when the app's data handling or the website's services change and revise the date above. The current policy describes local storage and the optional connected features in Portal17 Studio, including connected email. When a change affects how Google user data is accessed, used, stored or shared, we will also notify affected users in the app, before the changed use, and obtain any additional consent required. Features described here may require an updated desktop version.</p>
     </div>
 
   </div>
