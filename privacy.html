@@ -48,7 +48,7 @@
   <div class="container">
 
     <div class="summary-card reveal">
-      <p><strong>Your workflows run on your computer.</strong> Portal17 Studio does not automatically upload your projects, secrets or diagnostic reports to us, and does not send us usage analytics. Actions and triggers you configure can exchange data with websites, databases, email providers, Microsoft Teams, APIs and optional Cloudflare tunnels. This policy explains those connections and the information saved locally.</p>
+      <p><strong>Your workflows run on your computer.</strong> Portal17 Studio does not automatically upload your projects, secrets or diagnostic reports to us, and does not send us usage analytics. Actions and triggers you configure can exchange data with websites, databases, email providers, Microsoft Teams, an AI provider you choose, APIs and optional Cloudflare tunnels. This policy explains those connections and the information saved locally.</p>
     </div>
 
     <nav class="privacy-contents" aria-label="Privacy policy sections">
@@ -60,6 +60,7 @@
         <li><a href="#connections">Connections</a></li>
         <li><a href="#connected-email">Gmail and connected email</a></li>
         <li><a href="#teams">Microsoft Teams</a></li>
+        <li><a href="#ai">AI features</a></li>
         <li><a href="#triggers">Triggers</a></li>
         <li><a href="#reports">Diagnostics</a></li>
         <li><a href="#your-control">Your control</a></li>
@@ -97,6 +98,7 @@
         <li><strong>Databases:</strong> SQL actions connect to the database you specify and exchange authentication information, queries and results. That database may be on your computer, on your network or hosted remotely.</li>
         <li><strong>Email:</strong> Read Emails, email triggers and Send Email can use your OAuth-connected mailbox or the other account methods you configure. Send Email can use classic Outlook installed on your computer, an OAuth-connected mailbox or your manual SMTP provider. Local Outlook access uses its configured profile and account session. Sender and recipient addresses, message contents and attachments are sent to that provider and the intended recipients.</li>
         <li><strong>Microsoft Teams:</strong> Send Teams, Read Teams, Wait for Teams Reply and the Teams message trigger use your connected Microsoft work or school account through Microsoft Graph. Message text, recipients, team and channel names you configure are sent to Microsoft and delivered to the people or channel you choose. See <a href="#teams">Microsoft Teams</a> below.</li>
+        <li><strong>AI:</strong> the Process with AI node and the AI Assistant use the AI option you set up. The built-in engine and your own local-network server keep the data on your computer or network; a cloud AI provider receives the texts and questions sent to it. See <a href="#ai">AI features</a> below.</li>
         <li><strong>Files and other programs:</strong> flows can read, write or launch resources you select, including shared folders and programs with their own network connections.</li>
       </ul>
       <p>These exchanges are part of your automation, not uploads to the Portal17 Studio publisher. The destination's privacy policy, access rules and the connection settings you choose apply to that information.</p>
@@ -133,6 +135,16 @@
       <p>Teams data is used only to perform the automation you configure. The app connects directly from your computer to Microsoft Graph using encrypted transport; the publisher does not operate a server for Teams and does not receive your tokens or messages. Tokens are saved in the local encrypted Secrets store described above; connection metadata such as the account address and label is stored locally. Messages read by a flow can remain in variables, tables, exports, logs or reports you create, and your own flow may deliberately send them to other destinations you configure. We do not use Teams data for advertising, sell it or use it to train artificial-intelligence models.</p>
       <p>Disconnecting the Teams account in the app removes its saved tokens; removing the connection also removes its metadata. To revoke the authorization on Microsoft's side, remove Portal17 Studio from your Microsoft account or organization's application settings. Messages already sent remain in Teams and are governed by your organization's and Microsoft's retention rules.</p>
 
+      <h2 id="ai">AI features</h2>
+      <p>AI is optional. The <strong>Process with AI</strong> node sends the text and instruction you configure to the AI to answer, extract fields or classify it. The <strong>AI Assistant</strong> panel sends your question together with the open flow, the selected node and its fields, and the last lines of the console, so it can explain how to do something or why a run failed. Passwords and Secrets are never included in what the Assistant sends.</p>
+      <h3>Where the AI runs</h3>
+      <ul>
+        <li><strong>Built-in engine (default):</strong> runs entirely on your computer. Nothing you process with it is sent to us or to the internet. Setting it up downloads, once, the open-source engine from GitHub and the model you choose from Hugging Face; those services see an ordinary download request, such as your IP address. The files are stored on your computer and you can delete the models from the AI settings.</li>
+        <li><strong>Your own server:</strong> an Ollama, LM Studio or OpenAI-compatible server on your computer or local network. The app refuses internet addresses for this option, so the data stays inside your network and is handled by that server.</li>
+        <li><strong>Cloud provider (optional):</strong> if you choose Claude, ChatGPT, Gemini, Mistral, OpenRouter or another OpenAI-compatible service and enter your own API key, the texts processed with AI and your questions to the Assistant, with the context described above, are sent from your computer directly to that provider and billed to your account with them. Their terms and privacy policy apply, including how long they keep the data and whether they use it. Portal17 does not receive this data or your key.</li>
+      </ul>
+      <p>API keys are saved encrypted in the local Secrets store, protected with your Windows account. The Assistant's conversation is not saved to a file; results of Process with AI stay in the variables, tables, logs or files your flow creates. We do not use what you process with AI to train models.</p>
+
       <h2 id="triggers">Triggers, webhooks and background execution</h2>
       <p>Enabled triggers can monitor the folders, files, applications, email accounts or Teams chats you configure. Outlook, IMAP and OAuth-connected email triggers can make sender and recipient details, subjects, message bodies and attachment information available to your flow. Trigger settings, checkpoints and execution logs are kept locally.</p>
       <p>The webhook listener accepts requests on your own computer. It listens on the local loopback address by default; allowing access from your network is optional. Incoming request bodies, headers and query values can be passed to the flow and handled by its actions.</p>
@@ -165,7 +177,7 @@
       <p>Portal17 Studio is not directed at children under 13. We do not knowingly solicit personal information from children. If you believe a child has sent us personal information, contact us so we can address it.</p>
 
       <h2 id="policy-changes">Changes to this policy</h2>
-      <p>We will update this page when the app's data handling or the website's services change and revise the date above. The current policy describes local storage and the optional connected features in Portal17 Studio, including connected email and Microsoft Teams. When a change affects how Google user data is accessed, used, stored or shared, we will also notify affected users in the app, before the changed use, and obtain any additional consent required. Features described here may require an updated desktop version.</p>
+      <p>We will update this page when the app's data handling or the website's services change and revise the date above. The current policy describes local storage and the optional connected features in Portal17 Studio, including connected email, Microsoft Teams and AI. When a change affects how Google user data is accessed, used, stored or shared, we will also notify affected users in the app, before the changed use, and obtain any additional consent required. Features described here may require an updated desktop version.</p>
     </div>
 
   </div>

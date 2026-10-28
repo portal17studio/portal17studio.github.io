@@ -40,6 +40,16 @@
     },
     {
       "@type": "Question",
+      "name": "Does the AI send my documents to the internet?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Not by default. The built-in AI engine runs entirely on your computer: after a one-time download, the texts you process and your questions to the Assistant never leave it. You can also use your own Ollama or LM Studio server on your network, or, if you prefer, a cloud provider such as Claude, ChatGPT, Gemini, Mistral or OpenRouter with your own API key." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can it send and read Microsoft Teams messages?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. With your Microsoft work account connected, flows can send Teams messages to people or to a channel, read a one-to-one chat into a table, and ask a question and wait for the reply. A trigger can start a flow when someone writes to you on Teams. Messages are sent on your behalf; your organization may need to approve the connection." }
+    },
+    {
+      "@type": "Question",
       "name": "Can it extract data from PDF invoices?",
       "acceptedAnswer": { "@type": "Answer", "text": "Yes. Read Document gets the text of PDF, Word and PowerPoint files, including scanned PDFs through OCR. Then Transform pulls out what you need, such as the invoice number, date or total, and Excel Cell writes it into your spreadsheet." }
     },
@@ -161,7 +171,7 @@
       <div class="feature-card reveal">
         <div class="feature-icon"><img src="assets/icons/export_excel.png" alt=""></div>
         <h3>Excel &amp; CSV Export</h3>
-        <p>Capture values as you go, reuse them anywhere in the flow, and build up a real Excel (.xlsx) or CSV file row by row as your loop runs.</p>
+        <p>Capture values as you go, reuse them anywhere in the flow, and build up a real Excel (.xlsx) or CSV file row by row as your loop runs — one sheet per list in the same workbook if you like.</p>
       </div>
 
       <div class="feature-card reveal">
@@ -203,7 +213,7 @@
       <div class="feature-card reveal">
         <div class="feature-icon"><img src="assets/icons/webhook.png" alt=""></div>
         <h3>Triggers</h3>
-        <p>Start a flow by itself when a file lands in a folder, an email arrives in Outlook or any IMAP inbox, you press a shortcut or Windows starts, or from any other app with a signed webhook. They can keep running in the background with the app closed.</p>
+        <p>Start a flow by itself when a file lands in a folder, an email arrives in Outlook or any IMAP inbox, someone writes to you on Microsoft Teams, you press a shortcut or Windows starts, or from any other app with a signed webhook. They can keep running in the background with the app closed.</p>
       </div>
 
       <div class="feature-card reveal">
@@ -254,6 +264,21 @@
         <p>Bring the emails of an Outlook or IMAP folder into a table — sender, subject, text and attachments — and process each one: orders, invoices, confirmations.</p>
       </div>
       <div class="feature-card reveal" data-category="data">
+        <div class="feature-icon"><img src="assets/icons/ai_process.png" alt=""></div>
+        <h3>Process with AI</h3>
+        <p>Read texts that never look the same: pull out the invoice number, date and total into separate fields, sort an email into your categories, or summarize, translate and draft replies.</p>
+      </div>
+      <div class="feature-card reveal" data-category="build">
+        <div class="feature-icon"><img src="assets/icons/ai_assistant.png" alt=""></div>
+        <h3>AI Assistant</h3>
+        <p>Ask in your own language how to do something, or why a run failed. It sees the open flow, the selected node and the console, and answers with the exact nodes to use.</p>
+      </div>
+      <div class="feature-card reveal" data-category="data">
+        <div class="feature-icon"><img src="assets/icons/teams_send.png" alt=""></div>
+        <h3>Microsoft Teams</h3>
+        <p>Send a message to people or to a channel, read a chat into a table, or ask and wait for the reply — perfect for approvals. Messages go out from your own work account.</p>
+      </div>
+      <div class="feature-card reveal" data-category="data">
         <div class="feature-icon"><img src="assets/icons/read_document.png" alt=""></div>
         <h3>Read PDFs &amp; Documents</h3>
         <p>Get the text of PDF, Word and PowerPoint files, scanned ones included thanks to built-in OCR, then pull out invoice numbers, dates and totals.</p>
@@ -278,10 +303,30 @@
         <h3>Reusable Subflows</h3>
         <p>Use Call Portal to run another saved flow. Pass different constants to the same process instead of rebuilding it for every project.</p>
       </div>
+      <div class="feature-card reveal" data-category="build">
+        <div class="feature-icon"><img src="assets/icons/custom_node.png" alt=""></div>
+        <h3>Your Own Nodes</h3>
+        <p>Turn a group of steps into a node of your own, with its name, icon, colour and fields. It sits in the Actions panel and drops into any flow like a built-in one.</p>
+      </div>
+      <div class="feature-card reveal" data-category="run">
+        <div class="feature-icon"><img src="assets/icons/background_runs.png" alt=""></div>
+        <h3>Background Runs</h3>
+        <p>Run a flow as a separate process, with its own variables and browser, while you keep working. Several can run at once, each with its live log, status and Stop.</p>
+      </div>
+      <div class="feature-card reveal" data-category="build">
+        <div class="feature-icon"><img src="assets/icons/minimap.png" alt=""></div>
+        <h3>Minimap &amp; Linked Browser</h3>
+        <p>See the whole flow at a glance and jump anywhere from the minimap. Point at a node to highlight its element on the page, or Alt+click the page to find the node that uses it.</p>
+      </div>
       <div class="feature-card reveal" data-category="data">
         <div class="feature-icon"><img src="assets/icons/set_variable.png" alt=""></div>
         <h3>Tables &amp; Parameters</h3>
         <p>Keep constants, live variables and tables together in the Data Store. Fill a form once for each row and reuse values across your flow.</p>
+      </div>
+      <div class="feature-card reveal" data-category="data">
+        <div class="feature-icon"><img src="assets/icons/table_ops.png" alt=""></div>
+        <h3>Tables Without Excel</h3>
+        <p>Create a table while the flow runs, add rows, change cells, find or delete rows, and loop through it — or split a text into a list you can go through one by one.</p>
       </div>
       <div class="feature-card reveal" data-category="run">
         <div class="feature-icon"><img src="assets/icons/if.png" alt=""></div>
@@ -338,6 +383,16 @@
       <div class="faq-item reveal">
         <button class="faq-q">Can it read emails and their attachments? <span class="chev">▾</span></button>
         <div class="faq-a"><div class="faq-a-inner">Yes. The Read Emails node brings the emails of an Outlook or IMAP folder into a table, with sender, subject, text and saved attachments, so you can process each one in a loop. A trigger can also start a flow whenever a new email arrives.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">Does the AI send my documents to the internet? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Not by default. The built-in AI engine runs entirely on your computer: after a one-time download, the texts you process and your questions to the Assistant never leave it. You can also use your own Ollama or LM Studio server on your network, or, if you prefer, a cloud provider such as Claude, ChatGPT, Gemini, Mistral or OpenRouter with your own API key.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">Can it send and read Microsoft Teams messages? <span class="chev">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. With your Microsoft work account connected, flows can send Teams messages to people or to a channel, read a one-to-one chat into a table, and ask a question and wait for the reply. A trigger can start a flow when someone writes to you on Teams. Messages are sent on your behalf; your organization may need to approve the connection.</div></div>
       </div>
 
       <div class="faq-item reveal">
