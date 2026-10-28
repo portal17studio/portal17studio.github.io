@@ -40,7 +40,7 @@
   <div class="container">
     <span class="eyebrow">Legal</span>
     <h1>Privacy Policy</h1>
-    <p class="subtitle">Last updated: <time datetime="2026-10-25">October 25, 2026</time></p>
+    <p class="subtitle">Last updated: <time datetime="2026-10-28">October 28, 2026</time></p>
   </div>
 </div>
 
@@ -48,7 +48,7 @@
   <div class="container">
 
     <div class="summary-card reveal">
-      <p><strong>Your workflows run on your computer.</strong> Portal17 Studio does not automatically upload your projects, secrets or diagnostic reports to us, and does not send us usage analytics. Actions and triggers you configure can exchange data with websites, databases, email providers, APIs and optional Cloudflare tunnels. This policy explains those connections and the information saved locally.</p>
+      <p><strong>Your workflows run on your computer.</strong> Portal17 Studio does not automatically upload your projects, secrets or diagnostic reports to us, and does not send us usage analytics. Actions and triggers you configure can exchange data with websites, databases, email providers, Microsoft Teams, APIs and optional Cloudflare tunnels. This policy explains those connections and the information saved locally.</p>
     </div>
 
     <nav class="privacy-contents" aria-label="Privacy policy sections">
@@ -59,6 +59,7 @@
         <li><a href="#secrets">Secrets</a></li>
         <li><a href="#connections">Connections</a></li>
         <li><a href="#connected-email">Gmail and connected email</a></li>
+        <li><a href="#teams">Microsoft Teams</a></li>
         <li><a href="#triggers">Triggers</a></li>
         <li><a href="#reports">Diagnostics</a></li>
         <li><a href="#your-control">Your control</a></li>
@@ -95,6 +96,7 @@
         <li><strong>Websites and APIs:</strong> navigation, form entry, file uploads and API calls exchange the addresses, request data, files and authentication information needed for those actions with the destination service.</li>
         <li><strong>Databases:</strong> SQL actions connect to the database you specify and exchange authentication information, queries and results. That database may be on your computer, on your network or hosted remotely.</li>
         <li><strong>Email:</strong> Read Emails, email triggers and Send Email can use your OAuth-connected mailbox or the other account methods you configure. Send Email can use classic Outlook installed on your computer, an OAuth-connected mailbox or your manual SMTP provider. Local Outlook access uses its configured profile and account session. Sender and recipient addresses, message contents and attachments are sent to that provider and the intended recipients.</li>
+        <li><strong>Microsoft Teams:</strong> Send Teams, Read Teams and Wait for Teams Reply use your connected Microsoft work or school account through Microsoft Graph. Message text, recipients, team and channel names you configure are sent to Microsoft and delivered to the people or channel you choose. See <a href="#teams">Microsoft Teams</a> below.</li>
         <li><strong>Files and other programs:</strong> flows can read, write or launch resources you select, including shared folders and programs with their own network connections.</li>
       </ul>
       <p>These exchanges are part of your automation, not uploads to the Portal17 Studio publisher. The destination's privacy policy, access rules and the connection settings you choose apply to that information.</p>
@@ -120,6 +122,17 @@
       <p>Saved authorization tokens remain on your computer until you disconnect or remove the connection, replace them through a new sign-in, or delete the relevant local data. Tokens may expire or be revoked by the provider. A connection's saved token can be renewed in the background while the connection is authorized and used by enabled features.</p>
       <p>In the connected-mail manager, <strong>Disconnect</strong> removes the saved access and refresh tokens for that connection. <strong>Remove connection</strong> also removes its connection metadata and saved application credential entry. To revoke the provider-side authorization, remove Portal17 Studio from <a href="https://myaccount.google.com/connections" target="_blank" rel="noopener">your Google Account connections</a> or the corresponding Microsoft account or organization application settings.</p>
       <p>Disconnecting does not erase emails already stored by your provider, delivered messages, downloaded attachments, exported data, saved flow content or backups. Delete those copies in their respective locations. Stop related flows and disable schedules and triggers when you no longer want them to access email. If you sent email data directly to our support address, you may request its deletion using the contact details below, subject to applicable obligations.</p>
+      <h2 id="teams">Microsoft Teams</h2>
+      <p>Connecting Teams is optional and separate from connected email. Microsoft presents its own sign-in and consent screen in your browser; Portal17 receives authorization tokens after you approve access and does not receive your password. Depending on your organization's settings, an administrator may need to approve the permissions before you can connect.</p>
+
+      <h3>Permissions and the data the app accesses</h3>
+      <p>The Teams connection requests these delegated Microsoft Graph permissions: <code>User.Read</code> (your own profile and email address), <code>User.ReadBasic.All</code> (basic profile of the people you message, to find them by email), <code>Chat.Create</code> and <code>Chat.ReadWrite</code> (open and read your one-to-one chat with a person), <code>ChatMessage.Send</code> (send chat messages), <code>Team.ReadBasic.All</code> and <code>Channel.ReadBasic.All</code> (find a team and channel by name) and <code>ChannelMessage.Send</code> (post to a channel), plus <code>offline_access</code> for token renewal. Delegated permissions mean the app acts only as you and can only reach what your own account can reach.</p>
+      <p>Send Teams sends the text or HTML message your flow specifies, on your behalf, to the people or channel you choose. Read Teams reads the messages of your one-to-one chat with the person you specify (sender, date, text and message identifier) into a local data table for your flow. Wait for Teams Reply sends a question in that chat and checks it periodically until the person answers or the time limit is reached. The app does not read channel messages, other people's chats or your other conversations unless a node you configure targets them.</p>
+
+      <h3>How Teams data is used, stored and shared</h3>
+      <p>Teams data is used only to perform the automation you configure. The app connects directly from your computer to Microsoft Graph using encrypted transport; the publisher does not operate a server for Teams and does not receive your tokens or messages. Tokens are saved in the local encrypted Secrets store described above; connection metadata such as the account address and label is stored locally. Messages read by a flow can remain in variables, tables, exports, logs or reports you create, and your own flow may deliberately send them to other destinations you configure. We do not use Teams data for advertising, sell it or use it to train artificial-intelligence models.</p>
+      <p>Disconnecting the Teams account in the app removes its saved tokens; removing the connection also removes its metadata. To revoke the authorization on Microsoft's side, remove Portal17 Studio from your Microsoft account or organization's application settings. Messages already sent remain in Teams and are governed by your organization's and Microsoft's retention rules.</p>
+
       <h2 id="triggers">Triggers, webhooks and background execution</h2>
       <p>Enabled triggers can monitor the folders, files, applications or email accounts you configure. Outlook, IMAP and OAuth-connected email triggers can make sender and recipient details, subjects, message bodies and attachment information available to your flow. Trigger settings, checkpoints and execution logs are kept locally.</p>
       <p>The webhook listener accepts requests on your own computer. It listens on the local loopback address by default; allowing access from your network is optional. Incoming request bodies, headers and query values can be passed to the flow and handled by its actions.</p>
@@ -152,7 +165,7 @@
       <p>Portal17 Studio is not directed at children under 13. We do not knowingly solicit personal information from children. If you believe a child has sent us personal information, contact us so we can address it.</p>
 
       <h2 id="policy-changes">Changes to this policy</h2>
-      <p>We will update this page when the app's data handling or the website's services change and revise the date above. The current policy describes local storage and the optional connected features in Portal17 Studio, including connected email. When a change affects how Google user data is accessed, used, stored or shared, we will also notify affected users in the app, before the changed use, and obtain any additional consent required. Features described here may require an updated desktop version.</p>
+      <p>We will update this page when the app's data handling or the website's services change and revise the date above. The current policy describes local storage and the optional connected features in Portal17 Studio, including connected email and Microsoft Teams. When a change affects how Google user data is accessed, used, stored or shared, we will also notify affected users in the app, before the changed use, and obtain any additional consent required. Features described here may require an updated desktop version.</p>
     </div>
 
   </div>
