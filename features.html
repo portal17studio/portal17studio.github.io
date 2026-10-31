@@ -76,7 +76,7 @@
     {
       "@type": "Question",
       "name": "Where do my passwords and API keys live?",
-      "acceptedAnswer": { "@type": "Answer", "text": "In the encrypted Secrets vault, stored only on your machine — never inside the flow file. Your flow just references them as [secret:name], so you can share or back up a .portal file without leaking a single credential. The vault stays on your computer. Your flows can connect to the websites and services you choose." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Values saved in the Secrets vault are encrypted locally and referenced by name as [secret:name]. Other values, recorded text and images can remain in flow files. Review and redact a flow before sharing it. Configured connections can exchange data with the services you choose." }
     },
     {
       "@type": "Question",
@@ -111,7 +111,7 @@
     {
       "@type": "Question",
       "name": "Does the recorder work outside the browser?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. In Settings → Recording, tick Browser, Windows programs, or both. Clicks, typing, check boxes, drop-downs, lists, drag and drop, the Enter key and shortcuts are all recorded as nodes — even copy and paste, which becomes a variable so the flow copies the live value on every run. Passwords you type are stored encrypted, never in the flow." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. In Settings → Recording, tick Browser, Windows programs, or both. Clicks, typing, check boxes, drop-downs, lists, drag and drop, the Enter key and shortcuts are all recorded as nodes — even copy and paste, which becomes a variable so the flow copies the live value on every run. Recognized password fields use encrypted Secrets. Review other captured text and images before sharing a flow." }
     }
   ]
 }
@@ -189,7 +189,7 @@
       <div class="feature-card reveal">
         <div class="feature-icon"><img src="assets/icons/secrets.png" alt=""></div>
         <h3>Encrypted Secrets</h3>
-        <p>Keep passwords and API keys encrypted on your machine and reference them as [secret:name]. Passwords typed while recording land here automatically — share a flow without leaking a credential.</p>
+        <p>Save passwords and API keys in the encrypted Secrets vault and reference them as [secret:name]. Recognized password fields use this vault; review other recorded text and images before sharing a flow.</p>
       </div>
 
       <div class="feature-card reveal">
@@ -237,7 +237,7 @@
       <div class="feature-card reveal">
         <div class="feature-icon"><img src="assets/icons/desktop_screenshot.png" alt=""></div>
         <h3>Know Why a Step Failed</h3>
-        <p>Every failure leaves a report: a screenshot, the step and its settings, what was being looked for and what the window actually had. A built-in check tests automation on your PC in one click.</p>
+        <p>Inspect local failure reports with screenshots, step settings and diagnostic details. Reports can contain visible personal information; review them before sharing. A built-in check tests automation on your PC.</p>
       </div>
 
       <div class="feature-card reveal">
@@ -423,7 +423,7 @@
 
       <div class="faq-item reveal">
         <button class="faq-q">Where do my passwords and API keys live? <span class="chev">▾</span></button>
-        <div class="faq-a"><div class="faq-a-inner">In the encrypted Secrets vault, stored only on your machine — never inside the flow file. Your flow just references them as [secret:name], so you can share or back up a .portal file without leaking a single credential. The vault stays on your computer. Your flows can connect to the websites and services you choose.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Values saved in the Secrets vault are encrypted locally and referenced by name as [secret:name]. Other values, recorded text and images can remain in flow files. Review and redact a flow before sharing it. Configured connections can exchange data with the services you choose.</div></div>
       </div>
 
       <div class="faq-item reveal">
@@ -463,7 +463,7 @@
 
       <div class="faq-item reveal">
         <button class="faq-q">Does the recorder work outside the browser? <span class="chev">▾</span></button>
-        <div class="faq-a"><div class="faq-a-inner">Yes. In Settings → Recording, tick Browser, Windows programs, or both. Clicks, typing, check boxes, drop-downs, lists, drag and drop, the Enter key and shortcuts are all recorded as nodes — even copy and paste, which becomes a variable so the flow copies the live value on every run. Passwords you type are stored encrypted, never in the flow.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Yes. In Settings → Recording, tick Browser, Windows programs, or both. Clicks, typing, check boxes, drop-downs, lists, drag and drop, the Enter key and shortcuts are all recorded as nodes — even copy and paste, which becomes a variable so the flow copies the live value on every run. Recognized password fields use encrypted Secrets. Review other captured text and images before sharing a flow.</div></div>
       </div>
 
     </div>
